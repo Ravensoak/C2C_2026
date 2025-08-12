@@ -155,23 +155,46 @@
 
   <script>
     const sheetData = [
-      { B: "Dave Olney", F: "Soup", G: "Beef", H: "Ice Cream", Hotel: "groes1" },
-      { B: "Dave Olney", F: "Bruschetta", G: "Chicken", H: "Brownie", Hotel: "LionHotel" },
-      { B: "Dave Olney", F: "Prawn Cocktail", G: "Venison", H: "Apple Pie", Hotel: "NanhoronHotel" },
-      { B: "Dave Olney", F: "Melon", G: "Fish", H: "Trifle", Hotel: "BullInn" },
-      { B: "Dave Olney", F: "Tomato Soup", G: "Turkey", H: "Fruit Salad", Hotel: "groes2" },
-
-      { B: "Jane Olney", F: "Garlic Mushrooms", G: "Lamb", H: "Cheesecake", Hotel: "groes1" },
-      { B: "Jane Olney", F: "Pâté", G: "Duck", H: "Tiramisu", Hotel: "LionHotel" },
-      { B: "Jane Olney", F: "Salad", G: "Goat", H: "Eton Mess", Hotel: "NanhoronHotel" },
-      { B: "Jane Olney", F: "Avocado", G: "Sea Bass", H: "Sorbet", Hotel: "BullInn" },
-      { B: "Jane Olney", F: "Pea Soup", G: "Chicken", H: "Meringue", Hotel: "groes2" },
-
-      { B: "Kev Marriott", F: "Salmon en croute with asparaguss and thick cut chips", G: "Pork", H: "Sponge Cake", Hotel: "groes1" },
-      { B: "Kev Marriott", F: "Spring Rolls", G: "Steak", H: "Mousse", Hotel: "LionHotel" },
-      { B: "Kev Marriott", F: "Olives", G: "Rabbit", H: "Crumble", Hotel: "NanhoronHotel" },
-      { B: "Kev Marriott", F: "Shrimp", G: "Cod", H: "Ice Cream", Hotel: "BullInn" },
-      { B: "Kev Marriott", F: "Minestrone", G: "Ham", H: "Cake", Hotel: "groes2" },
+      { B: ""David Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes1"" },
+      { B: ""David Olney"", F: ""No Starter"", G: ""Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""lionhotel"" },
+      { B: ""David Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""nanhoronhotel"" },
+      { B: ""David Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""bullinn"" },
+      { B: ""David Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""groes2"" },"
+      { B: ""John Smith"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes1"" },
+      { B: ""John Smith"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""lionhotel"" },
+{ B: ""John Smith"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Sticky Toffee Pudding"", Hotel: ""nanhoronhotel"" },
+{ B: ""John Smith"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""bullinn"" },
+{ B: ""John Smith"", F: ""No Starter"", G: ""No Main"", H: ""No Dessert"", Hotel: ""groes2"" },
+{ B: ""Sarah Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""groes1"" },
+{ B: ""Sarah Olney"", F: ""No Starter"", G: ""No Main"", H: ""Sticky Toffee Pudding"", Hotel: ""lionhotel"" },
+{ B: ""Sarah Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""No Main"", H: ""Ice Cream"", Hotel: ""nanhoronhotel"" },
+{ B: ""Sarah Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Sticky Toffee Pudding"", Hotel: ""bullinn"" },
+{ B: ""Sarah Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Sticky Toffee Pudding"", Hotel: ""groes2"" },
+{ B: ""Tracey Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""groes1"" },
+{ B: ""Tracey Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""lionhotel"" },
+{ B: ""Tracey Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""nanhoronhotel"" },
+{ B: ""Tracey Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""No Main"", H: ""Ice Cream"", Hotel: ""bullinn"" },
+{ B: ""Tracey Olney"", F: ""No Starter"", G: ""No Main"", H: ""No Dessert"", Hotel: ""groes2"" },"
+{ B: ""Matthew Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes1"" },
+{ B: ""Matthew Olney"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""lionhotel"" },
+{ B: ""Matthew Olney"", F: ""V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""nanhoronhotel"" },
+{ B: ""Matthew Olney"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""bullinn"" },
+{ B: ""Matthew Olney"", F: ""No Starter"", G: ""No Main"", H: ""No Dessert"", Hotel: ""groes2"" },"
+{ B: ""Jim Davidson"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes1"" },
+{ B: ""Jim Davidson"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""lionhotel"" },
+{ B: ""Jim Davidson"", F: ""V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""nanhoronhotel"" },
+{ B: ""Jim Davidson"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""bullinn"" },
+{ B: ""Jim Davidson"", F: ""No Starter"", G: ""Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95"", H: ""Sticky Toffee Pudding"", Hotel: ""groes2"" },
+{ B: ""Jim Smith"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""groes1"" },
+{ B: ""Jim Smith"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""lionhotel"" },
+{ B: ""Jim Smith"", F: ""No Starter"", G: ""Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""nanhoronhotel"" },
+{ B: ""Jim Smith"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""bullinn"" },
+{ B: ""Jim Smith"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes2"" },
+{ B: ""Bev Smithers"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Ice Cream"", Hotel: ""groes1"" },
+{ B: ""Bev Smithers"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""lionhotel"" },
+{ B: ""Bev Smithers"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""Sticky Toffee Pudding"", Hotel: ""nanhoronhotel"" },
+{ B: ""Bev Smithers"", F: ""V/VG Soup of the Day - Crusty bread and butter - £7.25"", G: ""No Main"", H: ""No Dessert"", Hotel: ""bullinn"" },
+{ B: ""Bev Smithers"", F: ""No Starter"", G: ""House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95"", H: ""No Dessert"", Hotel: ""groes2"" },
     ];
 
     const entrySelect = document.getElementById("entrySelect");
@@ -208,4 +231,5 @@ function updateOutput() {
   });
 }</script>
 </body>
+
 </html>
