@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C2C 2026 Menu Selections</title>
+  <style>
+    :root {
+      --primary-color: #2980b9;
+      --background-color: #f9f9f9;
+      --card-bg: #fff;
+      --card-border: #ddd;
+      --text-color: #333;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 1.5rem;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    label {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    select {
+      padding: 0.6rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    .output {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .output strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      color: var(--primary-color);
+    }
+
+    .output p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: left;
+    }
+    .category-label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: black;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+   .category-label::before {
+      margin-right: 0.3rem;
+    }
+    .menu-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      align-items: start;
+      margin-bottom: 0.4rem;
+}
+
+.category-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: black;
+}
+
+.food-item {
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+
+  </style>
+</head>
+<body>
+  <h2>C2C 2026 Menu Selections</h2>
+  <label for="entrySelect">Please select your name:</label>
+  <select id="entrySelect" onchange="updateOutput()">
+    <option value=""></option>
+  </select>
+
+  <div class="grid">
+    <div class="output" id="groes1Box">
+      <strong>The Groes Hotel</strong>
+      <p id="groes1F"></p>
+      <p id="groes1G"></p>
+      <p id="groes1H"></p>
+    </div>
+
+    <div class="output" id="LionHotelBox">
+      <strong>The Lion Hotel</strong>
+      <p id="lionhotelF"></p>
+      <p id="lionhotelG"></p>
+      <p id="lionhotelH"></p>
+    </div>
+
+    <div class="output" id="NanhoronHotelBox">
+      <strong>Nanhoron Hotel</strong>
+      <p id="nanhoronhotelF"></p>
+      <p id="nanhoronhotelG"></p>
+      <p id="nanhoronhotelH"></p>
+    </div>
+
+    <div class="output" id="BullInnBox">
+      <strong>The Bull Inn</strong>
+      <p id="bullinnF"></p>
+      <p id="bullinnG"></p>
+      <p id="bullinnH"></p>
+    </div>
+
+    <div class="output" id="groes2Box">
+      <strong>The Groes Hotel</strong>
+      <p id="groes2F"></p>
+      <p id="groes2G"></p>
+      <p id="groes2H"></p>
+    </div>
+  </div>
+
+  <script>
+    const sheetData = [
+     {B: "David Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes1"},
+{B: "David Olney", F: "No Starter", G: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "lionhotel"},
+{B: "David Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "nanhoronhotel"},
+{B: "David Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "bullinn"},
+{B: "David Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "groes2"},
+{B: "John Smith", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes1"},
+{B: "John Smith", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "lionhotel"},
+{B: "John Smith", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
+{B: "John Smith", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "bullinn"},
+{B: "John Smith", F: "No Starter", G: "No Main", H: "No Dessert", Hotel: "groes2"},   
+{B: "Sarah Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "groes1"},
+{B: "Sarah Olney", F: "No Starter", G: "No Main", H: "Sticky Toffee Pudding", Hotel: "lionhotel"},
+{B: "Sarah Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "No Main", H: "Ice Cream", Hotel: "nanhoronhotel"},
+{B: "Sarah Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Sticky Toffee Pudding", Hotel: "bullinn"},
+{B: "Sarah Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Sticky Toffee Pudding", Hotel: "groes2"},   
+{B: "Tracey Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "groes1"},
+{B: "Tracey Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "lionhotel"},
+{B: "Tracey Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "nanhoronhotel"},
+{B: "Tracey Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "No Main", H: "Ice Cream", Hotel: "bullinn"},
+{B: "Tracey Olney", F: "No Starter", G: "No Main", H: "No Dessert", Hotel: "groes2"},   
+{B: "Matthew Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes1"},
+{B: "Matthew Olney", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "lionhotel"},
+{B: "Matthew Olney", F: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "nanhoronhotel"},
+{B: "Matthew Olney", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "bullinn"},
+{B: "Matthew Olney", F: "No Starter", G: "No Main", H: "No Dessert", Hotel: "groes2"}, 
+{B: "Jim Davidson", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes1"},
+{B: "Jim Davidson", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "lionhotel"},
+{B: "Jim Davidson", F: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "nanhoronhotel"},
+{B: "Jim Davidson", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "bullinn" },
+{B: "Jim Davidson", F: "No Starter", G: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", H: "Sticky Toffee Pudding", Hotel: "groes2"},
+{B: "Jim Smith", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "groes1"},
+{B: "Jim Smith", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "lionhotel"},
+{B: "Jim Smith", F: "No Starter", G: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "nanhoronhotel"},
+{B: "Jim Smith", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "bullinn"},
+{B: "Jim Smith", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes2"},    
+{B: "Bev Smithers", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Ice Cream", Hotel: "groes1"},
+{B: "Bev Smithers", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "lionhotel"},
+{B: "Bev Smithers", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
+{B: "Bev Smithers", F: "V/VG Soup of the Day - Crusty bread and butter - £7.25", G: "No Main", H: "No Dessert", Hotel: "bullinn" },
+{B: "Bev Smithers", F: "No Starter", G: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", H: "No Dessert", Hotel: "groes2"},    
+    ];
+
+    const entrySelect = document.getElementById("entrySelect");
+
+    const uniqueNames = [...new Set(sheetData.map(entry => entry.B))];
+    uniqueNames.forEach(name => {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      entrySelect.appendChild(opt);
+    });
+
+function updateOutput() {
+  const selected = entrySelect.value;
+  const entries = sheetData.filter(e => e.B === selected);
+
+  const hotels = {
+    groes1: "groes1",
+    lionhotel: "lionhotel",
+    nanhoronhotel: "nanhoronhotel",
+    bullinn: "bullinn",
+    groes2: "groes2"
+  };
+
+  Object.entries(hotels).forEach(([hotelName, prefix]) => {
+    const entry = entries.find(e => e.Hotel === hotelName);
+    document.getElementById(`${prefix}F`).innerHTML = entry
+      ? `<div class="menu-row"><div class="category-label">🥗 Starter:</div><div class="food-item">${entry.F}</div></div>` : "";
+    document.getElementById(`${prefix}G`).innerHTML = entry
+      ? `<div class="menu-row"><div class="category-label">🍽️ Main:</div><div class="food-item">${entry.G}</div></div>` : "";
+    document.getElementById(`${prefix}H`).innerHTML = entry
+      ? `<div class="menu-row"><div class="category-label">🍰 Dessert:</div><div class="food-item">${entry.H}</div></div>` : "";
+    
+  });
+}</script>
+</body>
+
+</html>
