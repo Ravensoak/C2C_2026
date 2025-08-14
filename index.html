@@ -192,12 +192,24 @@ footer {
   font-size: 2.5rem;
   color: #F0F0F0;
   margin: 1rem 0;
-  transition: text-shadow 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .title-with-lines h1:hover {
-  text-shadow: 0 0 8px #ffffff, 0 0 12px #00bfff;
   color: #ffffff;
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 6px #ffffff, 0 0 10px #00bfff;
+  }
+  50% {
+    text-shadow: 0 0 12px #ffffff, 0 0 20px #00bfff;
+  }
+  100% {
+    text-shadow: 0 0 6px #ffffff, 0 0 10px #00bfff;
+  }
 }
   </style>
 </head>
@@ -228,6 +240,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
