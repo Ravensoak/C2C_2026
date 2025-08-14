@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Guest Meals</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    select {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.3s ease;
+    }
+
+    select:focus {
+      border-color: #0078D4;
+      outline: none;
+    }
+
+    table {
+      width: 100%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #eaeaea;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0078D4;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      table, th, td {
+        font-size: 0.9rem;
+      }
+
+      select {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      table, th, td {
+        font-size: 0.8rem;
+      }
+
+      select {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+    }
+/* Hover effect for table rows */
+table tr:hover td {
+  background-color: #eef6fc;
+  box-shadow: inset 0 0 4px rgba(0, 120, 212, 0.2);
+  cursor: default;
+}
+
+th:hover {
+  background-color: #005fa3;
+  box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.sort-arrow {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+  vertical-align: middle;
+}
+
+.sort-arrow.asc {
+  transform: rotate(0deg);
+}
+
+.sort-arrow.desc {
+  transform: rotate(180deg);
+}
+
+  </style>
+</head>
+
+<body>
+  <h1>Hotel Guest Meal Viewer</h1>
+
+  <div class="controls">
+    <select id="hotelSelect">
+      <option value="" disabled selected style="font-style: italic;">Select a Hotel</option>
+      <option value="hotelA">The Groes Inn</option>
+      <option value="hotelB">The Lion Hotel</option>
+      <option value="hotelC">Nanhoron Arms Hotel</option>
+      <option value="hotelD">The Bull Inn</option>
+      <option value="hotelE">The Groes Inn</option>
+    </select>
+  </div>
+
+  <div id="tableContainer"></div>
+
+  <script>
+    const hotelData = {
+      hotelA: [
+        { name: "David Olney", starter: "Bruschetta", main: "Steak", dessert: "Cheesecake" },
+        { name: "Tracey Olney", starter: "Soup", main: "Salmon", dessert: "Ice Cream" },
+        { name: "Kevin Marriott", starter: "Salad", main: "Chicken", dessert: "Brownie" },
+        { name: "Bev Smithers", starter: "Shrimp Cocktail", main: "Pasta", dessert: "Tiramisu" },
+        { name: "Jane Olney", starter: "Garlic Bread", main: "Burger", dessert: "Apple Pie" },
+        { name: "Martyn Leighton", starter: "Caprese", main: "Risotto", dessert: "Gelato" },
+        { name: "George Harrison", starter: "Wings", main: "Lamb", dessert: "Pudding" },
+        { name: "Hannah Bailey", starter: "Nachos", main: "Pizza", dessert: "Mousse" },
+        { name: "Ian Price", starter: "Spring Rolls", main: "Duck", dessert: "Fruit Tart" },
+        { name: "Jade Smith", starter: "Stuffed Mushrooms", main: "Tofu Stir Fry", dessert: "Sorbet" }
+      ],
+      hotelB: [
+        { name: "Kara", starter: "Olives", main: "Sea Bass", dessert: "Lemon Tart" },
+        { name: "Leo", starter: "Mini Quiche", main: "Beef Wellington", dessert: "Trifle" },
+        { name: "Maya", starter: "Hummus", main: "Falafel", dessert: "Baklava" },
+        { name: "Nate", starter: "Deviled Eggs", main: "Pork Chops", dessert: "Cobbler" },
+        { name: "Olivia", starter: "Antipasto", main: "Lasagna", dessert: "Cannoli" },
+        { name: "Paul", starter: "Crab Cakes", main: "Shrimp Scampi", dessert: "Key Lime Pie" },
+        { name: "Quinn", starter: "Mozzarella Sticks", main: "BBQ Ribs", dessert: "Donuts" },
+        { name: "Rita", starter: "Samosa", main: "Butter Chicken", dessert: "Kulfi" },
+        { name: "Sam", starter: "Edamame", main: "Sushi", dessert: "Matcha Cake" },
+        { name: "Tina", starter: "Baba Ganoush", main: "Lamb Tagine", dessert: "Dates" }
+      ],
+      hotelC: [
+        { name: "Uma", starter: "Ceviche", main: "Grilled Tuna", dessert: "Panna Cotta" },
+        { name: "Victor", starter: "Cornbread", main: "Fried Chicken", dessert: "Peach Pie" },
+        { name: "Wendy", starter: "Pickled Veg", main: "Pho", dessert: "Sticky Rice" },
+        { name: "Xander", starter: "Tofu Skewers", main: "Pad Thai", dessert: "Mango Sorbet" },
+        { name: "Yara", starter: "Gazpacho", main: "Paella", dessert: "Churros" },
+        { name: "Zane", starter: "Mini Tacos", main: "Enchiladas", dessert: "Flan" },
+        { name: "Amy", starter: "Fruit Salad", main: "Veggie Curry", dessert: "Rice Pudding" },
+        { name: "Ben", starter: "Onion Rings", main: "Hot Dog", dessert: "Cupcake" },
+        { name: "Cara", starter: "Spinach Dip", main: "Mac & Cheese", dessert: "Brownie" },
+        { name: "Dan", starter: "Pretzels", main: "Bratwurst", dessert: "Black Forest Cake" }
+      ],
+      hotelD: [
+        { name: "Ella", starter: "Mini Burgers", main: "Steak Frites", dessert: "Crème Brûlée" },
+        { name: "Finn", starter: "Tuna Tartare", main: "Duck Confit", dessert: "Profiteroles" },
+        { name: "Gina", starter: "Beet Salad", main: "Gnocchi", dessert: "Chocolate Torte" },
+        { name: "Harry", starter: "Lobster Bisque", main: "Veal Milanese", dessert: "Napoleon" },
+        { name: "Isla", starter: "Zucchini Fries", main: "Stuffed Peppers", dessert: "Berry Parfait" },
+        { name: "Jack", starter: "Chicken Satay", main: "Thai Curry", dessert: "Coconut Ice Cream" },
+        { name: "Kylie", starter: "Avocado Toast", main: "Grilled Cheese", dessert: "Milkshake" },
+        { name: "Liam", starter: "Prawn Toast", main: "Sweet & Sour Pork", dessert: "Lychee Jelly" },
+        { name: "Mona", starter: "Fried Pickles", main: "Meatloaf", dessert: "Banana Split" },
+        { name: "Noah", starter: "Cheese Platter", main: "Roast Beef", dessert: "Strawberry Shortcake" }
+      ],
+      hotelE: [
+        { name: "Omar", starter: "Falafel Balls", main: "Shawarma", dessert: "Baklava" },
+        { name: "Penny", starter: "Stuffed Grape Leaves", main: "Moussaka", dessert: "Greek Yogurt" },
+        { name: "Quincy", starter: "Lentil Soup", main: "Kebab", dessert: "Halva" },
+        { name: "Rosa", starter: "Tabbouleh", main: "Grilled Halloumi", dessert: "Honey Cake" },
+        { name: "Steve", starter: "Spinach Pie", main: "Gyros", dessert: "Rice Pudding" },
+        { name: "Tara", starter: "Cucumber Salad", main: "Fish Tagine", dessert: "Orange Slices" },
+        { name: "Ursula", starter: "Tomato Feta", main: "Stuffed Eggplant", dessert: "Semolina Cake" },
+        { name: "Victor", starter: "Cornbread", main: "Fried Chicken", dessert: "Peach Pie" },
+        { name: "Wendy", starter: "Pickled Veg", main: "Pho", dessert: "Sticky Rice" },
+        { name: "Xander", starter: "Tofu Skewers", main: "Pad Thai", dessert: "Mango Sorbet" }
+      ]
+    };
+
+    const hotelSelect = document.getElementById('hotelSelect');
+  const tableContainer = document.getElementById('tableContainer');
+
+  const headers = [
+    { label: 'Name', key: 'name', icon: '' },
+    { label: 'Starter', key: 'starter', icon: '🥗' },
+    { label: 'Main', key: 'main', icon: '🍽️' },
+    { label: 'Dessert', key: 'dessert', icon: '🍰' }
+  ];
+
+  let currentHotel = '';
+  let currentSort = { key: null, direction: 'asc' };
+
+  function createTableHeaders(data) {
+  const headerRow = document.createElement('tr');
+
+  headers.forEach(({ label, key, icon }) => {
+    const th = document.createElement('th');
+    th.style.cursor = 'pointer';
+    th.setAttribute('role', 'columnheader');
+    th.setAttribute('aria-sort', currentSort.key === key ? currentSort.direction : 'none');
+
+    const isSorted = currentSort.key === key;
+    const arrowClass = isSorted ? `sort-arrow ${currentSort.direction}` : 'sort-arrow asc';
+
+    const arrowSVG = `
+      <svg class="${arrowClass}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+        <path d="M7 10l5-5 5 5H7z"/>
+      </svg>
+    `;
+
+    th.innerHTML = `
+      ${icon ? `<span style="margin-right: 0.4rem;">${icon}</span>` : ''}
+      ${label}
+      ${arrowSVG}
+    `;
+
+    if (isSorted) {
+      th.classList.add('sorted');
+    }
+
+    th.addEventListener('click', () => {
+      const direction = isSorted && currentSort.direction === 'asc' ? 'desc' : 'asc';
+      currentSort = { key, direction };
+      renderHotelTable(currentHotel);
+    });
+
+    headerRow.appendChild(th);
+  });
+
+  return headerRow;
+}
+
+  function createGuestRow(guest) {
+    const row = document.createElement('tr');
+    headers.forEach(({ key }) => {
+      const td = document.createElement('td');
+      td.textContent = guest[key];
+      row.appendChild(td);
+    });
+    return row;
+  }
+
+  function renderHotelTable(hotelKey) {
+    currentHotel = hotelKey;
+    let guests = [...hotelData[hotelKey]];
+
+    if (currentSort.key) {
+      guests.sort((a, b) => {
+        const valA = a[currentSort.key].toLowerCase();
+        const valB = b[currentSort.key].toLowerCase();
+        if (valA < valB) return currentSort.direction === 'asc' ? -1 : 1;
+        if (valA > valB) return currentSort.direction === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+
+    const table = document.createElement('table');
+    table.appendChild(createTableHeaders(guests));
+
+    guests.forEach(guest => {
+      table.appendChild(createGuestRow(guest));
+    });
+
+    tableContainer.innerHTML = '';
+    tableContainer.appendChild(table);
+  }
+
+  hotelSelect.addEventListener('change', () => {
+    currentSort = { key: null, direction: 'asc' };
+    renderHotelTable(hotelSelect.value);
+  });
+
+  </script>
+</body>
+</html>
