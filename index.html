@@ -152,11 +152,43 @@ footer {
   border-top: 2px solid #F0F0F0;
   margin: 0;
 }
+    @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.title-with-lines {
+  text-align: center;
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+.title-with-lines h1 {
+  font-size: 2.5rem;
+  color: #F0F0F0;
+  margin: 1rem 0;
+}
+
+.title-with-lines hr {
+  border: none;
+  border-top: 2px solid #F0F0F0;
+  margin: 0;
+}
   </style>
 </head>
 <body>
   <br>
-  <div class="title-with-lines">
+  <div class="title-with-lines fade-in">
   <hr>
   <h1>C2C 2026 - Menu Selections</h1>
   <hr>
@@ -181,6 +213,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
