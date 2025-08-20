@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C2C 2026 - Menu Selection (Hotel)</title>
@@ -152,21 +153,27 @@ th:hover {
 .sort-arrow.desc {
   transform: rotate(180deg);
 }
-.back-icon {
-  display: inline-flex;
+.floating-back {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 48px;
+  height: 48px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
-  gap: 0.4em;
-  font-size: 1.1rem;
-  color: #333;
+  justify-content: center;
   text-decoration: none;
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
 }
 
-.back-icon:hover {
-  background: #f0f0f0;
-  color: #000;
+.floating-back:hover {
+  background-color: #555;
+  transform: scale(1.1);
 }
 
   </style>
@@ -174,10 +181,10 @@ th:hover {
 
 <body>
   <h2>C2C 2026 - Menu Selection (Hotel)</h2>
-  <!-- Or using a Unicode arrow -->
-<a href="index.html" class="back-icon" aria-label="Back to Home">
-  ← Home
+  <a href="index.html" class="floating-back" aria-label="Back to Index">
+  <i class="fas fa-arrow-left"></i>
 </a>
+
 
 
   <div class="controls">
@@ -353,6 +360,7 @@ th:hover {
   </script>
 </body>
 </html>
+
 
 
 
