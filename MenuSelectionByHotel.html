@@ -152,12 +152,33 @@ th:hover {
 .sort-arrow.desc {
   transform: rotate(180deg);
 }
+.back-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 1.1rem;
+  color: #333;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.back-icon:hover {
+  background: #f0f0f0;
+  color: #000;
+}
 
   </style>
 </head>
 
 <body>
   <h2>C2C 2026 - Menu Selection (Hotel)</h2>
+  <!-- Or using a Unicode arrow -->
+<a href="index.html" class="back-icon" aria-label="Back to Home">
+  ← Home
+</a>
+
 
   <div class="controls">
     <select id="hotelSelect">
@@ -332,6 +353,7 @@ th:hover {
   </script>
 </body>
 </html>
+
 
 
 
