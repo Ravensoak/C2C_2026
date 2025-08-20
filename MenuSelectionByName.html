@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C2C 2026 - Menu Selection (Name)</title>
@@ -105,12 +106,37 @@
   font-size: 0.95rem;
   color: var(--text-color);
 }
+.floating-back {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 48px;
+  height: 48px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
 
+.floating-back:hover {
+  background-color: #555;
+  transform: scale(1.1);
+}
 
   </style>
 </head>
 <body>
   <h2>C2C 2026 - Menu Selection (Name)</h2> 
+  <a href="index.html" class="floating-back" aria-label="Back to Index">
+  <i class="fas fa-arrow-left"></i>
+</a>
+
  <!-- <label for="entrySelect">Please select your name:</label> -->
   <select id="entrySelect" onchange="updateOutput()">
    <!-- <option value=""></option> -->
@@ -234,6 +260,7 @@ function updateOutput() {
 </body>
 
 </html>
+
 
 
 
