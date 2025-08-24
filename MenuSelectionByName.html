@@ -179,6 +179,21 @@
     border-top: 2px solid #F0F0F0;
     margin-top: 0.25rem;
   }
+    #entrySelect {
+  width: 100%;
+  max-width: 300px; /* Adjust as needed */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+    .select-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
   </style>
 </head>
 <body>
@@ -195,10 +210,11 @@
 </a>
 
  <!-- <label for="entrySelect">Please select your name:</label> -->
+  <div class="select-wrapper">
   <select id="entrySelect" onchange="updateOutput()">
-   <!-- <option value=""></option> -->
-   <option value="" disabled selected style="font-style: italic;" >Select your name from the list</option>
+    <option value="" disabled selected style="font-style: italic;">Select your name from the list</option>
   </select>
+</div>
 
   <div class="grid">
     <div class="output" id="groes1Box">
@@ -317,6 +333,7 @@ function updateOutput() {
 </body>
 
 </html>
+
 
 
 
