@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C2C Ride 2026</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #1abc9c;
+      --bg: #ecf0f1;
+      --text: #34495e;
+      --hover: #16a085;
+    }
+
+    [data-theme="dark"] {
+      --primary: #ecf0f1;
+      --accent: #3498db;
+      --bg: #2c3e50;
+      --text: #ecf0f1;
+      --hover: #2980b9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      background: var(--hover);
+    }
+
+    .theme-toggle {
+      margin-top: 2rem;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .btn {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+      }
+    }
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .logo {
+  filter: brightness(0.9) drop-shadow(0 2px 4px rgba(255,255,255,0.2));
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body data-theme="light">
+  <header>
+<div class="logo-container">
+  <img src="your-icon.png" alt="C2C Ride Logo" class="logo" />
+</div>
+    
+<h1>C2C Ride 2026</h1>
+    <p>Explore the journey. Plan with confidence.</p>
+  </header>
+
+  <div class="button-grid">
+    <button class="btn">Routes</button>
+    <button class="btn">Accommodation</button>
+    <button class="btn">Menus</button>
+    <button class="btn">Risk Assessment</button>
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>
