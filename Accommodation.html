@@ -4,64 +4,69 @@
   <meta charset="UTF-8">
   <title>North Wales Hotels</title>
   <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 20px;
+    padding: 0;
+  }
+
+  .hotel-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .hotel-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hotel-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .hotel-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+  }
+
+  .hotel-card p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+  }
+
+  .hotel-card a {
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .hotel-card a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile: 2-column layout */
+  @media (max-width: 500px) {
     body {
-     font-family: Arial, sans-serif;
-     background: #f9f9f9;
-     margin: 20px;
-     padding: 0;
+      margin: 10px;
     }
 
     .hotel-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
-    .hotel-card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #fff;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hotel-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
-      object-fit: cover;
-      max-height: 200px;
-    }
-
-    .hotel-card h3 {
-      margin-top: 10px;
-      margin-bottom: 5px;
-      font-size: 1.2rem;
-    }
-
-    .hotel-card p {
-      margin: 5px 0;
-      font-size: 0.95rem;
-    }
-
-    .hotel-card a {
-      color: #0077cc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hotel-card a:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 500px) {
-    
-    body {
-    margin: 10px;
-    }
-      
     .hotel-card {
       padding: 10px;
     }
@@ -73,15 +78,16 @@
     .hotel-card p {
       font-size: 0.9rem;
     }
-  
-     @media (max-width: 320px) {
-      .hotel-container {
-        grid-template-columns: 1fr;
-        }
+  }
+
+  /* Ultra-narrow: fallback to single column */
+  @media (max-width: 320px) {
+    .hotel-container {
+      grid-template-columns: 1fr;
     }
-
-
-  </style>
+  }
+</style>
+  
 </head>
 <body>
   <h1>Accommodation</h1>
@@ -123,6 +129,7 @@
 </body>
 
 </html>
+
 
 
 
