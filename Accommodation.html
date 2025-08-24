@@ -115,6 +115,33 @@ font-family: 'Segoe UI', sans-serif;
       grid-template-columns: 1fr;
     }
   }
+
+     h1,
+  .title-with-lines h1 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+  }
+
+  .title-with-lines h1:hover {
+    color: #ffffff;
+    animation: pulseGlow 1.5s infinite;
+    transform: scale(1.05);
+  }
+
+  .title-with-lines {
+    text-align: center;
+    margin: 2rem auto;
+    width: fit-content;
+  }
+
+  .title-with-lines hr {
+    border: none;
+    border-top: 2px solid #F0F0F0;
+    margin: 0;
+  }
 </style>
   
 </head>
@@ -158,6 +185,7 @@ font-family: 'Segoe UI', sans-serif;
 </body>
 
 </html>
+
 
 
 
