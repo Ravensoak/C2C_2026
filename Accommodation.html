@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>North Wales Hotels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 20px;
+    }
+    .hotel-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .hotel-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .hotel-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .hotel-card h3 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    .hotel-card p {
+      margin: 5px 0;
+    }
+    .hotel-card a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hotel-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Featured Hotels in North Wales</h1>
+  <div class="hotel-container">
+
+    <div class="hotel-card">
+      <img src="https://www.groesinn.com/gallery" alt="The Groes Inn, Conwy">
+      <h3>The Groes Inn</h3>
+      <p><strong>Address:</strong> Llanrwst Road, Tyn-y-Groes, Conwy LL32 8TN</p>
+      <p>A historic inn blending traditional charm with modern comfort, nestled near Snowdonia National Park.</p>
+      <p><a href="https://www.groesinn.com" target="_blank">Visit Website</a></p>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://www.lionhotelcriccieth.co.uk" alt="The Lion Hotel, Criccieth">
+      <h3>The Lion Hotel</h3>
+      <p><strong>Address:</strong> Y Maes, Criccieth, Gwynedd LL52 0AA</p>
+      <p>Located near Criccieth Castle, this welcoming hotel offers scenic views and comfortable rooms.</p>
+      <p><a href="https://www.lionhotelcriccieth.co.uk" target="_blank">Visit Website</a></p>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://www.nanhoronhotel.com" alt="The Nanhoron Arms, Nefyn">
+      <h3>The Nanhoron Arms</h3>
+      <p><strong>Address:</strong> St Davids Road, Nefyn, Pwllheli, Gwynedd LL53 6EA</p>
+      <p>A family-friendly hotel near the beach, offering hearty meals and a relaxed atmosphere on the Llyn Peninsula.</p>
+      <p><a href="https://www.nanhoronhotel.com" target="_blank">Visit Website</a></p>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://www.inncollectiongroup.com/bulls-head-inn" alt="The Bull Inn, Beaumaris">
+      <h3>The Bull Inn</h3>
+      <p><strong>Address:</strong> Castle Street, Beaumaris, Anglesey LL58 8AP</p>
+      <p>A Grade II-listed inn with centuries of history, offering stylish rooms and seasonal Welsh cuisine.</p>
+      <p><a href="https://www.inncollectiongroup.com/bulls-head-inn" target="_blank">Visit Website</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
