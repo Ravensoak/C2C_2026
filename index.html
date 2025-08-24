@@ -129,6 +129,86 @@
   transform: scale(1.05);
 }
 
+    footer {
+  background-color: #1f2a36;
+  padding: 1rem 0;
+  border-top: 1px solid #3a4a5a;
+  margin-top: auto;
+  width: 100%;
+}
+
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.footer-text {
+  color: #cfd8e3;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #cfd8e3;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  fill: #a8f0c6;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-link:hover .whatsapp-icon {
+  transform: scale(1.1);
+}
+
+.whatsapp-link:hover .whatsapp-label {
+  text-decoration: underline;
+}
+
+.whatsapp-label {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .whatsapp-icon {
+    width: 26px;
+    height: 26px;
+    fill: #b2f5d6;
+  }
+
+  .whatsapp-label {
+    font-size: 1rem;
+  }
+}
+  .footer-text {
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  fill: #a8f0c6; /* Soft mint green */
+  transition: transform 0.2s ease;
+}
+
+
   </style>
 </head>
 <body data-theme="light">
@@ -181,6 +261,7 @@
 </body>
 
 </html>
+
 
 
 
