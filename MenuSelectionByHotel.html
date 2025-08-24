@@ -172,6 +172,35 @@ th:hover {
   z-index: 1000;
 }
 
+h1,
+  .title-with-lines h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+  }
+
+  .title-with-lines h1:hover {
+    color: #ffffff;
+    animation: pulseGlow 1.5s infinite;
+    transform: scale(1.05);
+  }
+
+  .title-with-lines {
+    text-align: center;
+    margin: 1rem auto;
+    width: fit-content;
+  }
+
+  .title-with-lines hr {
+    border: none;
+    border-top: 2px solid #F0F0F0;
+    margin-top: 0.25rem;
+  }
+
+
 .floating-back:hover {
   background-color: #555;
   transform: scale(1.1);
@@ -258,7 +287,15 @@ footer {
 </head>
 
 <body>
-  <h2>C2C 2026 - Menu Selection (Hotel)</h2>
+  <div class="title-with-lines">
+  <!-- <hr class="fade-in delay-1"> -->
+  <hr>
+    <h1>Menu Selection (Hotel)</h1>
+  <!-- <h1 class="fade-in delay-2">Menu Selections</h1> -->
+  <!-- <hr class="fade-in delay-3"> -->
+    <hr>
+</div>
+
   <a href="index.html" class="floating-back" aria-label="Back to Index">
   <i class="fas fa-arrow-left"></i>
 </a>
@@ -439,6 +476,7 @@ footer {
 </footer>
 </body>
 </html>
+
 
 
 
