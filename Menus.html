@@ -7,209 +7,174 @@
   <link rel="icon" href="https://c2c2026.netlify.app/favicon-32x32.png" type="image/png">
 
   <style>
-    body {
-  margin: 0;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background: url('https://c2c2026.netlify.app/restaurant2.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: #2c3e50;
-}
-
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 2rem 0;
-      text-align: center;
-      color: #F0F0F0;
-    }
-
-    .button-container {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: auto;
-    }
-
-    .menu-button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      background-color: #3498db;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu-button:hover {
-      background-color: #2980b9;
-      transform: translateY(-2px);
-    }
-
-    
-footer {
-  background-color: #1f2a36;
-  padding: 1rem 0;
-  border-top: 1px solid #3a4a5a;
-  margin-top: auto;
-  width: 100%;
-}
-
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  padding: 0 1rem;
-}
-
-.footer-text {
-  color: #cfd8e3;
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-.whatsapp-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #cfd8e3;
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.whatsapp-icon {
-  width: 22px;
-  height: 22px;
-  fill: #a8f0c6;
-  transition: transform 0.2s ease;
-}
-
-.whatsapp-link:hover .whatsapp-icon {
-  transform: scale(1.1);
-}
-
-.whatsapp-link:hover .whatsapp-label {
-  text-decoration: underline;
-}
-
-.whatsapp-label {
-  font-size: 0.95rem;
-}
-
-@media (max-width: 600px) {
-  .footer-content {
+  /* === Base Styles === */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: url('https://c2c2026.netlify.app/restaurant2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    min-height: 100vh;
+    color: #2c3e50;
   }
 
-  .whatsapp-icon {
-    width: 26px;
-    height: 26px;
-    fill: #b2f5d6;
+  h1,
+  .title-with-lines h1 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+  }
+
+  .title-with-lines h1:hover {
+    color: #ffffff;
+    animation: pulseGlow 1.5s infinite;
+    transform: scale(1.05);
+  }
+
+  .title-with-lines {
+    text-align: center;
+    margin: 2rem auto;
+    width: fit-content;
+  }
+
+  .title-with-lines hr {
+    border: none;
+    border-top: 2px solid #F0F0F0;
+    margin: 0;
+  }
+
+  /* === Buttons === */
+  .button-container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: auto;
+  }
+
+  .menu-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .menu-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+
+  /* === Footer === */
+  footer {
+    background-color: #1f2a36;
+    padding: 1rem 0;
+    border-top: 1px solid #3a4a5a;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .footer-text {
+    color: #cfd8e3;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* === WhatsApp Link === */
+  .whatsapp-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #cfd8e3;
+    text-decoration: none;
+    font-size: 0.95rem;
   }
 
   .whatsapp-label {
-    font-size: 1rem;
-  }
-}
-  .footer-text {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .whatsapp-icon {
-  width: 22px;
-  height: 22px;
-  fill: #a8f0c6; /* Soft mint green */
-  transition: transform 0.2s ease;
-}
-
-}
-    .title-with-lines {
-  text-align: center;
-  margin: 2rem auto;
-  width: fit-content;
-}
-
-.title-with-lines h1 {
-  font-size: 2.5rem;
-  color: #F0F0F0;
-  margin: 1rem 0;
-}
-
-.title-with-lines hr {
-  border: none;
-  border-top: 2px solid #F0F0F0;
-  margin: 0;
-}
-    @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+    width: 22px;
+    height: 22px;
+    fill: #a8f0c6;
+    transition: transform 0.2s ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .whatsapp-link:hover .whatsapp-icon {
+    transform: scale(1.1);
   }
-}
 
-.fade-in {
-  animation: fadeIn 1s ease-out;
-}
-
-.title-with-lines {
-  text-align: center;
-  margin: 2rem auto;
-  width: fit-content;
-}
-
-.title-with-lines h1 {
-  font-size: 2.5rem;
-  color: #F0F0F0;
-  margin: 1rem 0;
-}
-
-.title-with-lines hr {
-  border: none;
-  border-top: 2px solid #F0F0F0;
-  margin: 0;
-}
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.6s; }
-.delay-3 { animation-delay: 1.0s; }
- 
-.title-with-lines h1 {
-  font-size: 2.5rem;
-  color: #F0F0F0;
-  margin: 1rem 0;
-  transition: color 0.3s ease;
-}
-
-.title-with-lines h1:hover {
-  color: #ffffff;
-  animation: pulseGlow 1.5s infinite;
-  transform: scale(1.05);
-}
-
-@keyframes fadeGlow {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+  .whatsapp-link:hover .whatsapp-label {
+    text-decoration: underline;
   }
-  50% {
-    text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
+
+  /* === Animations === */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
-  </style>
+
+  @keyframes fadeGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+    }
+    50% {
+      text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.6s; }
+  .delay-3 { animation-delay: 1.0s; }
+
+  /* === Responsive === */
+  @media (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .whatsapp-icon {
+      width: 26px;
+      height: 26px;
+      fill: #b2f5d6;
+    }
+
+    .whatsapp-label {
+      font-size: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
   <br>
@@ -241,6 +206,7 @@ footer {
 </body>
 
 </html>
+
 
 
 
