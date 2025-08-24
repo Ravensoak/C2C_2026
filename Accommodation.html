@@ -13,72 +13,72 @@
 
     .hotel-container {
       display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 10px;
-}
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 10px;
+    }
 
-.hotel-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fff;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-}
+    .hotel-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
 
-.hotel-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  object-fit: cover;
-  max-height: 200px;
-}
+    .hotel-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
+      max-height: 200px;
+    }
 
-.hotel-card h3 {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-size: 1.2rem;
-}
+    .hotel-card h3 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 1.2rem;
+    }
 
-.hotel-card p {
-  margin: 5px 0;
-  font-size: 0.95rem;
-}
+    .hotel-card p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
 
-.hotel-card a {
-  color: #0077cc;
-  text-decoration: none;
-  font-weight: bold;
-}
+    .hotel-card a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.hotel-card a:hover {
-  text-decoration: underline;
-}
+    .hotel-card a:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 500px) {
-  body {
+    
+    body {
     margin: 10px;
-  }
-.hotel-card {
-    padding: 10px;
-  }
+    }
+      
+    .hotel-card {
+      padding: 10px;
+    }
 
-  .hotel-card h3 {
-    font-size: 1rem;
-  }
+    .hotel-card h3 {
+      font-size: 1rem;
+    }
 
-  .hotel-card p {
-    font-size: 0.9rem;
-  }
-
+    .hotel-card p {
+      font-size: 0.9rem;
+    }
   
-}
-   @media (max-width: 500px) {
-  .hotel-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+     @media (max-width: 320px) {
+      .hotel-container {
+        grid-template-columns: 1fr;
+        }
+    }
 
 
   </style>
@@ -123,6 +123,7 @@
 </body>
 
 </html>
+
 
 
 
