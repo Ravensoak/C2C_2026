@@ -154,6 +154,14 @@
     .card {
       flex: 1 1 100%;
     }
+    .card img {
+      aspect-ratio: auto; /* Let the image define its own ratio */
+      height: auto;
+      width: 100%;
+      object-fit: contain; /* Prevent cropping */
+      max-height: 60vh; /* Prevent it from dominating the screen */
+    }
+
   }
   
   .card:hover {
@@ -448,6 +456,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
