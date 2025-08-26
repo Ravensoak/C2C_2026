@@ -155,7 +155,7 @@ select {
 .main-header {
   background-color: var(--primary);
   padding: 0.75rem 1.5rem;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 1000;
   display: flex;
@@ -165,13 +165,17 @@ select {
 }
 
 .menu-toggle {
-  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  color: #ecf0f1;
+  font-size: 2rem;
+  color: #fff; /* or your theme color */
+  z-index: 1000;
   cursor: pointer;
-  display: none;
 }
+
 
 .main-nav {
   width: 100%;
@@ -269,7 +273,7 @@ footer {
 /* === Responsive === */
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: none;
   }
 
   .main-nav {
@@ -520,6 +524,7 @@ footer {
 </script>
 </body>
 </html>
+
 
 
 
