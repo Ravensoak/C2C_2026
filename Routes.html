@@ -319,7 +319,8 @@ footer {
 </style>
 
 <body>
- 
+<header class="main-header">
+  <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
   <nav class="main-nav">
     <ul>
       <li><a href="Index.html">Home</a></li>
@@ -508,8 +509,18 @@ footer {
     </a>
   </div>
 </footer>
+
+  <script>
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
+
 
 
 
