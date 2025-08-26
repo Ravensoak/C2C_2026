@@ -17,23 +17,22 @@
     }
 
     body {
-    overflow-y: auto;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-  
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: url('llyn-background.png') no-repeat center center fixed;
-    background-size: cover;
-   color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    transition: background 0.4s ease, color 0.4s ease;
-    padding-top: 2rem;
+      overflow-y: auto;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('llyn-background.png') no-repeat center center fixed;
+      background-size: cover;
+     color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+      padding-top: 2rem;
     }
 
     h1 {
@@ -154,7 +153,33 @@
 .card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+ h1,
+  .title-with-lines h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: center;
+    color: #F0F0F0;
+    transition: color 0.3s ease;
+    line-height: 1.2;
+  }
 
+  .title-with-lines h1:hover {
+    color: #ffffff;
+    animation: pulseGlow 1.5s infinite;
+    transform: scale(1.05);
+  }
+
+  .title-with-lines {
+    text-align: center;
+    margin: 1rem auto;
+    width: fit-content;
+  }
+
+  .title-with-lines hr {
+    border: none;
+    border-top: 2px solid #F0F0F0;
+    margin-top: 0.25rem;
+  }
   </style>
 
 <body>
@@ -336,5 +361,6 @@
   </script>
 </body>
 </html>
+
 
 
