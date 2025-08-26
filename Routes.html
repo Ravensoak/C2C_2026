@@ -151,54 +151,7 @@ select {
   text-decoration: underline;
 }
 
-/* === Navigation === */
-.main-header {
-  background-color: var(--primary);
-  padding: 0.75rem 1.5rem;
-  position: relative;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
 
-.menu-toggle {
-  display: none; /* hidden by default */
-}
-
-
-
-.main-nav {
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-  background-color: var(--primary);
-  padding: 0.75rem 1.5rem;
-}
-
-.main-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.main-nav a {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-  color: var(--hover);
-}
 
 /* === Footer === */
 footer {
@@ -269,53 +222,13 @@ footer {
 /* === Responsive === */
 @media (max-width: 768px) {
  
-  .menu-toggle {
-    display: block; /* visible only on mobile */
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #fff;
-    z-index: 1000;
-    cursor: pointer;
-  }
-}
+  
 
-
-  .main-nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: var(--primary);
-    padding: 1rem 0;
-  }
-
-  .main-nav.open {
-    display: flex;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+ 
 }
 
 @media (max-width: 600px) {
-  .menu-toggle {
-    display: block; /* visible on mobile */
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #fff;
-    z-index: 1000;
-    cursor: pointer;
-  }
+  
 
   .card {
     flex: 1 1 100%;
@@ -345,15 +258,7 @@ footer {
 
 <body>
 <header class="main-header">
-  <!-- <button class="menu-toggle" aria-label="Toggle navigation">☰</button> -->
-  <nav class="main-nav">
-    <ul>
-      <li><a href="Index.html">Home</a></li>
-      <li><a href="Accommodation.html">Accommodation</a></li>
-      <li><a href="Routes.html">Routes</a></li>
-      <li><a href="Menus.html">Menus</a></li>
-    </ul>
-  </nav>
+ 
 </header>
   
   <div class="title-with-lines">
@@ -545,6 +450,7 @@ footer {
 </script>
 </body>
 </html>
+
 
 
 
