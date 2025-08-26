@@ -69,50 +69,49 @@
     }
 
     .card {
-  flex: 1 1 280px;
-  max-width: 400px;
-  background: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.6s ease forwards;
-}
+      flex: 1 1 280px;
+      max-width: 400px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
 
+    .card img {
+      width: 100%;
+      aspect-ratio: 20 / 9;
+      object-fit: cover;
+      display: block;
+      transform: scale(1);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.6s ease;
+    }
 
- .card img {
-  width: 100%;
-  aspect-ratio: 20 / 9;
-  object-fit: cover;
-  display: block;
-  transform: scale(1);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.6s ease;
-}
+    /* Reveal on card animation */
+    .card {
+      animation: fadeIn 0.6s ease forwards;
+    }
 
-/* Reveal on card animation */
-.card {
-  animation: fadeIn 0.6s ease forwards;
-}
+    .card img {
+      animation: imgFade 0.6s ease forwards;
+      animation-delay: 0.2s;
+    }
 
-.card img {
-  animation: imgFade 0.6s ease forwards;
-  animation-delay: 0.2s;
-}
+    @keyframes imgFade {
+      to {
+        opacity: 1;
+      }
+    }
 
-@keyframes imgFade {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Zoom on hover */
-.card:hover img {
-  transform: scale(1.03);
-}
+    /* Zoom on hover */
+    .card:hover img {
+      transform: scale(1.03);
+    }
 
 
     .card-content {
@@ -150,15 +149,18 @@
       }
     }
 
-@media (max-width: 600px) {
-  .card {
-    flex: 1 1 100%;
+    @media (max-width: 600px) {
+    .card {
+      flex: 1 1 100%;
+    }
   }
-}
-.card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
- h1,
+  
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+ 
+  h1,
+ 
   .title-with-lines h1 {
     font-size: 2.5rem;
     margin: 1rem 0;
@@ -186,13 +188,13 @@
     margin-top: 0.25rem;
   }
 
-       footer {
-  background-color: #1f2a36;
-  padding: 1rem 0;
-  border-top: 1px solid #3a4a5a;
-  margin-top: auto;
-  width: 100%;
-}
+  footer {
+    background-color: #1f2a36;
+    padding: 1rem 0;
+    border-top: 1px solid #3a4a5a;
+    margin-top: auto;
+    width: 100%;
+  }
 
 
 .footer-content {
@@ -238,7 +240,7 @@
   font-size: 0.95rem;
 }
 
-@media (max-width: 600px) {
+  @media (max-width: 600px) {
   .footer-content {
     flex-direction: column;
     gap: 0.5rem;
@@ -471,6 +473,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
