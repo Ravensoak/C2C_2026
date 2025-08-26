@@ -161,7 +161,13 @@
       object-fit: contain; /* Prevent cropping */
       max-height: 60vh; /* Prevent it from dominating the screen */
     }
-
+  
+    .main-nav ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
   }
   
   .card:hover {
@@ -275,9 +281,48 @@
   fill: #a8f0c6; /* Soft mint green */
   transition: transform 0.2s ease;
 }
+  .main-nav {
+  width: 100%;
+  background-color: rgba(44, 62, 80, 0.95); /* semi-transparent primary */
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: var(--hover);
+}
   </style>
 
 <body>
+  <nav class="main-nav">
+  <ul>
+    <li><a href="Index.html">Home</a></li>
+    <li><a href="Accommodation.html">Accommodation</a></li>
+    <li><a href="Routes.html">Routes</a></li>
+    <li><a href="Menus.html">Menus</a></li>
+  </ul>
+</nav>
+  
   <div class="title-with-lines">
   <!-- <hr class="fade-in delay-1"> -->
   <hr>
@@ -456,6 +501,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
