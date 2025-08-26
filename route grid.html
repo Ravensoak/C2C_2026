@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Route Selector</title>
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --card-bg: #fff;
+      --text-main: #333;
+      --text-sub: #555;
+      --accent: #0078d4;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: var(--bg);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    select {
+      display: block;
+      margin: 0 auto 2rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+  flex: 1 1 280px;
+  max-width: 400px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+
+ .card img {
+  width: 100%;
+  aspect-ratio: 20 / 9;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.6s ease;
+}
+
+/* Reveal on card animation */
+.card {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.card img {
+  animation: imgFade 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes imgFade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Zoom on hover */
+.card:hover img {
+  transform: scale(1.03);
+}
+
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: var(--text-main);
+    }
+
+    .card-content p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+      color: var(--text-sub);
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card-content a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+  </style>
+</head>
+<body>
+  <h1>Select a Day</h1>
+  <select id="daySelector">
+    <option value="">-- Choose Day --</option>
+    <option value="1">Day 1</option>
+    <option value="2">Day 2</option>
+    <option value="3">Day 3</option>
+    <option value="4">Day 4</option>
+    <option value="5">Day 5</option>
+  </select>
+
+  <div id="routeGrid" class="flex-grid"></div>
+
+
+  <script>
+    const routeData = {
+      1: [
+        {
+          img: 'Day1 Short.png',
+          name: 'River Trail',
+          distance: '12 km',
+          elevation: '150 m',
+          description: `A scenic riverside route with gentle climbs and low terrain.
+          <p>Ideal for beginners and those seeking a relaxed pace.</p>
+          Watch for herons along the water and enjoy shaded segments near the old mill.`,
+          link: '#route1A'
+        },
+        {
+          img: 'Day1 Long.png',
+          name: 'Forest Loop',
+          distance: '8 km',
+          elevation: '200 m',
+          description: 'Shaded paths through dense woodland.',
+          link: '#route1B'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+1C',
+          name: 'Hilltop Dash',
+          distance: '5 km',
+          elevation: '300 m',
+          description: 'Short but steep climb to panoramic views.',
+          link: '#route1C'
+        }
+      ],
+      2: [
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+2A',
+          name: 'Valley Glide',
+          distance: '10 km',
+          elevation: '100 m',
+          description: 'Smooth descent through open valleys.',
+          link: '#route2A'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+2B',
+          name: 'Coastal Ride',
+          distance: '15 km',
+          elevation: '80 m',
+          description: 'Flat ride with sea breeze and cliff views.',
+          link: '#route2B'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+2C',
+          name: 'Urban Sprint',
+          distance: '6 km',
+          elevation: '50 m',
+          description: 'Quick route through city landmarks.',
+          link: '#route2C'
+        }
+      ],
+      3: [
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+3A',
+          name: 'Mountain Pass',
+          distance: '20 km',
+          elevation: '600 m',
+          description: 'Challenging ascent with alpine views.',
+          link: '#route3A'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+3B',
+          name: 'Lake Loop',
+          distance: '9 km',
+          elevation: '120 m',
+          description: 'Gentle ride around a tranquil lake.',
+          link: '#route3B'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+3C',
+          name: 'Sunset Ridge',
+          distance: '7 km',
+          elevation: '250 m',
+          description: 'Evening ride with golden hour views.',
+          link: '#route3C'
+        }
+      ],
+      4: [
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+4A',
+          name: 'Canyon Run',
+          distance: '14 km',
+          elevation: '400 m',
+          description: 'Twisting paths through rocky canyons.',
+          link: '#route4A'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+4B',
+          name: 'Meadow Cruise',
+          distance: '11 km',
+          elevation: '90 m',
+          description: 'Open fields and wildflowers in bloom.',
+          link: '#route4B'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+4C',
+          name: 'Historic Trail',
+          distance: '13 km',
+          elevation: '180 m',
+          description: 'Ride past landmarks and heritage sites.',
+          link: '#route4C'
+        }
+      ],
+      5: [
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+5A',
+          name: 'Bridge Circuit',
+          distance: '16 km',
+          elevation: '220 m',
+          description: 'Loop across scenic bridges and rivers.',
+          link: '#route5A'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+5B',
+          name: 'Cliffside Trek',
+          distance: '18 km',
+          elevation: '500 m',
+          description: 'Dramatic views along cliff edges.',
+          link: '#route5B'
+        },
+        {
+          img: 'https://via.placeholder.com/400x180?text=Route+5C',
+          name: 'Village Hop',
+          distance: '10 km',
+          elevation: '130 m',
+          description: 'Ride through charming countryside villages.',
+          link: '#route5C'
+        }
+      ]
+    };
+
+    const selector = document.getElementById('daySelector');
+    const grid = document.getElementById('routeGrid');
+
+    selector.addEventListener('change', () => {
+      const day = selector.value;
+      grid.innerHTML = '';
+
+      if (routeData[day]) {
+        routeData[day].forEach((route, index) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.style.animationDelay = `${index * 0.1}s`; // staggered animation
+          card.innerHTML = `
+            <img src="${route.img}" alt="${route.name}" />
+            <div class="card-content">
+              <h3>${route.name}</h3>
+              <p><strong>Distance:</strong> ${route.distance}</p>
+              <p><strong>Elevation:</strong> ${route.elevation}</p>
+              <p>${route.description}</p>
+              <a href="${route.link}">View Route</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
