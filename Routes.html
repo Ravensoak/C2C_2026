@@ -375,6 +375,27 @@
     gap: 1rem;
   }
 }
+  /* Animate the nav reveal */
+.main-nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.main-nav.open {
+  max-height: 500px; /* adjust based on content */
+  opacity: 1;
+}
+
+/* Animate the toggle icon (optional) */
+.menu-toggle {
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle.active {
+  transform: rotate(90deg); /* or scale, fade, etc. */
+}
   </style>
 
 <body>
@@ -556,6 +577,14 @@
         });
       }
     });
+  const toggleBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+
+  toggleBtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    toggleBtn.classList.toggle('active');
+  });
+
   </script>
   <footer>
   <div class="footer-content">
@@ -578,6 +607,7 @@
 </script>
 </body>
 </html>
+
 
 
 
