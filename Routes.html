@@ -83,14 +83,14 @@
       animation: fadeIn 0.6s ease forwards;
     }
 
-    .card img {
+   .card img {
       width: 100%;
-      aspect-ratio: 5 / 4; /* Adjusted for better vertical balance */
-      object-fit: contain; /* Ensures full image is visible without cropping */
+      height: auto;
+      object-fit: contain;
       display: block;
-      transform: scale(1);
-      opacity: 0;
-      transition: transform 0.4s ease, opacity 0.6s ease;
+      margin: 0 auto;
+      max-height: 60vh; /* Optional: prevents it from overtaking the viewport */
+      padding: 0.5rem;   /* Optional: adds breathing room */
     }
 
     /* Reveal on card animation */
@@ -456,6 +456,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
