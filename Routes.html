@@ -165,16 +165,9 @@ select {
 }
 
 .menu-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #fff; /* or your theme color */
-  z-index: 1000;
-  cursor: pointer;
+  display: none; /* hidden by default */
 }
+
 
 
 .main-nav {
@@ -272,9 +265,21 @@ footer {
 
 /* === Responsive === */
 @media (max-width: 768px) {
+ 
   .menu-toggle {
-    display: none;
+    display: block; /* visible only on mobile */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    z-index: 1000;
+    cursor: pointer;
   }
+}
+
 
   .main-nav {
     display: none;
@@ -537,6 +542,7 @@ footer {
 </script>
 </body>
 </html>
+
 
 
 
