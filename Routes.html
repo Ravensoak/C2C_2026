@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+t theOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -262,15 +262,30 @@
   </style>
 
 <body>
-  <h1>Select a Day</h1>
-  <select id="daySelector">
-    <option value="">-- Choose Day --</option>
-    <option value="1">Day 1</option>
-    <option value="2">Day 2</option>
-    <option value="3">Day 3</option>
-    <option value="4">Day 4</option>
-    <option value="5">Day 5</option>
-  </select>
+  <div class="title-with-lines">
+  <!-- <hr class="fade-in delay-1"> -->
+  <hr>
+    <h1>Routes</h1>
+  <!-- <h1 class="fade-in delay-2">Menu Selections</h1> -->
+  <!-- <hr class="fade-in delay-3"> -->
+    <hr>
+</div>
+
+  <a href="index.html" class="floating-back" aria-label="Back to Index">
+  <i class="fas fa-arrow-left"></i>
+</a>
+
+
+  <div class="controls">
+    <select id="daySelector">
+      <option value="" disabled selected style="font-style: italic;">Select a Day</option>
+      <option value="1">Day 1</option>
+      <option value="2">Day 2</option>
+      <option value="3">Day 3</option>
+      <option value="4">Day 4</option>
+      <option value="5">Day 5</option>
+    </select>
+  </div>
 
   <div id="routeGrid" class="flex-grid"></div>
 
@@ -440,6 +455,7 @@
   </script>
 </body>
 </html>
+
 
 
 
