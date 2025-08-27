@@ -354,9 +354,41 @@ footer {
     font-size: 1rem;
   }
 }
+/* Hide desktop nav and show hamburger on mobile */
+@media (max-width: 700px) {
+  .main-nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .mobile-menu {
+    display: block;
+  }
+}
+
+/* Hide hamburger and mobile menu on desktop */
+.menu-toggle {
+  display: none;
+}
+.mobile-menu {
+  display: none;
+}
+.mobile-menu.active {
+  display: block;
+}
 </style>
 
 <body>
+  <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+<nav class="mobile-menu" aria-label="Mobile Navigation">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="accommodation.html">Accommodation</a></li>
+    <li><a href="menus.html">Menus</a></li>
+  </ul>
+</nav>
+<!-- ...existing code... -->
   <header class="main-header">
   <nav class="main-nav">
     <ul>
@@ -550,7 +582,10 @@ footer {
     document.querySelector('.menu-toggle').addEventListener('click', () => {
   document.querySelector('.mobile-menu').classList.toggle('active');
 });
-
+// ...existing code...
+document.querySelector('.menu-toggle').addEventListener('click', () => {
+  document.querySelector('.mobile-menu').classList.toggle('active');
+});
   </script>
   <footer>
   <div class="footer-content">
