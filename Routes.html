@@ -123,7 +123,7 @@ body {
   margin: 0;
   padding: 0;
   padding-top: 4rem;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, sans-serif;
   background: url('llyn-background.png') no-repeat center center fixed;
   background-size: cover;
   background-color: #f9f9f9;
@@ -277,12 +277,17 @@ footer {
   text-align: center;
 }
 
+/* === WhatsApp Link === */
 .whatsapp-link {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   color: #cfd8e3;
   text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.whatsapp-label {
   font-size: 0.95rem;
 }
 
@@ -301,35 +306,39 @@ footer {
   text-decoration: underline;
 }
 
-.whatsapp-label {
-  font-size: 0.95rem;
-}
+
 
 /* === Animations === */
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-}
 
-@keyframes imgFade {
-  to {
-    opacity: 1;
+  @keyframes fadeGlow {
+    0%, 100% {
+      text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+    }
+    50% {
+      text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
+    }
   }
-}
+
+  .fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.6s; }
+  .delay-3 { animation-delay: 1.0s; }
 
 /* === Responsive === */
-@media (max-width: 768px) {
- 
-  
-
- 
-}
-
 @media (max-width: 600px) {
-  
-
   .card {
     flex: 1 1 100%;
   }
