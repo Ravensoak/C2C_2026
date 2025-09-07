@@ -60,105 +60,89 @@
       margin-top: 0.25rem;
     }
 
-    /* === Navigation Bar === */
-    .menu-toggle {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 1100;
-      color: var(--menu-icon-color, #333);
-    }
-    /* Mobile menu */
-    .mobile-menu {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 70vw;
-      max-width: 300px;
-      height: 100vh;
-      background: var(--menu-bg, #fff);
-      box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      padding: 2rem 1rem;
-    }
+   /* === Navigation Defaults === */
+.menu-toggle {
+  display: none; /* hidden on desktop */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1100;
+  color: var(--menu-icon-color, #fff);
+}
 
-    /* Active state */
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70vw;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--menu-bg, #fff);
+  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+  transform: translateX(100%); /* hidden off-screen */
+  transition: transform 0.3s ease;
+  padding: 2rem 1rem;
+  z-index: 1050;
+}
 
-    /* Menu items */
-    .mobile-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile-menu li {
+  margin-bottom: 1.5rem;
+}
+.mobile-menu a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: var(--menu-link-color, #333);
+}
 
-    .mobile-menu li {
-      margin-bottom: 1.5rem;
-    }
+/* Active state for mobile menu */
+.mobile-menu.active {
+  transform: translateX(0);
+}
 
-    .mobile-menu a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: var(--menu-link-color, #333);
-    }
+/* Desktop nav */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+  color: var(--hover);
+}
 
-
-    .main-header {
-      width: 100%;
-      background-color: var(--primary);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
-
-    .main-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .main-nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .main-nav a {
-      text-decoration: none;
-      color: #ecf0f1;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    .main-nav a:hover,
-    .main-nav a:focus {
-      color: var(--hover);
-    }
-
-    /* Responsive stack for smaller screens */
-    @media (max-width: 600px) {
-      .main-nav ul {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .main-nav {
-        padding: 1rem 0.5rem;
-      }
-    }
+/* === Mobile Overrides === */
+@media (max-width: 700px) {
+  .main-nav {
+    display: none; /* hide desktop nav */
+  }
+  .menu-toggle {
+    display: block; /* show hamburger */
+  }
+}
 
 
     select {
@@ -359,34 +343,7 @@
         font-size: 1rem;
       }
     }
-    /* Hide desktop nav and show hamburger on mobile */
-    @media (max-width: 700px) {
-      .main-nav {
-        display: none;
-      }
-      .menu-toggle {
-        display: block;
-        background-color: red;/* temporary for visibility testing */
-
-      }
-      .mobile-menu {
-        display: block;
-        background-color: red;
-        visibility: visible;
-
-      }
-    }
-
-    /* Hide hamburger and mobile menu on desktop */
-    .menu-toggle {
-      display: none;
-    }
-    .mobile-menu {
-      display: none;
-    }
-    .mobile-menu.active {
-      display: block;
-    }
+    
   </style>
 
   <body>
@@ -589,12 +546,12 @@
         }
       });
     const toggleBtn = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.main-nav');
+const mobileMenu = document.querySelector('.mobile-menu');
 
-    toggleBtn.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      document.querySelector('.mobile-menu').classList.toggle('active');
-    }); 
+toggleBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
    
     </script>
   </body>
