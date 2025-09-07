@@ -73,21 +73,36 @@
   z-index: 1100;
   color: var(--menu-icon-color, #fff);
 }
+  /* Overlay (hidden by default) */
+  .menu-overlay {
+    position: fixed;
+    inset: 0; /* shorthand for top/right/bottom/left = 0 */
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1040; /* sits just under the mobile menu */
+  }
 
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 70vw;
-  max-width: 300px;
-  height: 100vh;
-  background: var(--menu-bg, #fff);
-  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
-  transform: translateX(100%); /* hidden off-screen */
-  transition: transform 0.3s ease;
-  padding: 2rem 1rem;
-  z-index: 1050;
-}
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* Mobile menu (on top of overlay) */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--menu-bg, #fff);
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: 2rem 1rem;
+    z-index: 1050;
+  }
 
 .mobile-menu ul {
   list-style: none;
@@ -349,16 +364,23 @@
   <body>
   
     <header class="main-header">
+      <!-- Hamburger toggle -->
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    <nav class="mobile-menu" aria-label="Mobile Navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="accommodation.html">Accommodation</a></li>
-        <li><a href="menus.html">Menus</a></li>
-         <li><a href="routes.html">Routes</a></li>
-      </ul>
-    </nav>
-      <nav class="main-nav">
+
+      <!-- Mobile slide-out menu -->
+      <nav class="mobile-menu" aria-label="Mobile Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accommodation.html">Accommodation</a></li>
+          <li><a href="menus.html">Menus</a></li>
+          <li><a href="routes.html">Routes</a></li>
+        </ul>
+      </nav>
+      <!-- Overlay -->
+      <div class="menu-overlay"></div>
+
+      <!-- Desktop navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="accommodation.html">Accommodation</a></li>
@@ -367,6 +389,7 @@
         </ul>
       </nav>
     </header>
+
      
     <div class="title-with-lines">
     <!-- <hr class="fade-in delay-1"> -->
@@ -545,12 +568,22 @@
           });
         }
       });
+      
     const toggleBtn = document.querySelector('.menu-toggle');
-const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
 
-toggleBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('active');
-});
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+  // Open/close on hamburger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close when overlay is clicked
+  overlay.addEventListener('click', toggleMenu);
 
    
     </script>
