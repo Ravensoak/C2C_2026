@@ -191,8 +191,8 @@
       width: 100%;
     }
 
-    /* === Cards === */
-    .card {
+    /* === Route-Cards === */
+    .route-card {
       flex: 1 1 280px;
       max-width: 400px;
       background: #fff;
@@ -206,11 +206,11 @@
       animation: fadeIn 0.6s ease forwards;
     }
 
-    .card:hover {
+    .route-card:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
-    .card img {
+    .route-card img {
       width: 100%;
       height: auto;
       object-fit: contain;
@@ -220,27 +220,27 @@
       animation-delay: 0.2s;
     }
 
-    .card:hover img {
+    .route-card:hover img {
       transform: scale(1.03);
     }
 
-    .card-content {
+    .route-card-content {
       padding: 1rem;
     }
 
-    .card-content h3 {
+    .route-card-content h3 {
       margin: 0 0 0.5rem;
       font-size: 1.2rem;
       color: var(--text);
     }
 
-    .card-content p {
+    .route-card-content p {
       margin: 0.3rem 0;
       font-size: 0.95rem;
       color: var(--text);
     }
 
-    .card-content a {
+    .route-card-content a {
       display: inline-block;
       margin-top: 0.5rem;
       color: var(--accent);
@@ -248,7 +248,7 @@
       font-weight: 500;
     }
 
-    .card-content a:hover {
+    .route-card-content a:hover {
       text-decoration: underline;
     }
 
@@ -340,11 +340,11 @@
 
     /* === Responsive === */
     @media (max-width: 600px) {
-      .card {
+      .route-card {
         flex: 1 1 100%;
       }
 
-      .card img {
+      .route-card img {
         aspect-ratio: auto;
         max-height: 60vh;
       }
@@ -561,12 +561,12 @@
 
         if (routeData[day]) {
           routeData[day].forEach((route, index) => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.1}s`; // staggered animation
-            card.innerHTML = `
+            const route-card = document.createElement('div');
+            route-card.className = 'card';
+            route-card.style.animationDelay = `${index * 0.1}s`; // staggered animation
+            route-card.innerHTML = `
               <img src="${route.img}" alt="${route.name}" />
-              <div class="card-content">
+              <div class="route-card-content">
                 <h3>${route.name}</h3>
                 <p><strong>Distance:</strong> ${route.distance}</p>
                 <p><strong>Elevation:</strong> ${route.elevation}</p>
@@ -574,7 +574,7 @@
                 <a href="${route.link}">View Route</a>
               </div>
             `;
-            grid.appendChild(card);
+            grid.appendChild(route-card);
           });
         }
       });
