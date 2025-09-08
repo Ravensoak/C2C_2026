@@ -562,7 +562,7 @@
         if (routeData[day]) {
           routeData[day].forEach((route, index) => {
             const route-card = document.createElement('div');
-            route-card.className = 'card';
+            route-card.className = 'route-card';
             route-card.style.animationDelay = `${index * 0.1}s`; // staggered animation
             route-card.innerHTML = `
               <img src="${route.img}" alt="${route.name}" />
