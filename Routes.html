@@ -602,6 +602,15 @@
           });
         }
       });
+
+      // After creating cards
+  grid.querySelectorAll('.more-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const desc = link.previousElementSibling; // the <p class="description">
+    desc.classList.toggle('expanded');
+    link.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
+    });
+  });
       
     const toggleBtn = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -619,14 +628,7 @@
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
 
-  // After creating cards
-  grid.querySelectorAll('.more-link').forEach(link => {
-  link.addEventListener('click', () => {
-    const desc = link.previousElementSibling; // the <p class="description">
-    desc.classList.toggle('expanded');
-    link.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
-    });
-  });
+  
    
     </script>
   </body>
