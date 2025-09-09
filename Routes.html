@@ -1,241 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C2C - Routes</title>
-    <link rel="icon" href="https://c2c2026.netlify.app/favicon-32x32.png" type="image/png">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C2C - Routes</title>
+  <link rel="icon" href="https://c2c2026.netlify.app/favicon-32x32.png" type="image/png">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #ecf0f1;
+      --text: #171a1d;
+      --hover: #2980b9;
+    }
 
-    <style>
-      :root {
-        --primary: #2c3e50;
-        --accent: #3498db;
-        --bg: #ecf0f1;
-        --text: #171a1d;
-        --hover: #2980b9;
-      }
+    body {
+      margin: 0;
+      padding-top: 2rem;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: url('Morfa Nefyn.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+    }
 
-      body {
-        margin: 0;
-        padding-top: 2rem;
-        font-family: 'Segoe UI', Roboto, sans-serif;
-        background: 
-          linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-          url('Morfa Nefyn.png') no-repeat center center fixed;
-        background-size: cover;
-        color: var(--text);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        overflow-y: auto;
-      }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* dark overlay */
+      z-index: -1;
+    }
 
-      h1 {
-        font-size: 2.5rem;
-        margin: 1rem 0;
-        text-align: center;
-        color: #F0F0F0;
-      }
+    h1,
+    .title-with-lines h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: #F0F0F0;
+      transition: color 0.3s ease;
+      line-height: 1.2;
+    }
 
-      .centered-paragraph {
-        color: #cfd8e3;
-        font-size: 0.9rem;
-        text-align: center;
-      }
+    .centered-paragraph {
+      color: #cfd8e3;
+      font-size: 0.9rem;
+      text-align: center;
+    }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 10px;
-        max-width: 1200px;
-        width: 100%;
-      }
+    .title-with-lines {
+      text-align: center;
+      margin: 1rem auto;
+      width: fit-content;
+    }
 
-      /* === Cards === */
-      .card {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 0.6s ease forwards;
-      }
+    .title-with-lines hr {
+      border: none;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 0.25rem;
+    }
 
-      .card img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-      }
+    /* === Description truncation === */
+    .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* show only 4 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+    }
 
-      .card-content {
-        padding: 1rem;
-      }
+    .description.expanded {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
 
-      .card-content h3 {
-        margin: 0 0 0.5rem;
-        font-size: 1.2rem;
-        color: var(--text);
-      }
+    .more-link {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.3rem;
+    }
 
-      .card-content p {
-        margin: 0.3rem 0;
-        font-size: 0.95rem;
-        color: var(--text);
-      }
+    /* === Cards === */
+    .flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: stretch;
+    }
 
-      .card-content a {
-        display: inline-block;
-        margin-top: 0.5rem;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-      }
+    .card {
+      flex: 1 1 280px;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
 
-      .card-content a:hover {
-        text-decoration: underline;
-      }
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
 
-      /* === Description with smooth expand === */
-      .description {
-        max-height: calc(1.4em * 4); /* 4 lines approx */
-        overflow: hidden;
-        position: relative;
-        transition: max-height 0.4s ease;
-        line-height: 1.4em;
-      }
+    .card-content {
+      padding: 1rem;
+    }
 
-      .description.expanded {
-        max-height: 1000px; /* big enough to fit full text */
-      }
+    .card-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
 
-      .more-link {
-        color: var(--accent);
-        cursor: pointer;
-        font-weight: 500;
-        display: inline-block;
-        margin-top: 0.3rem;
-      }
+    .card-content a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-      /* === Animations === */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
-  </head>
+    .card-content a:hover {
+      text-decoration: underline;
+    }
 
-  <body>
-    <div class="title-with-lines">
-      <h1>C2C 2026 - Routes</h1>
-    </div>
-    <p class="centered-paragraph">
-      Each day has the choice of short, medium or long route options. The routes overlap, so riders should meet up at various points
-    </p>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="title-with-lines">
+    <hr>
+    <h1>C2C 2026 - Routes</h1>
+    <hr>
+  </div>
+  <p class="centered-paragraph">
+    Each day has the choice of short, medium or long route options. The routes overlap, so riders should meet up at various points.
+  </p>
 
-    <div class="controls">
-      <select id="daySelector">
-        <option value="" disabled selected style="font-style: italic;">Select a Day</option>
-        <option value="1">Day 1 - Conwy to Criccieth</option>
-        <option value="2">Day 2 - Criccieth to Nefyn</option>
-        <option value="3">Day 3 - Nefyn to Beaumaris</option>
-        <option value="4">Day 4 - Beaumaris to Conwy</option>
-      </select>
-    </div>
+  <div class="controls">
+    <select id="daySelector">
+      <option value="" disabled selected style="font-style: italic;">Select a Day</option>
+      <option value="1">Day 1 - Conwy to Criccieth</option>
+      <option value="2">Day 2 - Criccieth to Nefyn</option>
+      <option value="3">Day 3 - Nefyn to Beaumaris</option>
+      <option value="4">Day 4 - Beaumaris to Conwy</option>
+    </select>
+  </div>
 
-    <div id="routeGrid" class="grid"></div>
+  <div id="routeGrid" class="flex-grid"></div>
 
-    <script>
-      const routeData = {
-        1: [
-          {
-            img: 'Day1 Short.png',
-            name: 'Short Route',
-            distance: '12 km',
-            elevation: '150 m',
-           description: `
+  <script>
+    const routeData = {
+      1: [
+        {
+          img: 'Day1 Short.png',
+          name: 'Short Route',
+          distance: '12 km',
+          elevation: '150 m',
+          description: `
             <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
             <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog.</p>
             <p>You’ll also pass through quaint villages with plenty of opportunities to stop for coffee or lunch.</p>
-            <p>Perfect for riders who want to enjoy the scenery without rushing.</p>
+            <p>Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
+            <p>This route balances effort and enjoyment, making it one of the most popular options.</p>
           `,
-
-            link: '#route1A'
-          },
-          {
-            img: 'Day1 Long.png',
-            name: 'Medium Route',
-            distance: '8 km',
-            elevation: '200 m',
-            description: 'Shaded paths through dense woodland.',
-            link: '#route1B'
-          },
-          {
-            img: 'Day1 Long.png',
-            name: 'Long Route',
-            distance: '5 km',
-            elevation: '300 m',
-            description: 'Short but steep climb to panoramic views.',
-            link: '#route1C'
-          }
-        ]
-      };
-
-      const selector = document.getElementById('daySelector');
-      const grid = document.getElementById('routeGrid');
-
-      selector.addEventListener('change', () => {
-        const day = selector.value;
-        grid.innerHTML = '';
-
-        if (routeData[day]) {
-          routeData[day].forEach((route, index) => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.1}s`; // staggered animation
-            card.innerHTML = `
-              <img src="${route.img}" alt="${route.name}" />
-              <div class="card-content">
-                <h3>${route.name}</h3>
-                <p><strong>Distance:</strong> ${route.distance}</p>
-                <p><strong>Elevation:</strong> ${route.elevation}</p>
-                <p class="description">${route.description}</p>
-                <a href="${route.link}">View Route</a>
-              </div>
-            `;
-            grid.appendChild(card);
-          });
-
-          // Add More/Less links dynamically
-          grid.querySelectorAll('.description').forEach(desc => {
-            const lineHeight = parseFloat(window.getComputedStyle(desc).lineHeight);
-            const lines = Math.round(desc.scrollHeight / lineHeight);
-
-            if (lines > 4) {
-              const moreLink = document.createElement('span');
-              moreLink.className = 'more-link';
-              moreLink.textContent = 'More';
-              desc.insertAdjacentElement('afterend', moreLink);
-
-              moreLink.addEventListener('click', () => {
-                desc.classList.toggle('expanded');
-                moreLink.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
-              });
-            }
-          });
+          link: '#route1A'
+        },
+        {
+          img: 'Day1 Long.png',
+          name: 'Medium Route',
+          distance: '8 km',
+          elevation: '200 m',
+          description: 'Shaded paths through dense woodland.',
+          link: '#route1B'
+        },
+        {
+          img: 'Day1 Long.png',
+          name: 'Long Route',
+          distance: '5 km',
+          elevation: '300 m',
+          description: 'Short but steep climb to panoramic views.',
+          link: '#route1C'
         }
-      });
-    </script>
-  </body>
+      ],
+      2: [
+        {
+          img: 'Day2 Short.png',
+          name: 'Short Route',
+          distance: '10 km',
+          elevation: '100 m',
+          description: 'Smooth descent through open valleys.',
+          link: '#route2A'
+        },
+        {
+          img: 'Day2 Long.png',
+          name: 'Medium Route',
+          distance: '15 km',
+          elevation: '80 m',
+          description: 'Flat ride with sea breeze and cliff views.',
+          link: '#route2B'
+        },
+        {
+          img: 'Day2 Long.png',
+          name: 'Long Route',
+          distance: '6 km',
+          elevation: '50 m',
+          description: 'Quick route through city landmarks.',
+          link: '#route2C'
+        }
+      ]
+    };
+
+    const selector = document.getElementById('daySelector');
+    const grid = document.getElementById('routeGrid');
+
+    selector.addEventListener('change', () => {
+      const day = selector.value;
+      grid.innerHTML = '';
+
+      if (routeData[day]) {
+        routeData[day].forEach((route, index) => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.style.animationDelay = `${index * 0.1}s`; 
+          card.innerHTML = `
+            <img src="${route.img}" alt="${route.name}" />
+            <div class="card-content">
+              <h3>${route.name}</h3>
+              <p><strong>Distance:</strong> ${route.distance}</p>
+              <p><strong>Elevation:</strong> ${route.elevation}</p>
+              <div class="description">${route.description}</div>
+              <span class="more-link">More</span>
+              <a href="${route.link}">View Route</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        // Attach "More/Less" toggle
+        grid.querySelectorAll('.more-link').forEach(link => {
+          link.addEventListener('click', () => {
+            const desc = link.previousElementSibling; 
+            desc.classList.toggle('expanded');
+            link.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
+          });
+        });
+      }
+    });
+  </script>
+</body>
 </html>
+
