@@ -180,9 +180,7 @@
           elevation: '150 m',
           description: `
             <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
-            <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog.</p>
-            <p>You’ll also pass through quaint villages with plenty of opportunities to stop for coffee or lunch.</p>
-            <p>Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
+            <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog. You will also pass through quaint villages with plenty of opportunities to stop for coffee or lunch. Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
             <p>This route balances effort and enjoyment, making it one of the most popular options.</p>
           `,
           link: '#route1A'
@@ -248,11 +246,12 @@
             <img src="${route.img}" alt="${route.name}" />
             <div class="card-content">
               <h3>${route.name}</h3>
+              <a href="${route.link}">View Route</a>
               <p><strong>Distance:</strong> ${route.distance}</p>
               <p><strong>Elevation:</strong> ${route.elevation}</p>
               <div class="description">${route.description}</div>
               <span class="more-link" style="display:none;">More</span>
-              <a href="${route.link}">View Route</a>
+              
             </div>
           `;
           grid.appendChild(card);
