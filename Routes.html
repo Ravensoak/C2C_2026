@@ -101,18 +101,17 @@
         text-decoration: underline;
       }
 
-      /* === Description clamping === */
+      /* === Description with smooth expand === */
       .description {
-        display: -webkit-box;
-        -webkit-line-clamp: 4; /* show only 4 lines */
-        -webkit-box-orient: vertical;
+        max-height: calc(1.4em * 4); /* 4 lines approx */
         overflow: hidden;
-        text-overflow: ellipsis;
+        position: relative;
+        transition: max-height 0.4s ease;
+        line-height: 1.4em;
       }
 
       .description.expanded {
-        -webkit-line-clamp: unset; /* remove line clamp */
-        overflow: visible;
+        max-height: 1000px; /* big enough to fit full text */
       }
 
       .more-link {
@@ -166,8 +165,7 @@
             distance: '12 km',
             elevation: '150 m',
             description: `Choose this route if you want a more relaxed cycling pace with less distance and climbing.
-              <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog.</p>,
-              <p>This is extra text to ensure that 4 more lines are present.</p>`,
+              <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog.</p>`,
             link: '#route1A'
           },
           {
@@ -208,20 +206,28 @@
                 <p><strong>Distance:</strong> ${route.distance}</p>
                 <p><strong>Elevation:</strong> ${route.elevation}</p>
                 <p class="description">${route.description}</p>
-                <span class="more-link">More</span>
                 <a href="${route.link}">View Route</a>
               </div>
             `;
             grid.appendChild(card);
           });
 
-          // Add toggle functionality
-          grid.querySelectorAll('.more-link').forEach(link => {
-            link.addEventListener('click', () => {
-              const desc = link.previousElementSibling; // the <p class="description">
-              desc.classList.toggle('expanded');
-              link.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
-            });
+          // Add More/Less links dynamically
+          grid.querySelectorAll('.description').forEach(desc => {
+            const lineHeight = parseFloat(window.getComputedStyle(desc).lineHeight);
+            const lines = Math.round(desc.scrollHeight / lineHeight);
+
+            if (lines > 4) {
+              const moreLink = document.createElement('span');
+              moreLink.className = 'more-link';
+              moreLink.textContent = 'More';
+              desc.insertAdjacentElement('afterend', moreLink);
+
+              moreLink.addEventListener('click', () => {
+                desc.classList.toggle('expanded');
+                moreLink.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
+              });
+            }
           });
         }
       });
