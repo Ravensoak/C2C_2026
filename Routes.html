@@ -366,6 +366,27 @@
         font-size: 1rem;
       }
     }
+    .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* show only 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    }
+
+    .description.expanded {
+      -webkit-line-clamp: unset; /* show all lines */
+      overflow: visible;
+    }
+    .more-link {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.3rem;
+    }
+
     
   </style>
 
@@ -572,7 +593,8 @@
                 <h3>${route.name}</h3>
                 <p><strong>Distance:</strong> ${route.distance}</p>
                 <p><strong>Elevation:</strong> ${route.elevation}</p>
-                <p>${route.description}</p>
+                <p class="description">${route.description}</p>
+    ````````````<span class="more-link">More</span>
                 <a href="${route.link}">View Route</a>
               </div>
             `;
@@ -597,6 +619,14 @@
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
 
+  // After creating cards
+  grid.querySelectorAll('.more-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const desc = link.previousElementSibling; // the <p class="description">
+    desc.classList.toggle('expanded');
+    link.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
+    });
+  });
    
     </script>
   </body>
