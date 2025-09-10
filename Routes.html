@@ -19,7 +19,8 @@
       margin: 0;
       padding-top: 2rem;
       font-family: 'Segoe UI', Roboto, sans-serif;
-      background: url('Morfa Nefyn.png') no-repeat center center fixed;
+      /*background: url('Morfa Nefyn.png') no-repeat center center fixed;*/
+      background: url('Morfa Nefyn.png') no-repeat center center;
       background-size: cover;
       color: var(--text);
       display: flex;
@@ -164,6 +165,9 @@
       .menu-toggle {
         display: block; /* show hamburger */
       }
+      body {
+        background-attachment: fixed;
+      }
     }
 
 
@@ -212,6 +216,7 @@
     }
 
     .description.expanded {
+      /*-webkit-line-clamp: unset;*/
       -webkit-line-clamp: unset;
       overflow: visible;
     }
