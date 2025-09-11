@@ -1,55 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accommodation</title>
-   <link rel="icon" href="https://c2c2026.netlify.app/favicon-32x32.png" type="image/png">
-  <!-- other tags -->
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C2C 2026 - Accommodation</title>
+    <link rel="icon" href="https://c2c2026.netlify.app/favicon-32x32.png" type="image/png">
+    <!-- other tags -->
+  </head>
  
-<style>
+  <style>
+    :root {
+        --primary: #2c3e50;
+        --accent: #3498db;
+        --bg: #ecf0f1;
+        --text: #171a1d;
+        --hover: #2980b9;
+    }
 
-  
-  :root {
-      --primary: #2c3e50;
-      --accent: #3498db;
-      --bg: #ecf0f1;
-      --text: #171a1d;
-      --hover: #2980b9;
+    body {
+      margin: 0;
+      padding-top: 2rem;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: url('llyn-background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      transition: background 0.4s ease, color 0.4s ease;
+      padding: 0;
     }
-  body {
-    margin: 0;
-    padding-top: 2rem;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background: url('llyn-background.png') no-repeat center center fixed;
-    background-size: cover;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    overflow-y: auto;
-    position: relative;
-    transition: background 0.4s ease, color 0.4s ease;
-    padding: 0;
-    
-    
-  }
-   body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* dark overlay */
-      z-index: -1;
-    }
-  h1 {
-      font-size: 2.5rem;
-      margin: 2rem 0;
-      text-align: center;
-      color: #F0F0F0;
-    }
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); /* dark overlay */
+        z-index: -1;
+      }
+    h1 {
+        font-size: 2.5rem;
+        margin: 2rem 0;
+        text-align: center;
+        color: #F0F0F0;
+      }
   .hotel-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -128,7 +125,7 @@
     }
   }
 
-     h1,
+  h1,
   .title-with-lines h1 {
     font-size: 2.5rem;
     margin: 1rem 0;
@@ -137,12 +134,17 @@
     transition: color 0.3s ease;
     line-height: 1.2;
   }
+  .centered-paragraph {
+      color: #cfd8e3;
+      font-size: 0.9rem;
+      text-align: center;
+  }
 
-  .title-with-lines h1:hover {
+  /*.title-with-lines h1:hover {
     color: #ffffff;
     animation: pulseGlow 1.5s infinite;
     transform: scale(1.05);
-  }
+  }*/
 
   .title-with-lines {
     text-align: center;
