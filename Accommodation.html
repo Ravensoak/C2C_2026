@@ -10,12 +10,7 @@
  
 <style>
 
-  h1 {
-    font-size: 2.5rem;
-    margin: 2rem 0;
-    text-align: center;
-    color: #F0F0F0;
-  }
+  
   :root {
       --primary: #2c3e50;
       --accent: #3498db;
@@ -27,7 +22,6 @@
     margin: 0;
     padding-top: 2rem;
     font-family: 'Segoe UI', Roboto, sans-serif;
-    /*background: #f9f9f9;*/
     background: url('llyn-background.png') no-repeat center center fixed;
     background-size: cover;
     color: var(--text);
@@ -43,7 +37,19 @@
     
     
   }
-
+   body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* dark overlay */
+      z-index: -1;
+    }
+  h1 {
+      font-size: 2.5rem;
+      margin: 2rem 0;
+      text-align: center;
+      color: #F0F0F0;
+    }
   .hotel-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
