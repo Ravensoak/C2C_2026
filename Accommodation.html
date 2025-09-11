@@ -17,19 +17,17 @@
     color: #F0F0F0;
   }
   :root {
-    --primary: #2c3e50;
-    --accent: #3498db;
-    --bg: #ecf0f1;
-    --text: #34495e;
-    --hover: #2980b9;
-  }
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #ecf0f1;
+      --text: #171a1d;
+      --hover: #2980b9;
+    }
   body {
-    overflow-y: auto;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    padding-top: 2rem;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background: #f9f9f9;
     background: url('llyn-background.png') no-repeat center center fixed;
     background-size: cover;
     color: var(--text);
@@ -38,8 +36,12 @@
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
+    overflow-y: auto;
+    position: relative;
     transition: background 0.4s ease, color 0.4s ease;
-    padding-top: 2rem;
+    padding: 0;
+    background: #f9f9f9;
+    
   }
 
   .hotel-container {
@@ -251,6 +253,14 @@
       <p><a href="https://www.groesinn.com" target="_blank">Visit Website</a></p>
     </div>
 
+     <div class="hotel-card">
+      <img src="Bull Inn.png" alt="The Bull Inn, Beaumaris">
+      <h3>The Bull Inn</h3>
+      <p><strong>Address:</strong> Castle Street, Beaumaris, Anglesey LL58 8AP</p>
+      <p>A Grade II-listed inn with centuries of history, offering stylish rooms and seasonal Welsh cuisine.</p>
+      <p><a href="https://www.inncollectiongroup.com/bulls-head-inn" target="_blank">Visit Website</a></p>
+    </div>
+
     <div class="hotel-card">
       <img src="The Lion Hotel.png" alt="The Lion Hotel, Criccieth">
       <h3>The Lion Hotel</h3>
@@ -274,6 +284,8 @@
       <p>A Grade II-listed inn with centuries of history, offering stylish rooms and seasonal Welsh cuisine.</p>
       <p><a href="https://www.inncollectiongroup.com/bulls-head-inn" target="_blank">Visit Website</a></p>
     </div>
+
+
 
   </div>
   <footer>
