@@ -373,7 +373,7 @@
       </ul>
     </nav>
   </header>
-  
+
 <div class="title-with-lines">
   <!-- <hr class="fade-in delay-1"> -->
   <hr>
@@ -442,6 +442,23 @@
   </div>
 </footer>
 </body>
+
+  <script>
+    // JavaScript for toggling mobile menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+    });
+
+    menuOverlay.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+    }); 
+  </script>
 
 </html>
 
