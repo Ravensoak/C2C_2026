@@ -83,10 +83,10 @@
       color: #cfd8e3;
       font-size: 0.9rem;
       text-align: center;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      max-width: 600px;       /* limits spread on wider screens */
-      margin: 0 auto;          /* centers the block horizontally */
+      padding: 1rem;
+      max-width: 600px;       /* limits width on larger screens */
+      margin: 0 auto;          /* centers within flex/grid cell */
+      flex: 0 1 auto;          /* prevents unwanted stretching */
     }
 
     .button-grid {
