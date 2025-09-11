@@ -17,7 +17,7 @@
         --hover: #2980b9;
     }
 
-    body {
+    /*body {
       margin: 0;
       padding-top: 2rem;
       font-family: 'Segoe UI', Roboto, sans-serif;
@@ -34,8 +34,24 @@
       transition: background 0.4s ease, color 0.4s ease;
       padding: 0;
       z-index: 1;
+    } */
+    body {
+      margin: 0;
+      padding-top: 2rem;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      /*background: url('Morfa-Nefyn.png') no-repeat center center fixed;*/
+      background: url("Morfa-Nefyn.png") no-repeat center center;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
     }
-    
     body::before {
         content: "";
         position: fixed;
@@ -383,7 +399,7 @@
       <hr>
     </div>
     <p class="centered-paragraph">
-      Listed below is our accommodation for the 4-5 days. the first and last night the group will be split across 2 hotels, but will join together for the evening meal
+      Listed below is our accommodation for the 4-5 days. For the first and last night, the group will be split across 2 hotels, but will join together for the evening meal
     </p>
 
   
