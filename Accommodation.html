@@ -17,14 +17,6 @@
         --hover: #2980b9;
     }
 
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5); /* dark overlay */
-        z-index: -1;
-     }
-
     body {
       margin: 0;
       padding-top: 2rem;
@@ -44,7 +36,13 @@
       z-index: 1;
     }
     
-    
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5); /* dark overlay */
+        z-index: -1;
+    }
 
     h1 {
         font-size: 2.5rem;
@@ -52,52 +50,175 @@
         text-align: center;
         color: #F0F0F0;
       }
-  .hotel-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 10px;
-    max-width: 1200px;
-    width: 100%;
+
+    h1,
+      .title-with-lines h1 {
+        font-size: 2.5rem;
+        margin: 1rem 0;
+        text-align: center;
+        color: #F0F0F0;
+        transition: color 0.3s ease;
+        line-height: 1.2;
+      }
+      .centered-paragraph {
+          color: #cfd8e3;
+          font-size: 0.9rem;
+          text-align: center;
+      }
+
+      /*.title-with-lines h1:hover {
+        color: #ffffff;
+        animation: pulseGlow 1.5s infinite;
+        transform: scale(1.05);
+      }*/
+
+      .title-with-lines {
+        text-align: center;
+        margin: 1rem auto;
+        width: fit-content;
+      }
+
+  .title-with-lines hr {
+    border: none;
+    border-top: 2px solid #F0F0F0;
+    margin-top: 0.25rem;
   }
 
-  .hotel-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-  }
+  /* === Navigation Defaults === */
+    .menu-toggle {
+      display: none; /* hidden on desktop */
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1100;
+      color: var(--menu-icon-color, #fff);
+    }
+    /* Overlay (hidden by default) */
+    .menu-overlay {
+      position: fixed;
+      inset: 0; /* shorthand for top/right/bottom/left = 0 */
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1040; /* sits just under the mobile menu */
+    }
 
-  .hotel-card img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
-  }
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Mobile menu (on top of overlay) */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70vw;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--menu-bg, #fff);
+      box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding: 2rem 1rem;
+      z-index: 1050;
+    }
 
-  .hotel-card h3 {
-    margin: 10px 0 5px;
-    font-size: 1.2rem;
-  }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .mobile-menu li {
+      margin-bottom: 1.5rem;
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--menu-link-color, #333);
+    }
 
-  .hotel-card p {
-    margin: 5px 0;
-    font-size: 0.95rem;
-  }
+    /* Active state for mobile menu */
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
 
-  .hotel-card a {
-    color: #0077cc;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    /* Desktop nav */
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .main-nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #ecf0f1;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus {
+      color: var(--hover);
+    }
 
-  .hotel-card a:hover {
-    text-decoration: underline;
-  }
+    .hotel-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 10px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .hotel-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hotel-card img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .hotel-card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.2rem;
+    }
+
+    .hotel-card p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
+
+    .hotel-card a {
+      color: #0077cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hotel-card a:hover {
+      text-decoration: underline;
+    }
 
   /* Mobile: 2-column layout */
   @media (max-width: 500px) {
@@ -130,38 +251,20 @@
     }
   }
 
-  h1,
-  .title-with-lines h1 {
-    font-size: 2.5rem;
-    margin: 1rem 0;
-    text-align: center;
-    color: #F0F0F0;
-    transition: color 0.3s ease;
-    line-height: 1.2;
-  }
-  .centered-paragraph {
-      color: #cfd8e3;
-      font-size: 0.9rem;
-      text-align: center;
-  }
+  /* === Mobile Overrides === */
+    @media (max-width: 700px) {
+      .main-nav {
+        display: none; /* hide desktop nav */
+      }
+      .menu-toggle {
+        display: block; /* show hamburger */
+      }
+      /*body {
+        background-attachment: fixed;
+      }*/
+    }
 
-  .title-with-lines h1:hover {
-    color: #ffffff;
-    animation: pulseGlow 1.5s infinite;
-    transform: scale(1.05);
-  }
-
-  .title-with-lines {
-    text-align: center;
-    margin: 1rem auto;
-    width: fit-content;
-  }
-
-  .title-with-lines hr {
-    border: none;
-    border-top: 2px solid #F0F0F0;
-    margin-top: 0.25rem;
-  }
+  
     footer {
   background-color: #1f2a36;
   padding: 1rem 0;
@@ -244,7 +347,33 @@
   
 
 <body>
+  <header class="main-header">
+    <!-- Hamburger toggle -->
+    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
 
+    <!-- Mobile slide-out menu -->
+    <nav class="mobile-menu" aria-label="Mobile Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="menus.html">Menus</a></li>
+        <li><a href="routes.html">Routes</a></li>
+      </ul>
+    </nav>
+    <!-- Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Desktop navigation -->
+    <nav class="main-nav" aria-label="Main Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="menus.html">Menus</a></li>
+        <li><a href="routes.html">Routes</a></li>
+      </ul>
+    </nav>
+  </header>
+  
 <div class="title-with-lines">
   <!-- <hr class="fade-in delay-1"> -->
   <hr>
