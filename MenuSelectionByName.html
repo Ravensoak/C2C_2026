@@ -529,5 +529,21 @@ function updateOutput() {
     
   });
   }
+  const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+  // Open/close on hamburger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close when overlay is clicked
+  overlay.addEventListener('click', toggleMenu);
+
   </script>  
 </html>
