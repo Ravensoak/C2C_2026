@@ -35,6 +35,7 @@
       /*padding: 0.8rem;*/
       z-index: 1;
     }
+    
     body::before {
       content: "";
       position: fixed;
@@ -62,7 +63,6 @@
       margin: 0 auto;          /* centers within flex/grid cell */
       flex: 0 1 auto;          /* prevents unwanted stretching */
     }
-
    
     .title-with-lines {
       text-align: center;
@@ -105,21 +105,21 @@
       transform: translateY(-2px);
     }
 
-      /* === Navigation Defaults === */
-  .menu-toggle {
-    display: none; /* hidden on desktop */
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1100;
-    color: var(--menu-icon-color, #fff);
-  }
+    /* === Navigation Defaults === */
+    .menu-toggle {
+      display: none; /* hidden on desktop */
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1100;
+      color: var(--menu-icon-color, #fff);
+    }
 
-  /* Overlay (hidden by default) */
+    /* Overlay (hidden by default) */
     .menu-overlay {
       position: fixed;
       inset: 0; /* shorthand for top/right/bottom/left = 0 */
@@ -341,7 +341,7 @@
  
 
   /* Hide hamburger and mobile menu on desktop */
-  .menu-toggle {
+  /*.menu-toggle {
     display: none;
   }
   .mobile-menu {
@@ -349,7 +349,7 @@
   }
   .mobile-menu.active {
     display: block;
-  }
+  }*/
 </style>
 
 <body>
