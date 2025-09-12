@@ -400,7 +400,7 @@
   </select>
 </div>
 
-  <div class="grid">
+  <div class="grid hidden">
     <div class="output" id="groes1Box">
       <strong>The Groes Hotel</strong>
       <p id="groes1F"></p>
@@ -508,6 +508,15 @@
 
 function updateOutput() {
   const selected = entrySelect.value;
+  const grid = document.querySelector('.grid');
+
+  if (!selected) {
+    grid.classList.add('hidden'); // hide if no selection
+    return;
+  }
+
+  grid.classList.remove('hidden'); // show on selection
+
   const entries = sheetData.filter(e => e.Name === selected);
 
   const hotels = {
@@ -526,11 +535,9 @@ function updateOutput() {
       ? `<div class="menu-row"><div class="category-label">🍽️ Main:</div><div class="food-item">${entry.Main}</div></div>` : "";
     document.getElementById(`${prefix}H`).innerHTML = entry
       ? `<div class="menu-row"><div class="category-label">🍰 Dessert:</div><div class="food-item">${entry.Dessert}</div></div>` : "";
-    
   });
-
-  
 }
+
   const toggleBtn = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const overlay = document.querySelector('.menu-overlay');
