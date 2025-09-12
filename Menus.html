@@ -118,6 +118,22 @@
     z-index: 1100;
     color: var(--menu-icon-color, #333);
   }
+
+  /* Overlay (hidden by default) */
+    .menu-overlay {
+      position: fixed;
+      inset: 0; /* shorthand for top/right/bottom/left = 0 */
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1040; /* sits just under the mobile menu */
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
     /* Mobile menu */
   .mobile-menu {
     position: absolute;
