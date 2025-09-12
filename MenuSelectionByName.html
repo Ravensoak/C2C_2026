@@ -401,35 +401,35 @@
 </div>
 
   <div class="grid">
-    <div class="output" id="groes1Box">
+    <div class="output hidden" id="groes1Box">
       <strong>The Groes Hotel</strong>
       <p id="groes1F"></p>
       <p id="groes1G"></p>
       <p id="groes1H"></p>
     </div>
 
-    <div class="output" id="LionHotelBox">
+    <div class="output hidden" id="LionHotelBox">
       <strong>The Lion Hotel</strong>
       <p id="lionhotelF"></p>
       <p id="lionhotelG"></p>
       <p id="lionhotelH"></p>
     </div>
 
-    <div class="output" id="NanhoronHotelBox">
+    <div class="output hidden" id="NanhoronHotelBox">
       <strong>Nanhoron Hotel</strong>
       <p id="nanhoronhotelF"></p>
       <p id="nanhoronhotelG"></p>
       <p id="nanhoronhotelH"></p>
     </div>
 
-    <div class="output" id="BullInnBox">
+    <div class="output hidden" id="BullInnBox">
       <strong>The Bull Inn</strong>
       <p id="bullinnF"></p>
       <p id="bullinnG"></p>
       <p id="bullinnH"></p>
     </div>
 
-    <div class="output" id="groes2Box">
+    <div class="output hidden" id="groes2Box">
       <strong>The Groes Hotel</strong>
       <p id="groes2F"></p>
       <p id="groes2G"></p>
@@ -506,7 +506,7 @@
       entrySelect.appendChild(opt);
     });
 
-function updateOutput() {
+//function updateOutput() {
   const selected = entrySelect.value;
   const entries = sheetData.filter(e => e.Name === selected);
 
@@ -528,7 +528,33 @@ function updateOutput() {
       ? `<div class="menu-row"><div class="category-label">🍰 Dessert:</div><div class="food-item">${entry.Dessert}</div></div>` : "";
     
   });
-  }
+
+  function updateOutput() {
+  const selected = entrySelect.value;
+  const entries = sheetData.filter(e => e.Name === selected);
+
+  const hotels = {
+    groes1: "groes1",
+    lionhotel: "lionhotel",
+    nanhoronhotel: "nanhoronhotel",
+    bullinn: "bullinn",
+    groes2: "groes2"
+  };
+
+  Object.entries(hotels).forEach(([hotelName, prefix]) => {
+    const entry = entries.find(e => e.Hotel === hotelName);
+    const card = document.getElementById(`${prefix}Card`);
+
+    if (entry) {
+      card.classList.remove("hidden");
+      document.getElementById(`${prefix}F`).innerHTML = `<div class="menu-row"><div class="category-label">🥗 Starter:</div><div class="food-item">${entry.Starter}</div></div>`;
+      document.getElementById(`${prefix}G`).innerHTML = `<div class="menu-row"><div class="category-label">🍽️ Main:</div><div class="food-item">${entry.Main}</div></div>`;
+      document.getElementById(`${prefix}H`).innerHTML = `<div class="menu-row"><div class="category-label">🍰 Dessert:</div><div class="food-item">${entry.Dessert}</div></div>`;
+    } else {
+      card.classList.add("hidden");
+    }
+  });
+}
   const toggleBtn = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
     const overlay = document.querySelector('.menu-overlay');
@@ -545,10 +571,6 @@ function updateOutput() {
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
 
-    document.addEventListener("DOMContentLoaded", () => {
-      Object.values(hotels).forEach(prefix => {
-      document.getElementById(`${prefix}Card`).classList.add("hidden");
-      });
-  });
+    
   </script>  
 </html>
