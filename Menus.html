@@ -264,7 +264,7 @@
       text-align: center;
     }
 
-    /* === WhatsApp === */
+    /* === WhatsApp Link === */
       .whatsapp-link {
         display: flex;
         align-items: center;
@@ -294,25 +294,18 @@
       }
 
     /* === Animations === */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+     @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeGlow {
-      0%, 100% {
-        text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+        0%, 100% {
+          text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+        }
+        50% {
+          text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
+        }
       }
-      50% {
-        text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
-      }
-    }
 
     .fade-in {
       animation: fadeIn 1s ease-out;
@@ -338,19 +331,11 @@
       .whatsapp-label {
         font-size: 1rem;
       }
+      .footer-text {
+      font-size: 0.9rem;
+      }
     }
-    /* Hide desktop nav and show hamburger on mobile */
-  @media (max-width: 700px) {
-    .main-nav {
-      display: none;
-    }
-    .menu-toggle {
-      display: block;
-    }
-    .mobile-menu {
-      display: block;
-    }
-  }
+ 
 
   /* Hide hamburger and mobile menu on desktop */
   .menu-toggle {
