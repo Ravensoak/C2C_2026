@@ -74,7 +74,95 @@
     border-top: 2px solid #F0F0F0;
     margin-top: 0.25rem;
   }
-  
+  /* === Navigation Defaults === */
+    .menu-toggle {
+      display: none; /* hidden on desktop */
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1100;
+      color: var(--menu-icon-color, #fff);
+    }
+    
+    /* Overlay (hidden by default) */
+    .menu-overlay {
+      position: fixed;
+      inset: 0; /* shorthand for top/right/bottom/left = 0 */
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1040; /* sits just under the mobile menu */
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Mobile menu (on top of overlay) */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70vw;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--menu-bg, #fff);
+      box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding: 2rem 1rem;
+      z-index: 1050;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .mobile-menu li {
+      margin-bottom: 1.5rem;
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--menu-link-color, #333);
+    }
+
+    /* Active state for mobile menu */
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    /* Desktop nav */
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .main-nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #ecf0f1;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus {
+      color: var(--hover);
+    }
+
   label {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -253,17 +341,44 @@
   </style>
 
   <body>
-<div class="title-with-lines">
-  <!-- <hr class="fade-in delay-1"> -->
-  <hr>
-    <h1>Meal Choice - Name</h1>
-  <!-- <h1 class="fade-in delay-2">Menu Selections</h1> -->
-  <!-- <hr class="fade-in delay-3"> -->
+    <header class="main-header">
+      <!-- Hamburger toggle -->
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+      <!-- Mobile slide-out menu -->
+      <nav class="mobile-menu" aria-label="Mobile Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accommodation.html">Accommodation</a></li>
+          <li><a href="menus.html">Menus</a></li>
+          <li><a href="routes.html">Routes</a></li>
+        </ul>
+      </nav>
+      <!-- Overlay -->
+      <div class="menu-overlay"></div>
+
+      <!-- Desktop navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accommodation.html">Accommodation</a></li>
+          <li><a href="menus.html">Menus</a></li>
+          <li><a href="routes.html">Routes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="title-with-lines">
+    <!-- <hr class="fade-in delay-1"> -->
     <hr>
-</div>
-  <a href="index.html" class="floating-back" aria-label="Back to Index" title="Back to Home">
-  <i class="fas fa-arrow-left"></i>
-</a>
+      <h1>Meal Choice - Name</h1>
+    <hr>
+    </div>
+
+    <p class="centered-summary">
+      Until meal choices have been sent out and recieved, the data in the following list is ficticious, but it ill give you an idea on what will be presented.
+    </p>
+  
 
  <!-- <label for="entrySelect">Please select your name:</label> -->
   <div class="select-wrapper">
