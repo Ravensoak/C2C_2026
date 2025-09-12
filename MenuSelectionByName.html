@@ -545,5 +545,10 @@ function updateOutput() {
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
 
+    document.addEventListener("DOMContentLoaded", () => {
+      Object.values(hotels).forEach(prefix => {
+      document.getElementById(`${prefix}Card`).classList.add("hidden");
+      });
+  });
   </script>  
 </html>
