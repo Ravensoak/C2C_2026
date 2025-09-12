@@ -32,7 +32,7 @@
       position: relative;
       transition: background 0.4s ease, color 0.4s ease;
       /*padding: 0.8rem;*/
-      z-index: -2;
+      z-index: 1;
     }
     
     body::before {
@@ -394,4 +394,21 @@
       </a>
     </div>
   </footer>
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+    // Open/close on hamburger click
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    // Close when overlay is clicked
+    overlay.addEventListener('click', toggleMenu);
+  </script>
 </html>
