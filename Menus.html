@@ -28,12 +28,11 @@
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      /*color: #2c3e50;*/
       overflow-y: auto;
       position: relative;
       transition: background 0.4s ease, color 0.4s ease;
       /*padding: 0.8rem;*/
-      z-index: 5000;
+      z-index: 1;
     }
     
     body::before {
@@ -76,34 +75,7 @@
       margin-top: 0.25rem;
     }
 
-    /* === Menu Buttons === */
-    .button-container {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: auto;
-    }
-
-    .menu-button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      background-color: #3498db;
-      color: white;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .menu-button:hover {
-      background-color: #2980b9;
-      transform: translateY(-2px);
-    }
+    
 
     /* === Navigation Defaults === */
     .menu-toggle {
@@ -206,7 +178,34 @@
   .main-nav a:focus {
     color: var(--hover);
   }
+/* === Menu Buttons === */
+    .button-container {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: auto;
+    }
 
+    .menu-button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
   /* === Mobile Overrides === */
     @media (max-width: 700px) {
       .main-nav {
