@@ -301,6 +301,8 @@
 
     /* === Professional select box === */
     .controls {
+      display: flex;
+      justify-content: center;
       margin: 1.5rem 0;
     }
 
@@ -319,6 +321,9 @@
       background-position: right 0.8rem center;
       background-size: 12px;
       cursor: pointer;
+      width: 250px;   /* fixed width */
+      max-width: 100%; /* optional: prevents overflow on small screens */
+      padding: 8px;   /* makes it look nicer */
     }
 
     #nameSelector:hover {
