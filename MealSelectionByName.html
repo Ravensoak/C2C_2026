@@ -431,7 +431,7 @@
   <select id="entrySelect" onchange="updateOutput()">-->
     <div class="controls">
       <select id="nameSelector">
-    <option value="" disabled selected style="font-style: italic;">Select your name from the list</option>
+    <option value="" disabled selected style="font-style: italic;">Select name from the list</option>
   </select>
 </div>
 
@@ -531,19 +531,16 @@
     {Name: "Bev Smithers", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes2"},    
     ];
 
-    /*const entrySelect = document.getElementById("entrySelect");*/
-    const entrySelect = document.getElementById("nameSelector");
+    const nameSelector = document.getElementById("nameSelector");
     const uniqueNames = [...new Set(sheetData.map(entry => entry.Name))];
     uniqueNames.forEach(name => {
       const opt = document.createElement("option");
       opt.value = name;
       opt.textContent = name;
       nameSelector.appendChild(opt);
-      /*entrySelect.appendChild(opt);*/
     });
 
 function updateOutput() {
-  /*const selected = entrySelect.value;*/
   const selected = nameSelector.value;
   const grid = document.querySelector('.grid');
 
