@@ -590,6 +590,8 @@ function updateOutput() {
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
 
+  // Run updateOutput when name is selected
+  nameSelector.addEventListener("change", updateOutput);
     
   </script>  
 </html>
