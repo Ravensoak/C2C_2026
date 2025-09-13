@@ -531,18 +531,20 @@
     {Name: "Bev Smithers", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes2"},    
     ];
 
-    const entrySelect = document.getElementById("entrySelect");
-
+    /*const entrySelect = document.getElementById("entrySelect");*/
+    const entrySelect = document.getElementById("nameSelector");
     const uniqueNames = [...new Set(sheetData.map(entry => entry.Name))];
     uniqueNames.forEach(name => {
       const opt = document.createElement("option");
       opt.value = name;
       opt.textContent = name;
-      entrySelect.appendChild(opt);
+      nameSelector.appendChild(opt);
+      /*entrySelect.appendChild(opt);*/
     });
 
 function updateOutput() {
-  const selected = entrySelect.value;
+  /*const selected = entrySelect.value;*/
+  const selected = nameSelector.value;
   const grid = document.querySelector('.grid');
 
   if (!selected) {
