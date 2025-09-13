@@ -427,8 +427,8 @@
   
 
  <!-- <label for="entrySelect">Please select your name:</label> -->
-  <!--<div class="select-wrapper">
-  <select id="entrySelect" onchange="updateOutput()">-->
+  <!--<div class="select-wrapper">-->
+  <select id="entrySelect" onchange="updateOutput()"></select>
     <div class="controls">
       <select id="nameSelector">
     <option value="" disabled selected style="font-style: italic;">Select name</option>
@@ -531,7 +531,7 @@
     {Name: "Bev Smithers", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes2"},    
     ];
 
-    const Selector = document.getElementById("nameSelector");
+    const nameSelector = document.getElementById("nameSelector");
     const uniqueNames = [...new Set(sheetData.map(entry => entry.Name))];
     uniqueNames.forEach(name => {
       const opt = document.createElement("option");
