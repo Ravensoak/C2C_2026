@@ -299,6 +299,39 @@
       padding: 1rem;
     }
 
+    /* === Professional select box === */
+    .controls {
+      margin: 1.5rem 0;
+    }
+
+    #nameSelector {
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      background-color: #fff;
+      color: var(--text);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      appearance: none; /* remove default arrow */
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'12'%20viewBox%3D'0%200%2012%2012'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M2%204l4%204%204-4'%20stroke%3D'%233498db'%20stroke-width%3D'2'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 12px;
+      cursor: pointer;
+    }
+
+    #nameSelector:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    #nameSelector:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52,152,219,0.3);
+    }
+
     /* === Footer === */
     footer {
       background-color: #1f2a36;
@@ -394,8 +427,10 @@
   
 
  <!-- <label for="entrySelect">Please select your name:</label> -->
-  <div class="select-wrapper">
-  <select id="entrySelect" onchange="updateOutput()">
+  <!--<div class="select-wrapper">
+  <select id="entrySelect" onchange="updateOutput()">-->
+    <div class="controls">
+      <select id="nameSelector">
     <option value="" disabled selected style="font-style: italic;">Select your name from the list</option>
   </select>
 </div>
