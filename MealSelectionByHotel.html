@@ -456,7 +456,7 @@
 
 
   <div class="controls">
-    <select id="hotelSelect">
+    <select id="hotelSelector">
       <option value="" disabled selected style="font-style: italic;">Select a Hotel</option>
       <option value="hotelA">4th June - The Groes Inn</option>
       <option value="hotelB">5th June - The Lion Hotel</option>
@@ -534,7 +534,7 @@
       ]
     };
 
-    const hotelSelect = document.getElementById('hotelSelect');
+    const hotelSelector = document.getElementById('hotelSelect');
   const tableContainer = document.getElementById('tableContainer');
 
   const headers = [
@@ -622,10 +622,26 @@
     tableContainer.appendChild(table);
   }
 
-  hotelSelect.addEventListener('change', () => {
+  hotelSelector.addEventListener('change', () => {
     currentSort = { key: null, direction: 'asc' };
-    renderHotelTable(hotelSelect.value);
+    renderHotelTable(hotelSelector.value);
   });
+
+  const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+  // Open/close on hamburger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close when overlay is clicked
+  overlay.addEventListener('click', toggleMenu);
 
   </script>
    
