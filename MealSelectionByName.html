@@ -443,11 +443,11 @@
 </div>
 
   <div class="grid hidden">
-    <div class="output" id="groes1Box">
-      <strong>The Groes Hotel</strong>
-      <p id="groes1F"></p>
-      <p id="groes1G"></p>
-      <p id="groes1H"></p>
+    <div class="output" id="themanor1Box">
+      <strong>The Manor</strong>
+      <p id="themanor1F"></p>
+      <p id="themanor1G"></p>
+      <p id="themanor1H"></p>
     </div>
 
     <div class="output" id="LionHotelBox">
@@ -471,11 +471,11 @@
       <p id="bullinnH"></p>
     </div>
 
-    <div class="output" id="groes2Box">
-      <strong>The Groes Hotel</strong>
-      <p id="groes2F"></p>
-      <p id="groes2G"></p>
-      <p id="groes2H"></p>
+    <div class="output" id="themanor2Box">
+      <strong>The Manor</strong>
+      <p id="themanor2F"></p>
+      <p id="themanor2G"></p>
+      <p id="themanor2H"></p>
     </div>
   </div>
   </body>
@@ -496,46 +496,46 @@
 
   <script>
     const sheetData = [
-    {Name: "David Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes1"},
-    {Name: "David Olney", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
-    {Name: "David Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "nanhoronhotel"},
-    {Name: "David Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "bullinn"},
-    {Name: "David Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes2"},
-    {Name: "John Smith", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes1"},
-    {Name: "John Smith", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
-    {Name: "John Smith", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
-    {Name: "John Smith", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn"},
-    {Name: "John Smith", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "groes2"},   
-    {Name: "Sarah Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes1"},
-    {Name: "Sarah Olney", Starter: "No Starter", Main: "No Main", Dessert: "Sticky Toffee Pudding", Hotel: "lionhotel"},
-    {Name: "Sarah Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
-    {Name: "Sarah Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "bullinn"},
-    {Name: "Sarah Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "groes2"},   
-    {Name: "Tracey Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes1"},
-    {Name: "Tracey Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
-    {Name: "Tracey Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
-    {Name: "Tracey Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "Ice Cream", Hotel: "bullinn"},
-    {Name: "Tracey Olney", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "groes2"},   
-    {Name: "Matthew Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes1"},
-    {Name: "Matthew Olney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
-    {Name: "Matthew Olney", Starter: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
-    {Name: "Matthew Olney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "bullinn"},
-    {Name: "Matthew Olney", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "groes2"}, 
-    {Name: "Jim Davidson", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes1"},
-    {Name: "Jim Davidson", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
-    {Name: "Jim Davidson", Starter: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
-    {Name: "Jim Davidson", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn" },
-    {Name: "Jim Davidson", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "groes2"},
-    {Name: "Jim Smith", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes1"},
-    {Name: "Jim Smith", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
-    {Name: "Jim Smith", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "nanhoronhotel"},
-    {Name: "Jim Smith", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn"},
-    {Name: "Jim Smith", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes2"},    
-    {Name: "Bev Smithers", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "groes1"},
-    {Name: "Bev Smithers", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
-    {Name: "Bev Smithers", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
-    {Name: "Bev Smithers", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "No Dessert", Hotel: "bullinn" },
-    {Name: "Bev Smithers", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "groes2"},    
+    {Name: "Imogen Clarke", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor1"},
+    {Name: "Imogen Clarke", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
+    {Name: "Imogen Clarke", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "nanhoronhotel"},
+    {Name: "Imogen Clarke", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "bullinn"},
+    {Name: "Imogen Clarke", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "themanor2"},
+    {Name: "Alfie Redman", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor1"},
+    {Name: "Alfie Redman", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
+    {Name: "Alfie Redman", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
+    {Name: "Alfie Redman", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn"},
+    {Name: "Alfie Redman", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "themanor2"},   
+    {Name: "Harriet Dunford", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "themanor1"},
+    {Name: "Harriet Dunford", Starter: "No Starter", Main: "No Main", Dessert: "Sticky Toffee Pudding", Hotel: "lionhotel"},
+    {Name: "Harriet Dunford", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
+    {Name: "Harriet Dunford", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "bullinn"},
+    {Name: "Harriet Dunford", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "themanor2"},   
+    {Name: "Callum Whittaker", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "themanor1"},
+    {Name: "Callum Whittaker", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
+    {Name: "Callum Whittaker", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
+    {Name: "Callum Whittaker", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "Ice Cream", Hotel: "bullinn"},
+    {Name: "Callum Whittaker", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "themanor2"},   
+    {Name: "Freya Penrose", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor1"},
+    {Name: "Freya Penrose", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
+    {Name: "Freya Penrose", Starter: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
+    {Name: "Freya Penrose", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "bullinn"},
+    {Name: "Freya Penrose", Starter: "No Starter", Main: "No Main", Dessert: "No Dessert", Hotel: "themanor2"}, 
+    {Name: "Theo Ashcroft", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor1"},
+    {Name: "Theo Ashcroft", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
+    {Name: "Theo Ashcroft", Starter: "V Creamy Garlic Mushrooms - Crusty bready and butter - £7.95", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "nanhoronhotel"},
+    {Name: "Theo Ashcroft", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn" },
+    {Name: "Theo Ashcroft", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "themanor2"},
+    {Name: "Maisie Holloway", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "themanor1"},
+    {Name: "Maisie Holloway", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "lionhotel"},
+    {Name: "Maisie Holloway", Starter: "No Starter", Main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "nanhoronhotel"},
+    {Name: "Maisie Holloway", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "bullinn"},
+    {Name: "Maisie Holloway", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor2"},    
+    {Name: "Ewan Trelawney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Ice Cream", Hotel: "themanor1"},
+    {Name: "Ewan Trelawney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "lionhotel"},
+    {Name: "Ewan Trelawney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "Sticky Toffee Pudding", Hotel: "nanhoronhotel"},
+    {Name: "Ewan Trelawney", Starter: "V/VG Soup of the Day - Crusty bread and butter - £7.25", Main: "No Main", Dessert: "No Dessert", Hotel: "bullinn" },
+    {Name: "Ewan Trelawney", Starter: "No Starter", Main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips - £14.95", Dessert: "No Dessert", Hotel: "themanor2"},    
     ];
 
     const nameSelector = document.getElementById("nameSelector");
@@ -561,11 +561,11 @@ function updateOutput() {
   const entries = sheetData.filter(e => e.Name === selected);
 
   const hotels = {
-    groes1: "groes1",
+    themanor1: "themanor1",
     lionhotel: "lionhotel",
     nanhoronhotel: "nanhoronhotel",
     bullinn: "bullinn",
-    groes2: "groes2"
+    themanor2: "themanor2"
   };
 
   Object.entries(hotels).forEach(([hotelName, prefix]) => {
