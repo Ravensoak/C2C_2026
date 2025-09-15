@@ -49,6 +49,16 @@
     header p {
       font-size: 1.2rem;
     }
+    h1,
+    .title-with-lines h1 {
+      font-size: 2.2rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: #F0F0F0;
+      transition: color 0.3s ease;
+      line-height: 1.2;
+    }
+
     .centered-summary {
       color: #cfd8e3;
       font-size: 0.9rem;
@@ -57,6 +67,17 @@
       max-width: 600px;       /* limits width on larger screens */
       margin: 0 auto;          /* centers within flex/grid cell */
       flex: 0 1 auto;          /* prevents unwanted stretching */
+    }
+        .title-with-lines {
+      text-align: center;
+      margin: 1rem auto;
+      width: fit-content;
+    }
+
+    .title-with-lines hr {
+      border: none;
+      border-top: 2px solid #F0F0F0;
+      margin-top: 0.25rem;
     }
 
     .button-grid {
@@ -203,6 +224,23 @@
         font-size: 0.95rem;
         padding: 0.8rem;
       }
+       /* Mobile: 2-column layout */
+      .hotel-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .hotel-card {
+        padding: 10px;
+      }
+
+      .hotel-card h3 {
+        font-size: 1rem;
+      }
+
+      .hotel-card p {
+        font-size: 0.9rem;
+      }
     } 
 
     @media (max-width: 600px) {
@@ -220,8 +258,24 @@
       .whatsapp-label {
         font-size: 1rem;
       }
-    }
-  .footer-text {
-    font-size: 0.9rem;
-  }  
 
+      .footer-text {
+        font-size: 0.9rem;
+      }  
+    }
+
+    @media (max-width: 700px) {
+      /* Switch to mobile nav */
+      .main-nav {
+        display: none; /* hide desktop nav */
+      }
+      .menu-toggle {
+        display: block; /* show hamburger */
+      }
+    }
+    @media (max-width: 320px) {
+      /* Ultra-narrow: fallback to single column */
+      .hotel-container {
+        grid-template-columns: 1fr;
+      }
+    }
