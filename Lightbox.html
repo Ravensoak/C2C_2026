@@ -60,6 +60,35 @@
       background: none;
       border: none;
     }
+    /* Lightbox overlay fade-in */
+.lightbox-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lightbox-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal content scale-up animation */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  animation: popIn 0.3s ease forwards;
+  transform: scale(0.8);
+  opacity: 0;
+}
   </style>
 </head>
 <body>
@@ -92,11 +121,19 @@
     function openLightbox(imgSrc, text) {
   document.getElementById('lightbox-img').src = imgSrc;
   document.getElementById('lightbox-text').textContent = text;
-  document.getElementById('lightbox').style.display = 'flex';
+
+  const overlay = document.getElementById('lightbox');
+  overlay.classList.add('show');
+
+  // Restart animation on content
+  const content = overlay.querySelector('.lightbox-content');
+  content.style.animation = 'none';
+  content.offsetHeight; // trigger reflow
+  content.style.animation = '';
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+  document.getElementById('lightbox').classList.remove('show');
 }
 
 // Attach event listeners to all trigger buttons
