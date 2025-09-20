@@ -110,40 +110,37 @@
 </div>
 
   <script>
-    function openLightbox() {
-      document.getElementById('lightbox').style.display = 'flex';
-    }
+   
+  function openLightbox(imgSrc, text) {
+    const overlay = document.getElementById('lightbox');
+    const content = overlay.querySelector('.lightbox-content');
 
-    function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
-    }
+    // Inject content
+    document.getElementById('lightbox-img').src = imgSrc;
+    document.getElementById('lightbox-text').textContent = text;
 
-    function openLightbox(imgSrc, text) {
-  document.getElementById('lightbox-img').src = imgSrc;
-  document.getElementById('lightbox-text').textContent = text;
+    // Show overlay with animation
+    overlay.classList.add('show');
 
-  const overlay = document.getElementById('lightbox');
-  overlay.classList.add('show');
+    // Restart animation on content
+    content.classList.remove('animate');
+    void content.offsetWidth; // trigger reflow
+    content.classList.add('animate');
+  }
 
-  // Restart animation on content
-  const content = overlay.querySelector('.lightbox-content');
-  content.style.animation = 'none';
-  content.offsetHeight; // trigger reflow
-  content.style.animation = '';
-}
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('show');
+  }
 
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('show');
-}
-
-// Attach event listeners to all trigger buttons
-document.querySelectorAll('.lightbox-trigger').forEach(button => {
-  button.addEventListener('click', () => {
-    const img = button.getAttribute('data-img');
-    const text = button.getAttribute('data-text');
-    openLightbox(img, text);
+  // Attach event listeners to all trigger buttons
+  document.querySelectorAll('.lightbox-trigger').forEach(button => {
+    button.addEventListener('click', () => {
+      const img = button.getAttribute('data-img');
+      const text = button.getAttribute('data-text');
+      openLightbox(img, text);
+    });
   });
-});
+
   </script>
 
 </body>
