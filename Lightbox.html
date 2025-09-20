@@ -66,13 +66,19 @@
 
   <button onclick="openLightbox()">Show Info</button>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" onclick="closeLightbox()">✖</button>
-      <img src="/graphics/c2cRIDESlogoblack.png" alt="C2C Rides Logo" />
-      <p>When menus are available you will be able to make your selections using a Google Form</p>
-    </div>
+  <!-- Trigger buttons -->
+<button class="lightbox-trigger" data-img="c2c-logo.png" data-text="When menus are available you will be able to make your selections using a Google Form">Show Menu Info</button>
+
+<button class="lightbox-trigger" data-img="other-logo.png" data-text="This is another message for a different context.">Show Alternate Info</button>
+
+<!-- Lightbox container -->
+<div class="lightbox-overlay" id="lightbox">
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+    <img id="lightbox-img" src="" alt="Lightbox Image" />
+    <p id="lightbox-text"></p>
   </div>
+</div>
 
   <script>
     function openLightbox() {
@@ -82,6 +88,25 @@
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
     }
+
+    function openLightbox(imgSrc, text) {
+  document.getElementById('lightbox-img').src = imgSrc;
+  document.getElementById('lightbox-text').textContent = text;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+
+// Attach event listeners to all trigger buttons
+document.querySelectorAll('.lightbox-trigger').forEach(button => {
+  button.addEventListener('click', () => {
+    const img = button.getAttribute('data-img');
+    const text = button.getAttribute('data-text');
+    openLightbox(img, text);
+  });
+});
   </script>
 
 </body>
