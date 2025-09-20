@@ -85,9 +85,24 @@
 }
 
 .lightbox-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 90vw;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
   animation: popIn 0.3s ease forwards;
-  transform: scale(0.8);
-  opacity: 0;
+}
+
+/* Optional: constrain height on small screens */
+@media (max-height: 500px) {
+  .lightbox-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
 }
 
 /* Overlay fade-in */
