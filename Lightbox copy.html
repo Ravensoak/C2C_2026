@@ -105,72 +105,57 @@
 
     <button onclick="openLightbox()">Show Info</button>
 
-   <!-- Trigger buttons -->
-<button class="lightbox-trigger"
-        data-img="/graphics/c2cRIDESlogoblack.png"
-        data-text="When menus are available you will be able to make your selections using a Google Form"
-        data-target="files/Menu-TheManor.pdf">
-  Show Menu Info
-</button>
+    <!-- Trigger buttons -->
+    <button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="When menus are available you will be able to make your selections using a Google Form">Show Menu Info</button>
 
-<button class="lightbox-trigger"
-        data-img="/graphics/c2cRIDESlogoblack.png"
-        data-text="This is another message for a different context."
-        data-target="routes.html">
-  Show Alternate Info
-</button>
+    <button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="This is another message for a different context.">Show Alternate Info</button>
 
-<!-- Lightbox container -->
-<div class="lightbox-overlay" id="lightbox">
-  <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()">✖</button>
-    <img id="lightbox-img" src="" alt="Lightbox Image" />
-    <p id="lightbox-text"></p>
-  </div>
-</div>
+    <!-- Lightbox container -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+        <img id="lightbox-img" src="" alt="Lightbox Image" />
+        <p id="lightbox-text"></p>
+      </div>
+    </div>
+  </body>
 
-<script>
-  let redirectTarget = null;
+  <script>
+   
+    function openLightbox(imgSrc, text) {
+      const overlay = document.getElementById('lightbox');
+      const content = overlay.querySelector('.lightbox-content');
 
-  function openLightbox(imgSrc, text, targetUrl) {
-    const overlay = document.getElementById('lightbox');
-    const content = overlay.querySelector('.lightbox-content');
+      // Inject content
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox-text').textContent = text;
 
-    // Inject content
-    document.getElementById('lightbox-img').src = imgSrc;
-    document.getElementById('lightbox-text').textContent = text;
-    redirectTarget = targetUrl;
+      // Show overlay with animation
+      overlay.classList.add('show');
 
-    // Show overlay with animation
-    overlay.classList.add('show');
-
-    // Restart animation on content
-    content.classList.remove('animate');
-    void content.offsetWidth; // trigger reflow
-    content.classList.add('animate');
-  }
-
-  function closeLightbox() {
-    const overlay = document.getElementById('lightbox');
-    overlay.classList.remove('show');
-
-    // Redirect if target is set
-    if (redirectTarget) {
-      window.open(redirectTarget, '_blank');
-      redirectTarget = null;
+      // Restart animation on content
+      content.classList.remove('animate');
+      void content.offsetWidth; // trigger reflow
+      content.classList.add('animate');
     }
-  }
 
-  // Attach event listeners to all trigger buttons
-  document.querySelectorAll('.lightbox-trigger').forEach(button => {
-    button.addEventListener('click', () => {
-      const img = button.getAttribute('data-img');
-      const text = button.getAttribute('data-text');
-      const target = button.getAttribute('data-target');
-      openLightbox(img, text, target);
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+      // Open PDF in a new tab
+    window.open('files/Menu-TheManor.pdf', '_blank');
+
+    }
+
+    // Attach event listeners to all trigger buttons
+    document.querySelectorAll('.lightbox-trigger').forEach(button => {
+      button.addEventListener('click', () => {
+        const img = button.getAttribute('data-img');
+        const text = button.getAttribute('data-text');
+        openLightbox(img, text);
+      });
     });
-  });
-</script>
+    //setTimeout(closeLightbox, 5000);//
+  </script>
 
 
 </html>
