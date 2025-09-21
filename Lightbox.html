@@ -103,74 +103,73 @@
 
   <body>
 
-    <button onclick="openLightbox()">Show Info</button>
+    <!-- Trigger buttons -->
+    <button class="lightbox-trigger"
+            data-img="/graphics/c2cRIDESlogoblack.png"
+            data-text="You will be re-directed to a Google Form to make your meal selections. Menus are not yet available but please feel free to try out an example of what the form will look like.<br><br>When menus are available we will let you know and ask you to come here to make your meal selections."
+            data-target="https://forms.gle/aJ5iLYMDShPKzC4p8">
+      Input Meal Choice
+    </button>
 
-   <!-- Trigger buttons -->
-<button class="lightbox-trigger"
-        data-img="/graphics/c2cRIDESlogoblack.png"
-        data-text="You will be re-directed to a Google Form to make your meal selections. Menus are not yet available but please feel free to try out an example of what the form will look like.<br><br>When menus are available we will let you know and ask you to come here to make your meal selections."
-        data-target="https://forms.gle/aJ5iLYMDShPKzC4p8">
-  Show Menu Info
-</button>
+    <button class="lightbox-trigger"
+            data-img="/graphics/c2cRIDESlogoblack.png"
+            data-text="Menus are not yet available, but you will be directed to an example menu for the first night.<br><br>When menus are available we will let you know and ask you to come here to review them so you can make your selection."
+            data-target="files/Menu-TheManor.pdf">
+      View Menus (PDF)
+    </button>
 
-<button class="lightbox-trigger"
-        data-img="/graphics/c2cRIDESlogoblack.png"
-        data-text="Menus are not yet available, but you will be directed to an example menu for the first night.<br><br>When menus are available we will let you know and ask you to come here to review them so you can make your selection."
-        data-target="files/Menu-TheManor.pdf">
-  Show Alternate Info
-</button>
+    <!-- Lightbox container -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+        <img id="lightbox-img" src="" alt="Lightbox Image" />
+        <p id="lightbox-text"></p>
+      </div>
+    </div>
+  </body>
 
-<!-- Lightbox container -->
-<div class="lightbox-overlay" id="lightbox">
-  <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()">✖</button>
-    <img id="lightbox-img" src="" alt="Lightbox Image" />
-    <p id="lightbox-text"></p>
-  </div>
-</div>
+  <script>
+    let redirectTarget = null;
 
-<script>
-  let redirectTarget = null;
+    function openLightbox(imgSrc, text, targetUrl) {
+      const overlay = document.getElementById('lightbox');
+      const content = overlay.querySelector('.lightbox-content');
 
-  function openLightbox(imgSrc, text, targetUrl) {
-    const overlay = document.getElementById('lightbox');
-    const content = overlay.querySelector('.lightbox-content');
+      // Inject content
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox-text').innerHTML = text;
+      redirectTarget = targetUrl;
 
-    // Inject content
-    document.getElementById('lightbox-img').src = imgSrc;
-    document.getElementById('lightbox-text').innerHTML = text;
-    redirectTarget = targetUrl;
+      // Show overlay with animation
+      overlay.classList.add('show');
 
-    // Show overlay with animation
-    overlay.classList.add('show');
-
-    // Restart animation on content
-    content.classList.remove('animate');
-    void content.offsetWidth; // trigger reflow
-    content.classList.add('animate');
-  }
-
-  function closeLightbox() {
-    const overlay = document.getElementById('lightbox');
-    overlay.classList.remove('show');
-
-    // Redirect if target is set
-    if (redirectTarget) {
-      window.open(redirectTarget, '_blank');
-      redirectTarget = null;
+      // Restart animation on content
+      content.classList.remove('animate');
+      void content.offsetWidth; // trigger reflow
+      content.classList.add('animate');
     }
-  }
 
-  // Attach event listeners to all trigger buttons
-  document.querySelectorAll('.lightbox-trigger').forEach(button => {
-    button.addEventListener('click', () => {
-      const img = button.getAttribute('data-img');
-      const text = button.getAttribute('data-text');
-      const target = button.getAttribute('data-target');
-      openLightbox(img, text, target);
+    function closeLightbox() {
+      const overlay = document.getElementById('lightbox');
+      overlay.classList.remove('show');
+
+      // Redirect if target is set
+      if (redirectTarget) {
+        window.open(redirectTarget, '_blank');
+        redirectTarget = null;
+      }
+    }
+
+    // Attach event listeners to all trigger buttons
+    document.querySelectorAll('.lightbox-trigger').forEach(button => {
+      button.addEventListener('click', () => {
+        const img = button.getAttribute('data-img');
+        const text = button.getAttribute('data-text');
+        const target = button.getAttribute('data-target');
+        openLightbox(img, text, target);
+      });
     });
-  });
-</script>
+  </script>
 
 
 </html>
