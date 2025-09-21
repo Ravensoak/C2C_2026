@@ -23,18 +23,21 @@
       border-radius: 4px;
     }
 
-    /* Lightbox styles */
-    .lightbox-overlay {
+    /* Lightbox styles and overlay fade-in*/
+   .lightbox-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
     }
 
     .lightbox-content {
@@ -65,21 +68,11 @@
       background: none;
       border: none;
     }
-    
-    /* Overlay fade-in */
-    .lightbox-overlay {
-      display: flex;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-   
+       
     .lightbox-overlay.show {
       opacity: 1;
       pointer-events: auto;
       backdrop-filter: blur(6px);
-
     }
 
     /* Modal content scale-up animation */
@@ -93,8 +86,10 @@
         opacity: 1;
       }
     }
-
-
+      /* Modal content animation */
+      .lightbox-content.animate {
+        animation: popIn 0.3s ease forwards;
+      }
 
     /* Optional: constrain height on small screens */
     @media (max-height: 500px) {
@@ -104,25 +99,6 @@
       }
     }
 
-
-
-
-
-    /* Modal content animation */
-    .lightbox-content.animate {
-      animation: popIn 0.3s ease forwards;
-    }
-
-    @keyframes popIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
   </style>
 
   <body>
