@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lightbox Example</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lightbox Example</title>
+  </head>
   <style>
     body {
       font-family: sans-serif;
@@ -37,13 +38,17 @@
     }
 
     .lightbox-content {
-      background: white;
+      background-color: #0078d4; /* Match button color */
+      color: white;   
       padding: 2rem;
       border-radius: 8px;
-      max-width: 400px;
+      max-width: 90vw;
+      width: 100%;
+      box-sizing: border-box;
       text-align: center;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       position: relative;
+      animation: popIn 0.3s ease forwards;
     }
 
     .lightbox-content img {
@@ -60,138 +65,121 @@
       background: none;
       border: none;
     }
-    /* Lightbox overlay fade-in */
-.lightbox-overlay {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
+    
+    /* Overlay fade-in */
+    .lightbox-overlay {
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
 
-.lightbox-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
-}
+   
+    .lightbox-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+      backdrop-filter: blur(6px);
 
-/* Modal content scale-up animation */
-@keyframes popIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
+    }
 
-.lightbox-content {
-  background-color: #0078d4; /* Match button color */
-  color: white;   
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 90vw;
-  width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  animation: popIn 0.3s ease forwards;
-}
+    /* Modal content scale-up animation */
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-/* Optional: constrain height on small screens */
-@media (max-height: 500px) {
-  .lightbox-content {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-}
 
-/* Overlay fade-in */
-.lightbox-overlay {
-  display: flex;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
 
-.lightbox-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
-  backdrop-filter: blur(6px);
+    /* Optional: constrain height on small screens */
+    @media (max-height: 500px) {
+      .lightbox-content {
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
 
-}
 
-/* Modal content animation */
-.lightbox-content.animate {
-  animation: popIn 0.3s ease forwards;
-}
 
-@keyframes popIn {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
+
+
+    /* Modal content animation */
+    .lightbox-content.animate {
+      animation: popIn 0.3s ease forwards;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   </style>
-</head>
-<body>
 
-  <button onclick="openLightbox()">Show Info</button>
+  <body>
 
-  <!-- Trigger buttons -->
-<button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="When menus are available you will be able to make your selections using a Google Form">Show Menu Info</button>
+    <button onclick="openLightbox()">Show Info</button>
 
-<button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="This is another message for a different context.">Show Alternate Info</button>
+    <!-- Trigger buttons -->
+    <button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="When menus are available you will be able to make your selections using a Google Form">Show Menu Info</button>
 
-<!-- Lightbox container -->
-<div class="lightbox-overlay" id="lightbox">
-  <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()">✖</button>
-    <img id="lightbox-img" src="" alt="Lightbox Image" />
-    <p id="lightbox-text"></p>
-  </div>
-</div>
+    <button class="lightbox-trigger" data-img="/graphics/c2cRIDESlogoblack.png" data-text="This is another message for a different context.">Show Alternate Info</button>
+
+    <!-- Lightbox container -->
+    <div class="lightbox-overlay" id="lightbox">
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+        <img id="lightbox-img" src="" alt="Lightbox Image" />
+        <p id="lightbox-text"></p>
+      </div>
+    </div>
+  </body>
 
   <script>
    
-  function openLightbox(imgSrc, text) {
-    const overlay = document.getElementById('lightbox');
-    const content = overlay.querySelector('.lightbox-content');
+    function openLightbox(imgSrc, text) {
+      const overlay = document.getElementById('lightbox');
+      const content = overlay.querySelector('.lightbox-content');
 
-    // Inject content
-    document.getElementById('lightbox-img').src = imgSrc;
-    document.getElementById('lightbox-text').textContent = text;
+      // Inject content
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox-text').textContent = text;
 
-    // Show overlay with animation
-    overlay.classList.add('show');
+      // Show overlay with animation
+      overlay.classList.add('show');
 
-    // Restart animation on content
-    content.classList.remove('animate');
-    void content.offsetWidth; // trigger reflow
-    content.classList.add('animate');
-  }
+      // Restart animation on content
+      content.classList.remove('animate');
+      void content.offsetWidth; // trigger reflow
+      content.classList.add('animate');
+    }
 
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('show');
-    // Open PDF in a new tab
-  window.open('files/Menu-TheManor.pdf', '_blank');
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+      // Open PDF in a new tab
+    window.open('files/Menu-TheManor.pdf', '_blank');
 
-  }
+    }
 
-  // Attach event listeners to all trigger buttons
-  document.querySelectorAll('.lightbox-trigger').forEach(button => {
-    button.addEventListener('click', () => {
-      const img = button.getAttribute('data-img');
-      const text = button.getAttribute('data-text');
-      openLightbox(img, text);
+    // Attach event listeners to all trigger buttons
+    document.querySelectorAll('.lightbox-trigger').forEach(button => {
+      button.addEventListener('click', () => {
+        const img = button.getAttribute('data-img');
+        const text = button.getAttribute('data-text');
+        openLightbox(img, text);
+      });
     });
-  });
-setTimeout(closeLightbox, 5000);
+    //setTimeout(closeLightbox, 5000);//
   </script>
 
-</body>
+
 </html>
