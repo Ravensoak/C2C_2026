@@ -436,29 +436,54 @@
   <script>
     const hotelData = {
       hotelA: [
-        { name: "David Olney", starter: "Soup of the day, bread roll", main: "Mini Fish & Chips, mushy peas, tartare sauce", dessert: "Mini Eaton Mess" },
-        { name: "Jane Olney", starter: "No Starter", main: "Pan Fried Minute Steak, fries, Café de Paris butter, tomato", dessert: "Mini Eaton Mess" },
-        { name: "Kevin Marriott", starter: "No Starter", main: "Welsh Cheese & Leek Risotto, toasted sourdough, basil dressing (vegan option available)", dessert: "Lemon Meringue Roulade" }
+        { name: "Imogen Clarke", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Alfie Redman", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Harriet Dunford", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Callum Whittaker", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Freya Penrose", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Theo Ashcroft", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Maisie Holloway", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Ewan Trelawney", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" }
       ],
       hotelB: [
-        { name: "David Olney", starter: "Buffalo Wings – Crisp fried wings tossed in spicy relish, garnished with spring onions & red chillies", main: "Tagliatelle in Langoustine Bisque – With prawns, squid & mussels, lemon, Urfa chilli & parmesan", dessert: "No Dessert" },
-        { name: "Jane Olney", starter: "Buffalo Wings – Crisp fried wings tossed in spicy relish, garnished with spring onions & red chillies", main: "Tagliatelle in Langoustine Bisque – With prawns, squid & mussels, lemon, Urfa chilli & parmesan", dessert: "No Dessert" },
-        { name: "Kevin Marriott", starter: "Soup of the Day – Freshly prepared daily, served with crusty bread (v)", main: "Tagliatelle in Langoustine Bisque – With prawns, squid & mussels, lemon, Urfa chilli & parmesan", dessert: "No Dessert" }
+        { name: "Imogen Clarke", starter: "No Starter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Alfie Redman", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Harriet Dunford", starter: "No Starter", main: "No Main", dessert: "Sticky Toffee Pudding" },
+        { name: "Callum Whittaker", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Freya Penrose", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Theo Ashcroft", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Maisie Holloway", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Ewan Trelawney", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" }
       ],
       hotelC: [
-        { name: "David Olney", starter: "No Starter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "Cheesecake of the Day" },
-        { name: "Jane Olney", starter: "No Starter", main: "Beef or V Vegetable Lasagne - Dressed leaves, chips & garlic bread", dessert: "Banoffee Belgian Waffle - Bananas, toffee sauce, honeycomb ice cream" },
-        { name: "Kevin Marriott", starter: "V/VG Soup of the Day - Crusty bread & butter", main: "Beef or V Vegetable Lasagne - Dressed leaves, chips & garlic bread", dessert: "Double Chocolate Brownie - Warm brownie, chocolate sauce, vanilla ice cream" }
+        { name: "Imogen Clarke", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Alfie Redman", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Sticky Toffee Pudding" },
+        { name: "Harriet Dunford", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "No Main", dessert: "Ice Cream" },
+        { name: "Callum Whittaker", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Freya Penrose", starter: "V Creamy Garlic Mushrooms - Crusty bready and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Theo Ashcroft", starter: "V Creamy Garlic Mushrooms - Crusty bready and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Maisie Holloway", starter: "No Starter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Ewan Trelawney", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Sticky Toffee Pudding" }
       ],
       hotelD: [
-        { name: "David Olney", starter: "Soup of the Day – Served with Welsh butter and crusty bread (v)", main: "Pulled Beef ‘Wellington’ – Truffle & parmesan mash, roasted carrot, parsnip purée, red wine jus", dessert: "Selection of Welsh Cheeses – Biscuits, chutney, grapes" },
-        { name: "Jane Olney", starter: "Haddock & Spring Onion Fishcake – Wilted spinach, tartare hollandaise", main: "Maple-Smoked Aubergine & Red Lentil Lasagne – Garlic bread, balsamic dressed rocket (vg)", dessert: "No Dessert" },
-        { name: "Kevin Marriott", starter: "Chicken Liver Pâté – Redcurrant & thyme butter, red onion & balsamic chutney, warm mini loaf", main: "Beer Battered Fish & Chips – Mushy peas, tartare sauce, thick-cut chips", dessert: "No Dessert" }
+        { name: "Imogen Clarke", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Alfie Redman", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Harriet Dunford", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Sticky Toffee Pudding" },
+        { name: "Callum Whittaker", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "No Main", dessert: "Ice Cream" },
+        { name: "Freya Penrose", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Theo Ashcroft", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Maisie Holloway", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Ewan Trelawney", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "No Main", dessert: "No Dessert" }
       ],
       hotelE: [
-        { name: "David Olney", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "No Dessert" },
-        { name: "Jane Olney", starter: "Maple-Smoked Aubergine & Red Lentil Lasagne – Garlic bread, balsamic dressed rocket (vg)", main: "No Dessert", dessert: "2" },
-        { name: "Kevin Marriott", starter: "Beer Battered Fish & Chips – Mushy peas, tartare sauce, thick-cut chips", main: "No Dessert", dessert: "2" }
+        { name: "Imogen Clarke", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "No Dessert" },
+        { name: "Alfie Redman", starter: "No Starter", main: "No Main", dessert: "No Dessert" },
+        { name: "Harriet Dunford", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Sticky Toffee Pudding" },
+        { name: "Callum Whittaker", starter: "No Starter", main: "No Main", dessert: "No Dessert" },
+        { name: "Freya Penrose", starter: "No Starter", main: "No Main", dessert: "No Dessert" },
+        { name: "Theo Ashcroft", starter: "No Starter", main: "Caesar Chicken Burger - Crispy chicken, bacon, parmesan, lettuce, garlic & black pepper mayo, coleslaw, hand-cut chips", dessert: "Sticky Toffee Pudding" },
+        { name: "Maisie Holloway", starter: "V/VG Soup of the Day - Crusty bread and butter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "Ice Cream" },
+        { name: "Ewan Trelawney", starter: "No Starter", main: "House Burger - Double beef, cheese, pickles, lettuce, burger sauce, coleslaw, hand-cut chips", dessert: "No Dessert" }
       ]
     };
 
