@@ -4,16 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C2C 2026 - Meals</title>
-     <link rel="stylesheet" href="css/common.css">
      <link rel="stylesheet" href="css/lightbox.css">
     <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
   </head>
 
   <style>
-   
+   :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #ecf0f1;
+      --text: #F0F0F0;
+      --hover: #2980b9;
+    }
 
     body {
+      margin: 0;
+      padding-top: 2rem;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      /*background: url("Morfa-Nefyn.png") no-repeat center center center;*/
       background: url("pictures/Restaurant1.jpg") no-repeat center center;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      transition: background 0.4s ease, color 0.4s ease;
+      /*padding: 0.8rem;*/
+      z-index: 1;
     }
     
     
@@ -159,7 +180,7 @@
   .main-nav a:focus {
     color: var(--hover);
   }
-/* === Food Menu Buttons === */
+/* === Menu Buttons === */
     .button-container {
       /*display: flex;
       gap: 1.5rem;
