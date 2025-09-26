@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C2C 2026 - Routes</title>
+    <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
+  </head>
+ 
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #ecf0f1;
+      --text: #171a1d;
+      --hover: #2980b9;
+    }
+
+    body {
+      margin: 0;
+      padding-top: 2rem;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: url("pictures/Morfa-Nefyn-background.png") no-repeat center center;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      transition: background 0.4s ease, color 0.4s ease;
+      /*padding: 0.8rem;*/
+      z-index: 1;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* dark overlay */
+      z-index: -1;
+    }
+
+    h1,
+    .title-with-lines h1 {
+      font-size: 2.2rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: #F0F0F0;
+      transition: color 0.3s ease;
+      line-height: 1.2;
+    }
+
+    .centered-summary {
+      color: #cfd8e3;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+      max-width: 600px;       /* limits width on larger screens */
+      margin: 0 auto;          /* centers within flex/grid cell */
+      flex: 0 1 auto;          /* prevents unwanted stretching */
+    }
+
+    .title-with-lines {
+      text-align: center;
+      margin: 1rem auto;
+      width: fit-content;
+    }
+
+    .title-with-lines hr {
+      border: none;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 0.25rem;
+    }
+
+/* === Navigation Defaults === */
+    .menu-toggle {
+      display: none; /* hidden on desktop */
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 1100;
+      color: var(--menu-icon-color, #fff);
+    }
+    
+    /* Overlay (hidden by default) */
+    .menu-overlay {
+      position: fixed;
+      inset: 0; /* shorthand for top/right/bottom/left = 0 */
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 1040; /* sits just under the mobile menu */
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Mobile menu (on top of overlay) */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70vw;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--menu-bg, #fff);
+      box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      padding: 2rem 1rem;
+      z-index: 1050;
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .mobile-menu li {
+      margin-bottom: 1.5rem;
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--menu-link-color, #333);
+    }
+
+    /* Active state for mobile menu */
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    /* Desktop nav */
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .main-nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #ecf0f1;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .main-nav a:hover,
+    .main-nav a:focus {
+      color: var(--hover);
+    }
+
+    /* === Mobile Overrides === */
+    @media (max-width: 700px) {
+      .main-nav {
+        display: none; /* hide desktop nav */
+      }
+      .menu-toggle {
+        display: block; /* show hamburger */
+      }
+      /*body {
+        background-attachment: fixed;
+      }*/
+      
+    }
+
+    /* === Professional select box === */
+    .controls {
+      margin: 1.5rem 0;
+    }
+
+    #daySelector {
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      background-color: #fff;
+      color: var(--text);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      appearance: none; /* remove default arrow */
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'12'%20viewBox%3D'0%200%2012%2012'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M2%204l4%204%204-4'%20stroke%3D'%233498db'%20stroke-width%3D'2'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      background-size: 12px;
+      cursor: pointer;
+    }
+
+    #daySelector:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    #daySelector:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52,152,219,0.3);
+    }
+
+    /* === Description truncation === */
+    .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* show only 4 lines */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+    }
+
+    .description.expanded {
+      /*-webkit-line-clamp: unset;*/
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+
+    .more-link {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.3rem;
+    }
+
+    /* === Cards === */
+    .flex-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .route-card {
+      flex: 1 1 280px;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .route-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .route-card-content {
+      padding: 1rem;
+    }
+
+    .route-card-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .route-card-content a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .route-card-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* === Footer === */
+    footer {
+      background-color: #1f2a36;
+      padding: 1rem 0;
+      border-top: 1px solid #3a4a5a;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+
+    .footer-text {
+      color: #cfd8e3;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* === WhatsApp Link === */
+    .whatsapp-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #cfd8e3;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-label {
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      fill: #a8f0c6;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-link:hover .whatsapp-icon {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-link:hover .whatsapp-label {
+      text-decoration: underline;
+    }
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeGlow {
+        0%, 100% {
+          text-shadow: 0 0 10px rgba(255,255,255,0.2), 0 0 20px rgba(0,191,255,0.2);
+        }
+        50% {
+          text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(0,191,255,0.8);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-out;
+      }
+
+      .delay-1 { animation-delay: 0.2s; }
+      .delay-2 { animation-delay: 0.6s; }
+      .delay-3 { animation-delay: 1.0s; }
+
+    /* === Responsive === */
+    @media (max-width: 600px) {
+      .card {
+        flex: 1 1 100%;
+      }
+
+      .card img {
+        aspect-ratio: auto;
+        max-height: 60vh;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .whatsapp-icon {
+        width: 26px;
+        height: 26px;
+        fill: #b2f5d6;
+      }
+
+      .whatsapp-label {
+        font-size: 1rem;
+      }
+      
+      .footer-text {
+      font-size: 0.9rem;
+      }
+    }
+
+    .route-link {
+      font-size: 0.8em;
+      font-weight: normal;
+      margin-left: 0.5em;
+      text-decoration: underline;
+      color: #0077cc; /* or your theme color */
+    }
+
+  </style>
+
+  <body>
+    <header class="main-header">
+      <!-- Hamburger toggle -->
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+      <!-- Mobile slide-out menu -->
+      <nav class="mobile-menu" aria-label="Mobile Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accommodation.html">Accommodation</a></li>
+          <li><a href="meals.html">Meals</a></li>
+          <li><a href="routes.html">Routes</a></li>
+        </ul>
+      </nav>
+      <!-- Overlay -->
+      <div class="menu-overlay"></div>
+
+      <!-- Desktop navigation -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="accommodation.html">Accommodation</a></li>
+          <li><a href="meals.html">Meals</a></li>
+          <li><a href="routes.html">Routes</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="title-with-lines">
+      <hr>
+        <h1>Routes</h1>
+      <hr>
+    </div>
+    <p class="centered-summary">
+      Each day has the choice of short, medium or long route options. All routes follow the same core roads, with optional detours that loop back in. Riders can switch between routes at designated crossover points.
+    </p>
+
+    <div class="controls">
+      <select id="daySelector">
+        <option value="" disabled selected style="font-style: italic;">Select a Day</option>
+        <option value="1">Day 1 - Conwy to Criccieth</option>
+        <option value="2">Day 2 - Criccieth to Nefyn</option>
+        <option value="3">Day 3 - Nefyn to Beaumaris</option>
+        <option value="4">Day 4 - Beaumaris to Conwy</option>
+      </select>
+    </div>
+
+    <div id="routeGrid" class="flex-grid"></div>
+  </body>
+  <footer>
+    <div class="footer-content">
+      <span class="footer-text">© C2C Rides</span>
+      <a href="https://chat.whatsapp.com/BdqWB9yBthG91Yl9rVlVQl?mode=ems_copy_h_c" target="_blank" class="whatsapp-link" aria-label="Join WhatsApp group">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path d="M16.001 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.71 6.42L3.2 28.8l6.58-1.72c1.88 1.03 4.01 1.57 6.22 1.57h.001c7.06 0 12.8-5.74 12.8-12.8s-5.74-12.8-12.8-12.8zm0 23.2c-1.91 0-3.78-.51-5.42-1.47l-.39-.23-3.91 1.02 1.04-3.81-.25-.39c-1.08-1.65-1.65-3.56-1.65-5.52 0-5.9 4.8-10.7 10.7-10.7s10.7 4.8 10.7 10.7-4.8 10.7-10.7 10.7zm5.86-8.04c-.32-.16-1.88-.93-2.17-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.89-1.78-2.21-.18-.32-.02-.49.13-.65.13-.13.29-.34.45-.5.16-.16.21-.27.32-.45.11-.18.05-.34-.03-.5-.08-.16-.71-1.71-.97-2.35-.26-.64-.52-.55-.71-.56h-.61c-.21 0-.55.08-.84.39s-1.1 1.08-1.1 2.63 1.13 3.05 1.29 3.26c.16.21 2.23 3.4 5.4 4.77.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/>
+        </svg>
+        <span class="whatsapp-label">Join WhatsApp Group</span>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const routeData = {
+      1: [
+        {
+          img: 'pictures/Day1-Short.png',
+          name: 'Short Route',
+          //distance: '12 km',//
+          //elevation: '150 m',//
+          description: `
+            <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
+            <p>We make our way to Betws-Y-Coed, and then take the back roads and country lanes to Capel Curig. We then head towards Snowden (Yr Wyddfa) which looms in the distance (subject to good weather!). At the Llanberis turn, we descend on the southern side of Snowdon and ride into Beddgelert where there are multiple cafes. If you have time, visit Gelert's grave and read about this fable. This route then follows the Welsh Highland Railway line and the spectacular river down to Nantmoor, where we leave the main road and head to Garreg. Shortly after Garreg you will see the RSPB site which may have a viewing gallery for nesting Ospreys (if they return this year). At Tremadog you could take a short excursion into Porthmadog. Criccieth greets you with a spectacular view of the town and castle.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>13 miles - Multiple cafes in Betws-Y-Coed</li>
+                <li>31 miles - Multiple Cafes in Beddgelert</li>
+                <li>41 miles - Multiple cafes in Porthmadog</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52509283'
+        },
+        {
+          img: 'pictures/Day1-Medium.png',
+          name: 'Medium Route',
+          //distance: '8 km',//
+          //elevation: '200 m',//
+          description: `
+            <p>This route is similar to the short route but diverts to Porthmadog, Borth-y-Gest and Morfa Bychan</p>
+            <p>We make our way to Betws-Y-Coed, and then take the back roads and country lanes to Capel Curig. We then head towards Snowden (Yr Wyddfa) which looms in the distance (subject to good weather!). At the Llanberis turn, we descend on the southern side of Snowdon and ride into Beddgelert where there are multiple cafes. If you have time, visit Gelert's grave and read about this fable. This route then follows the Welsh Highland Railway line and the spectacular river down to Nantmoor, where we leave the main road and head to Garreg. Via Penrhyndeudraeth we ride along the 'Cob' into Porthmadog and ascend the back streets to reach the beautiful cove called Borth-y-Gest (a few steps to navigate on the descent). The route goes around the cove to the viewpoint before turning back and heading towards Morfa Bychan and Black Rock Sands - some beautiful country lanes and spectacular views before reaching the main road. Criccieth greets you with a spectacular view of the town and castle.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>13 miles - Multiple cafes in Betws-Y-Coed</li>
+                <li>31 miles - Multiple Cafes in Beddgelert</li>
+                <li>42 miles - Multiple cafes in Porthmadog</li>
+                <li>43 miles - Seaview Cafe Bistro & Coffee Lounge, Borth-y-Gest</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/51176598'
+        },
+        {
+          img: 'pictures/Day1-Long.png',
+          name: 'Long Route',
+          //distance: '5 km',//
+          //elevation: '300 m',//
+           description: `
+            <p>This route is similar to the medium route but diverts to Llanberis and rides around the East, North and West sides of Snowdon.</p>
+            <p>We make our way to Betws-Y-Coed, and then take the back roads and country lanes to Capel Curig. We then head towards Snowden (Yr Wyddfa) which looms in the distance (subject to good weather!). At the Llanberis turn, we climb to Pen-y-Pass on the eastern side of Snowdon and descend to Llanberis, where there are multiple cafes. We ride traversing the north and west sides of Snowdon, passing through Ryd-Ddu, eventually reaching Beddgelert where again there are multiple cafes. If you have time, visit Gelert's grave and read about this fable. This route then follows the Welsh Highland Railway line and the spectacular river down to Nantmoor, where we leave the main road and head to Garreg. Via Penrhyndeudraeth we ride along the 'Cob' into Porthmadog and ascend the back streets to reach the beautiful cove called Borth-y-Gest (a few steps to navigate on the descent). The route goes around the cove to the viewpoint before turning back and heading towards Morfa Bychan and Black Rock Sands - some beautiful country lanes and spectacular views before reaching the main road. Criccieth greets you with a spectacular view of the town and castle.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>13 miles - Multiple cafes in Betws-Y-Coed</li>
+                <li>30 miles - Multiple cafes in Llanberis</li>
+                <li>45 miles - Multiple cafes in Beddgelert</li>
+                <li>55 miles - Multiple cafes in Porthmadog</li>
+                <li>56 miles - Seaview Cafe Bistro & Coffee Lounge, Borth-y-Gest</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/51657762'
+        }
+      ],
+      2: [
+        {
+          img: 'pictures/Day2-Short.png',
+          name: 'Short Route',
+          //distance: '10 km',//
+          //elevation: '100 m',//
+           description: `
+            <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
+            <p>Making our way to Llanystumdy, where you can visit the David Lloyd George museum and his grave, we ride on beautiful country lanes towards Mynytho where there are spectacular views of the Llyn Peninsula and the Snowdon Mountain range. We descend to Hells Mouth before the killer climb to the village of Rhiw. The climb is worth it for the spectacular views across Hells Mouth to Sarn-Bach and the long descent to the beautiful remote village of Aberdaron. There are several cafes either side of the bridge and stop to think how different it would look if this place had won over Hollyhead to be the major port to Ireland! A short climb out of Aberdaron and we ride on beautiful country lanes with sea views on our left all the way to Tudweillog and onto Morfa Nefyn. At the 40-mile mark, the route takes you on a short excursion across the golf course to Porth Dinllaen, where you can visit the 'Ty Coch Inn' - the famous pub on the beach. The route then heads back to Morfa Nefyn and along the main road to our hotel at Nefyn.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>23 miles - Multiple cafes in Aberdaron</li>
+                <li>36 miles - Cwt Tatws Cafe and Shop</li>
+                <li>41 miles - Ty Coch Inn, Porth Dinllaen</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52509467'
+        },
+        {
+          img: 'pictures/Day2-Medium.png',
+          name: 'Medium Route',
+          //distance: '15 km',//
+          //elevation: '80 m',//
+           description: `
+            <p>This route is similar to the short route but diverts to the village of Abersoch.</p>
+            <p>Making our way to Llanystumdy, where you can visit the David Lloyd George museum and his grave, we ride on beautiful country lanes towards Mynytho where there are spectacular views of the Llyn Peninsula and the Snowdon Mountain range. We descend to the small coastal village of Abersoch where there are multiple cafes. As an option, at 20 miles there is a short excursion to the beach front cafe. After leaving Abersoch we ride via Sarn-Bach and the country lanes around Hells Mouth before the killer climb to the village of Rhiw. The climb is worth it for the spectacular views across Hells Mouth to Sarn-Bach and the long descent to the beautiful remote village of Aberdaron. There are several cafes either side of the bridge and stop to think how different it would look if this place had won over Hollyhead to be the major port to Ireland! A short climb out of Aberdaron and we ride on beautiful country lanes with sea views on our left all the way to Tudweillog and onto Morfa Nefyn. At the 49-mile mark, the route takes you on a short excursion across the golf course to Porth Dinllaen, where you can visit the 'Ty Coch Inn' - the famous pub on the beach. The route then heads back to Morfa Nefyn and along the main road to our hotel at Nefyn.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>19.5 miles - Just Mary's Cafe, Abersoch</li>
+                <li>20.2 miles - caffi treath, Abersoch beach</li>
+                <li>33 miles - Multiple cafes in Aberdaron</li>
+                <li>44.5 miles - Cwt Tatws Cafe and Shop</li>
+                <li>50 miles - Ty Coch Inn, Porth Dinllaen</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/51176700'
+        },
+        {
+          img: 'pictures/Day2-Long.png',
+          name: 'Long Route',
+          //distance: '6 km',//
+          //elevation: '50 m',//
+           description: `
+            <p>This route is similar to the medium route but has a detour at the start after Llanystumdy and near the end to the village of Dinas.</p>
+            <p>Making our way to Llanystumdy, where you can visit the David Lloyd George museum and his grave, we take on beautiful country lanes towards Mynytho taking a detour from the medium route where there are spectacular views of the Llyn Peninsula and the Snowdon Mountain range. We descend to the small coastal village of Abersoch where there are multiple cafes. As an option, at 20 miles there is a short excursion to the beach front cafe. After leaving Abersoch we ride via Sarn-Bach and the country lanes around Hells Mouth before the killer climb to the village of Rhiw. The climb is worth it for the spectacular views across Hells Mouth to Sarn-Bach and the long descent to the beautiful remote village of Aberdaron. There are several cafes either side of the bridge and stop to think how different it would look if this place had won over Hollyhead to be the major port to Ireland! A short climb out of Aberdaron and we ride on beautiful country lanes with sea views on our left all the way to Tudweillog, with a short diversion to Dinas before reaching Morfa Nefyn. At the 49-mile mark, the route takes you on a short excursion across the golf course to Porth Dinllaen, where you can visit the 'Ty Coch Inn' - the famous pub on the beach. The route then heads back to Morfa Nefyn and along the main road to our hotel at Nefyn.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>19.5 miles - Just Mary's Cafe, Abersoch</li>
+                <li>20.2 miles - caffi treath, Abersoch beach</li>
+                <li>33 miles - Multiple cafes in Aberdaron</li>
+                <li>44.5 miles - Cwt Tatws Cafe and Shop</li>
+                <li>50 miles - Ty Coch Inn, Porth Dinllaen</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52012568'
+        }
+      ],
+      3: [
+        {
+          img: 'pictures/Day3-Short.png',
+          name: 'Short Route',
+          //distance: '10 km',//
+          //elevation: '100 m',//
+           description: `
+            <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
+            <p>We climb out of Nefyn to the village of Llithfaen where there are spectacular views. Here we descend to Llanaelhaearn and then via country lanes and a disused railway line to Penygroes. There are a couple of cafes to choose from before heading towards Caernarfon. We circle the castle and head out following the shoreline and marina on cycle paths towards Bangor. In Bangor, we cross the Menai bridge and follow the coastal road to our accommodation in Beaumaris.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>xxx miles – Homestyle Bakery Cafe, Penygroes</li>
+                <li>xxx miles – Pant Du Vineyard and Cafe, Penygroes</li>
+                <li>xxx miles – Caffi Ty Winsh Café, Caernarfon</li>
+                <li>xxx miles – Llofft, Y Felinheli</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/51176741'
+        },
+        {
+          img: 'pictures/Day3-Medium.png',
+          name: 'Medium Route',
+          //distance: '15 km',//
+          //elevation: '80 m',//
+           description: `
+            <p>Choose this route if you want a slightly more challenging ride with a bit more distance and climbing.</p>
+            <p>We climb out of Nefyn to the village of Llithfaen where there are spectacular views. Here we descend to Llanaelhaearn and then via country lanes and a disused railway line to Penygroes. There are a couple of cafes to choose from before heading towards Caernarfon. We circle the castle and head out following the shoreline and marina on cycle paths towards Bangor. In Bangor, we cross the Menai bridge and follow the coastal road through Beaumaris onto Trwyn Penmon Point - with views towards Puffin Island and Trwyn Du lighthouse. We then retrace our steps back to our accommodation in Beaumaris.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>xxx miles – Homestyle Bakery Cafe, Penygroes</li>
+                <li>xxx miles – Pant Du Vineyard and Cafe, Penygroes</li>
+                <li>xxx miles – Caffi Ty Winsh Café, Caernarfon</li>
+                <li>xxx miles – Llofft, Y Felinheli</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52661668'
+        },
+        {
+          img: 'pictures/Day3-Short.png',
+          name: 'Long Route',
+          //distance: '6 km',//
+          //elevation: '50 m',//
+           description: `
+            <p>Choose this route if you want a challenging ride with a greater distance and climbing.</p>
+            <p>We climb out of Nefyn to the village of Llithfaen where there are spectacular views. Here we descend to Llanaelhaearn and then via country lanes and a disused railway line to Penygroes. There are a couple of cafes to choose from before heading towards Caernarfon. We circle the castle and head out following the shoreline and marina on cycle paths towards Bangor. In Bangor, we cross the Menai bridge and follow the coastal road through Beaumaris onto Trwyn Penmon Point - with views towards Puffin Island and Trwyn Du lighthouse. We then retrace our steps back to our accommodation in Beaumaris.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>xxx miles – Homestyle Bakery Cafe, Penygroes</li>
+                <li>xxx miles – Pant Du Vineyard and Cafe, Penygroes</li>
+                <li>xxx miles – Caffi Ty Winsh Café, Caernarfon</li>
+                <li>xxx miles – Llofft, Y Felinheli</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52662124'
+        }
+      ],
+      4: [
+        {
+          img: 'pictures/Day4-Medium.png',
+          name: 'Short Route',
+          //distance: '10 km',//
+          //elevation: '100 m',//
+           description: `
+            <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
+            <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog. You’ll also pass through quaint villages with plenty of opportunities to stop for coffee or lunch. Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>45 miles – The Granary, Porthmadog</li>
+                <li>56 miles – The Cafe, Criccieth</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/51176763'
+        },
+        {
+          img: 'pictures/Day4-Medium.png',
+          name: 'Medium Route',
+          //distance: '15 km',//
+          //elevation: '80 m',//
+           description: `
+            <p>Choose this route if you want a slightly more challenging ride with a bit more distance and climbing.</p>
+            <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog. You’ll also pass through quaint villages with plenty of opportunities to stop for coffee or lunch. Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>45 miles – The Granary, Porthmadog</li>
+                <li>56 miles – The Cafe, Criccieth</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52661645'
+        },
+        {
+          img: 'pictures/Day4-Medium.png',
+          name: 'Long Route',
+          //distance: '6 km',//
+          //elevation: '50 m',//
+           description: `
+            <p>Choose this route if you want a challenging ride with a greater distance and climbing.</p>
+            <p>Great views of Snowdon (Yr Wyddfa) and beautiful roads through Beddgelert to Porthmadog. You’ll also pass through quaint villages with plenty of opportunities to stop for coffee or lunch. Perfect for riders who want to enjoy the scenery without rushing and still have energy for the evening.</p>
+            <span>Possible cafe stops are:</span>
+              <ul>
+                <li>45 miles – The Granary, Porthmadog</li>
+                <li>56 miles – The Cafe, Criccieth</li>
+              </ul>
+          `,
+          link: 'https://ridewithgps.com/routes/52662119'
+        }
+      ]
+    };
+
+    const selector = document.getElementById('daySelector');
+    const grid = document.getElementById('routeGrid');
+
+    selector.addEventListener('change', () => {
+      const day = selector.value;
+      grid.innerHTML = '';
+
+      if (routeData[day]) {
+        routeData[day].forEach((route, index) => {
+          const card = document.createElement('div');
+          card.className = 'route-card';
+          card.style.animationDelay = `${index * 0.1}s`; 
+          card.innerHTML = `
+            <img src="${route.img}" alt="${route.name}" />
+            <div class="route-card-content">
+              <h3>${route.name}</h3><a href="${route.link}" target="_blank" rel="noopener noreferrer">View Route</a>
+              
+              <div class="description">${route.description}</div>
+                <span class="more-link" style="display:none;">More</span>
+              </div>
+
+              <span class="more-link" style="display:none;">More</span>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        // Attach "More/Less" toggle, only if needed
+        grid.querySelectorAll('.route-card').forEach(card => {
+          const desc = card.querySelector('.description');
+          const moreLink = card.querySelector('.more-link');
+
+          // Temporarily remove clamp to measure true height
+          desc.classList.add('expanded');
+          const fullHeight = desc.scrollHeight;
+          desc.classList.remove('expanded');
+          const clampHeight = desc.scrollHeight;
+
+          if (fullHeight > clampHeight + 5) { 
+            moreLink.style.display = 'inline-block';
+            moreLink.addEventListener('click', () => {
+              desc.classList.toggle('expanded');
+              moreLink.textContent = desc.classList.contains('expanded') ? 'Less' : 'More';
+            });
+          }
+        });
+      }
+    });
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+  // Open/close on hamburger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close when overlay is clicked
+  overlay.addEventListener('click', toggleMenu);
+
+  </script>
+</html>
