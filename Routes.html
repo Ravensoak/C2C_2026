@@ -235,16 +235,10 @@
   <!--New code for standard footer -->
   
   <div id="footer-placeholder"></div>
-  <script>
-     loadComponent('#footer-placeholder', 'footer.html', `
-    <footer>
-      <div class="footer-content">
-        <span class="footer-text">© C2C Rides — WhatsApp group unavailable</span>
-      </div>
-    </footer>
-  `);
+  
+     
 
-  </script>
+  
 
   <script>
     const routeData = {
@@ -550,6 +544,12 @@
         container.innerHTML = fallbackHTML;
       });
   }
-
+loadComponent('#footer-placeholder', 'footer.html', `
+    <footer>
+      <div class="footer-content">
+        <span class="footer-text">© C2C Rides — WhatsApp group unavailable</span>
+      </div>
+    </footer>
+  `);
   </script>
 </html>
