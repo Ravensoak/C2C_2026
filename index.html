@@ -7,6 +7,14 @@
     <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
   </head>
+  
+  <style>
+    #footer-placeholder {
+      margin-top: auto;
+      width: 100%; 
+    }
+  
+  </style>
  
   <body data-theme="light">
     <header>
@@ -33,8 +41,12 @@
         Risk Assessment
       </a>
     </div>
- 
+
+    <div id="footer-placeholder"></div>
+
   </body> 
+
+  <!-- old footer html
   <footer>
     <div class="footer-content">
       <span class="footer-text">© C2C Rides</span>
@@ -45,7 +57,7 @@
         <span class="whatsapp-label">Join WhatsApp Group</span>
       </a>
     </div>
-  </footer>
+  </footer>-->
 
 
  <script>
@@ -54,6 +66,33 @@
       const current = body.getAttribute('data-theme');
       body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
     }
+
+ function loadComponent(selector, url, fallbackHTML = '') {
+    const container = document.querySelector(selector);
+    if (!container) return;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        return response.text();
+      })
+      .then(html => {
+        container.innerHTML = html;
+      })
+      .catch(error => {
+        console.warn(`Component load failed: ${url}`, error);
+        container.innerHTML = fallbackHTML;
+      });
+  }
+  /* New code for standard footer */
+  loadComponent('#footer-placeholder', 'footer.html', `
+    <footer>
+      <div class="footer-content">
+        <span class="footer-text">© C2C Rides</span>
+      </div>
+    </footer>
+  `);
+
   </script>
 
 </html>
