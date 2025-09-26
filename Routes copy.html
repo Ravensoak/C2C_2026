@@ -4,179 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C2C 2026 - Routes</title>
+    <link rel="stylesheet" href="css/common.css">
     <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
   </head>
  
   <style>
-    :root {
-      --primary: #2c3e50;
-      --accent: #3498db;
-      --bg: #ecf0f1;
-      --text: #171a1d;
-      --hover: #2980b9;
-    }
 
-    body {
-      margin: 0;
-      padding-top: 2rem;
-      font-family: 'Segoe UI', Roboto, sans-serif;
-      background: url("pictures/Morfa-Nefyn-background.png") no-repeat center center;
-      background-size: cover;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow-y: auto;
-      position: relative;
-      transition: background 0.4s ease, color 0.4s ease;
-      /*padding: 0.8rem;*/
-      z-index: 1;
-    }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* dark overlay */
-      z-index: -1;
-    }
 
-    h1,
-    .title-with-lines h1 {
-      font-size: 2.2rem;
-      margin: 1rem 0;
-      text-align: center;
-      color: #F0F0F0;
-      transition: color 0.3s ease;
-      line-height: 1.2;
-    }
-
-    .centered-summary {
-      color: #cfd8e3;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 1rem;
-      max-width: 600px;       /* limits width on larger screens */
-      margin: 0 auto;          /* centers within flex/grid cell */
-      flex: 0 1 auto;          /* prevents unwanted stretching */
-    }
-
-    .title-with-lines {
-      text-align: center;
-      margin: 1rem auto;
-      width: fit-content;
-    }
-
-    .title-with-lines hr {
-      border: none;
-      border-top: 2px solid #f0f0f0;
-      margin-top: 0.25rem;
-    }
-
-/* === Navigation Defaults === */
-    .menu-toggle {
-      display: none; /* hidden on desktop */
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      z-index: 1100;
-      color: var(--menu-icon-color, #fff);
-    }
-    
-    /* Overlay (hidden by default) */
-    .menu-overlay {
-      position: fixed;
-      inset: 0; /* shorthand for top/right/bottom/left = 0 */
-      background: rgba(0,0,0,0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 1040; /* sits just under the mobile menu */
-    }
-
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    /* Mobile menu (on top of overlay) */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 70vw;
-      max-width: 300px;
-      height: 100vh;
-      background: var(--menu-bg, #fff);
-      box-shadow: -2px 0 8px rgba(0,0,0,0.15);
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      padding: 2rem 1rem;
-      z-index: 1050;
-    }
-    .mobile-menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .mobile-menu li {
-      margin-bottom: 1.5rem;
-    }
-    .mobile-menu a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: var(--menu-link-color, #333);
-    }
-
-    /* Active state for mobile menu */
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-
-    /* Desktop nav */
-    .main-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-    .main-nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .main-nav a {
-      text-decoration: none;
-      color: #ecf0f1;
-      font-weight: 500;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-    .main-nav a:hover,
-    .main-nav a:focus {
-      color: var(--hover);
-    }
-
-    /* === Mobile Overrides === */
-    @media (max-width: 700px) {
-      .main-nav {
-        display: none; /* hide desktop nav */
-      }
-      .menu-toggle {
-        display: block; /* show hamburger */
-      }
-      /*body {
-        background-attachment: fixed;
-      }*/
-      
-    }
 
     /* === Professional select box === */
     .controls {
@@ -287,59 +122,15 @@
     .route-card-content a:hover {
       text-decoration: underline;
     }
-
-    /* === Footer === */
-    footer {
-      background-color: #1f2a36;
-      padding: 1rem 0;
-      border-top: 1px solid #3a4a5a;
-      margin-top: auto;
-      width: 100%;
-    }
-
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      padding: 0 1rem;
-    }
-
-    .footer-text {
-      color: #cfd8e3;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    /* === WhatsApp Link === */
-    .whatsapp-link {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: #cfd8e3;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-
-    .whatsapp-label {
-      font-size: 0.95rem;
-    }
-
-    .whatsapp-icon {
-      width: 22px;
-      height: 22px;
-      fill: #a8f0c6;
-      transition: transform 0.2s ease;
-    }
-
-    .whatsapp-link:hover .whatsapp-icon {
-      transform: scale(1.1);
-    }
-
-    .whatsapp-link:hover .whatsapp-label {
+     
+    .route-link {
+      font-size: 0.8em;
+      font-weight: normal;
+      margin-left: 0.5em;
       text-decoration: underline;
+      color: #0077cc; /* or your theme color */
     }
+
 
 
     @keyframes fadeIn {
@@ -374,33 +165,9 @@
         max-height: 60vh;
       }
 
-      .footer-content {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .whatsapp-icon {
-        width: 26px;
-        height: 26px;
-        fill: #b2f5d6;
-      }
-
-      .whatsapp-label {
-        font-size: 1rem;
-      }
-      
-      .footer-text {
-      font-size: 0.9rem;
-      }
     }
 
-    .route-link {
-      font-size: 0.8em;
-      font-weight: normal;
-      margin-left: 0.5em;
-      text-decoration: underline;
-      color: #0077cc; /* or your theme color */
-    }
+   
 
   </style>
 

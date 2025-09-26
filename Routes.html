@@ -232,6 +232,24 @@
     </div>
   </footer>
 
+  <!--New code for standard footer might be best to make it simple if not found-->
+  <!--<div id="footer-placeholder"></div>
+  <script>
+    loadComponent('#footer-placeholder', '/footer.html', `
+      <footer>
+        <div class="footer-content">
+          <span class="footer-text">© C2C Rides</span>
+          <a href="https://chat.whatsapp.com/BdqWB9yBthG91Yl9rVlVQl?mode=ems_copy_h_c" target="_blank" class="whatsapp-link" aria-label="Join WhatsApp group">
+            <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="..."></path> 
+            </svg>
+            <span class="whatsapp-label">Join WhatsApp Group</span>
+          </a>
+        </div>
+      </footer>
+    `);
+  </script>-->
+
   <script>
     const routeData = {
       1: [
@@ -518,6 +536,24 @@
 
   // Close when overlay is clicked
   overlay.addEventListener('click', toggleMenu);
+
+  function loadComponent(selector, url, fallbackHTML = '') {
+    const container = document.querySelector(selector);
+    if (!container) return;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        return response.text();
+      })
+      .then(html => {
+        container.innerHTML = html;
+      })
+      .catch(error => {
+        console.warn(`Component load failed: ${url}`, error);
+        container.innerHTML = fallbackHTML;
+      });
+  }
 
   </script>
 </html>
