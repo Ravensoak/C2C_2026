@@ -270,10 +270,12 @@
       <p id="themanor2H"></p>
     </div>
   </div>
+
+  <div id="footer-placeholder"></div>
   </body>
 
   
-
+  <!-- old footer content
   <footer>
     <div class="footer-content">
       <span class="footer-text">© C2C Rides</span>
@@ -285,6 +287,7 @@
       </a>
     </div>
   </footer>
+  -->
 
   <script>
     const sheetData = [
@@ -365,5 +368,31 @@ function updateOutput() {
   // Run updateOutput when name is selected
   nameSelector.addEventListener("change", updateOutput);
     
+
+   function loadComponent(selector, url, fallbackHTML = '') {
+    const container = document.querySelector(selector);
+    if (!container) return;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        return response.text();
+      })
+      .then(html => {
+        container.innerHTML = html;
+      })
+      .catch(error => {
+        console.warn(`Component load failed: ${url}`, error);
+        container.innerHTML = fallbackHTML;
+      });
+  }
+  /* New code for standard footer */
+  loadComponent('#footer-placeholder', 'footer.html', `
+    <footer>
+      <div class="footer-content">
+        <span class="footer-text">© C2C Rides</span>
+      </div>
+    </footer>
+  `);
   </script>  
 </html>
