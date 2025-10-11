@@ -228,21 +228,42 @@
   object-fit: cover;    /* crops excess while preserving aspect ratio */
   border-radius: 8px;
 }
+
+.lightbox-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.lightbox-image-wrapper img {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .lightbox-close {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
   color: #fff;
-  background: transparent;
+  background: rgba(0,0,0,0.5);
   border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
-  z-index: 10000;
-  transition: color 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
 }
+
 
 .lightbox-close:hover {
   color: #ccc;
+  background: rgba(255,255,255,0.3);
 }
    
 
@@ -297,13 +318,15 @@
 
     <div id="routeGrid" class="flex-grid"></div>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-                <div class="lightbox-content" onclick="event.stopPropagation()">
-                  <button class="lightbox-close" onclick="closeLightbox()">×</button>
-                  <img id="lightbox-img" src="" alt="">
-                  <p id="lightbox-caption"></p>
-                </div>
-              </div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <div class="lightbox-image-wrapper">
+          <button class="lightbox-close" onclick="closeLightbox()">×</button>
+          <img id="lightbox-img" src="" alt="">
+        </div>
+        <p id="lightbox-caption"></p>
+      </div>
+    </div>
 
     <div id="footer-placeholder"></div>
   </body>
