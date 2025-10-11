@@ -206,6 +206,17 @@
   max-height: 90%;
   border-radius: 8px;
 }
+.lightbox-content {
+  text-align: center;
+  color: #fff;
+}
+
+.lightbox-content p {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-style: italic;
+  color: #ddd;
+}
    
 
   </style>
@@ -300,14 +311,18 @@
                 <li>41 miles - Multiple cafes in Porthmadog</li>
               </ul>
               <div class="thumbnail-gallery">
-                <img src="pictures/Conwy.jpg" alt="Thumbnail 1" onclick="openLightbox(this)">
-                <img src="pictures/Gelert.jpg" alt="Thumbnail 2" onclick="openLightbox(this)">
-                <img src="pictures/Criccieth.jpg" alt="Thumbnail 3" onclick="openLightbox(this)">
+                <img src="pictures/Conwy.jpg" alt="Conwy" onclick="openLightbox(this)">
+                <img src="pictures/Gelert.jpg" alt="Gelert" onclick="openLightbox(this)">
+                <img src="pictures/Criccieth.jpg" alt="Criccieth" onclick="openLightbox(this)">
               </div>
 
               <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-                <img id="lightbox-img" src="" alt="Enlarged image">
+                <div class="lightbox-content" onclick="event.stopPropagation()">
+                  <img id="lightbox-img" src="" alt="">
+                  <p id="lightbox-caption"></p>
+                </div>
               </div>
+
 
           `,
           link: 'https://ridewithgps.com/routes/52509283'
@@ -328,9 +343,13 @@
                 <li>43 miles - Seaview Cafe Bistro & Coffee Lounge, Borth-y-Gest</li>
               </ul>
               <div class="thumbnail-gallery">
-                <img src="pictures/Conwy.jpg" alt="Thumbnail 1">
-                <img src="pictures/Gelert.jpg" alt="Thumbnail 2">
-                <img src="pictures/Criccieth.jpg" alt="Thumbnail 3">
+                <img src="pictures/Conwy.jpg" alt="Thumbnail 1" onclick="openLightbox(this)">
+                <img src="pictures/Gelert.jpg" alt="Thumbnail 2" onclick="openLightbox(this)">
+                <img src="pictures/Criccieth.jpg" alt="Thumbnail 3" onclick="openLightbox(this)">
+              </div>
+
+              <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <img id="lightbox-img" src="" alt="Enlarged image">
               </div>
           `,
           link: 'https://ridewithgps.com/routes/51176598'
@@ -352,9 +371,13 @@
                 <li>56 miles - Seaview Cafe Bistro & Coffee Lounge, Borth-y-Gest</li>
               </ul>
               <div class="thumbnail-gallery">
-                <img src="pictures/Conwy.jpg" alt="Thumbnail 1">
-                <img src="pictures/Gelert.jpg" alt="Thumbnail 2">
-                <img src="pictures/Criccieth.jpg" alt="Thumbnail 3">
+                <img src="pictures/Conwy.jpg" alt="Thumbnail 1" onclick="openLightbox(this)">
+                <img src="pictures/Gelert.jpg" alt="Thumbnail 2" onclick="openLightbox(this)">
+                <img src="pictures/Criccieth.jpg" alt="Thumbnail 3" onclick="openLightbox(this)">
+              </div>
+
+              <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <img id="lightbox-img" src="" alt="Enlarged image">
               </div>
           `,
           link: 'https://ridewithgps.com/routes/51657762'
@@ -615,10 +638,15 @@
     </footer>
   `);
 
-  function openLightbox(img) {
+ function openLightbox(img) {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
+
   lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  caption.textContent = img.alt;
+
   lightbox.style.display = 'flex';
 }
 
