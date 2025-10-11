@@ -241,11 +241,26 @@
   border-radius: 8px;
   display: block;
 }
+.image-container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 
 .lightbox-close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 10px;
   font-size: 1.5rem;
   color: #fff;
   background: rgba(0,0,0,0.6);
@@ -322,8 +337,10 @@
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
       <div class="lightbox-content" onclick="event.stopPropagation()">
         <div class="lightbox-image-wrapper">
-          <img id="lightbox-img" src="" alt="">
           <button class="lightbox-close" onclick="closeLightbox()">×</button>
+          <div class="image-container">
+            <img id="lightbox-img" src="" alt="">
+          </div>
         </div>
         <p id="lightbox-caption"></p>
       </div>
