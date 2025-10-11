@@ -165,7 +165,10 @@
         aspect-ratio: auto;
         max-height: 60vh;
       }
-
+      .lightbox-content img {
+        width: 90vw;
+        height: auto;
+      }
     }
 .thumbnail-gallery {
   display: flex;
@@ -207,6 +210,8 @@
   border-radius: 8px;
 }
 .lightbox-content {
+  max-width: 640px;
+  max-height: 480px;
   text-align: center;
   color: #fff;
 }
@@ -216,6 +221,12 @@
   font-size: 1rem;
   font-style: italic;
   color: #ddd;
+}
+.lightbox-content img {
+  width: 600px;         /* or any fixed width you prefer */
+  height: 400px;        /* ensures consistent height */
+  object-fit: cover;    /* crops excess while preserving aspect ratio */
+  border-radius: 8px;
 }
    
 
