@@ -228,6 +228,22 @@
   object-fit: cover;    /* crops excess while preserving aspect ratio */
   border-radius: 8px;
 }
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+  color: #ccc;
+}
    
 
   </style>
@@ -283,6 +299,7 @@
 
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
                 <div class="lightbox-content" onclick="event.stopPropagation()">
+                  <button class="lightbox-close" onclick="closeLightbox()">×</button>
                   <img id="lightbox-img" src="" alt="">
                   <p id="lightbox-caption"></p>
                 </div>
