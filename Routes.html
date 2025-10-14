@@ -205,6 +205,9 @@
       z-index: 9999;
       cursor: zoom-out;
     }
+    .lightbox.active {
+      display: flex;
+    }
 
     .lightbox-content {
       position: relative;
@@ -775,20 +778,20 @@
     </footer>
   `);
 
- function openLightbox(img) {
+ function openLightbox(src, caption) {
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('lightbox-caption');
+  const img = document.getElementById('lightbox-img');
+  const captionText = document.getElementById('lightbox-caption');
 
-  lightboxImg.src = img.src;
-  lightboxImg.alt = img.alt;
-  caption.textContent = img.alt;
-
-  lightbox.style.display = 'flex';
+  img.src = src;
+  captionText.textContent = caption || '';
+  lightbox.classList.add('active'); // show lightbox
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active'); // hide lightbox
 }
+
   </script>
 </html>
