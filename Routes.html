@@ -193,6 +193,7 @@
 
     /* Lightbox container */
     .lightbox {
+      display: none; /* hidden by default */
       position: fixed;
       top: 0;
       left: 0;
@@ -779,19 +780,20 @@
   `);
 
  function openLightbox(src, caption) {
-  const lightbox = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  const captionText = document.getElementById('lightbox-caption');
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const captionText = document.getElementById("lightbox-caption");
 
   img.src = src;
-  captionText.textContent = caption || '';
-  lightbox.classList.add('active'); // show lightbox
+  captionText.textContent = caption || "";
+  lightbox.classList.add("active");
 }
 
 function closeLightbox() {
-  const lightbox = document.getElementById('lightbox');
-  lightbox.classList.remove('active'); // hide lightbox
+  const lightbox = document.getElementById("lightbox");
+  lightbox.classList.remove("active");
 }
+
 
   </script>
 </html>
