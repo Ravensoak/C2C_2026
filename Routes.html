@@ -276,14 +276,21 @@
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
 
       <!-- Mobile slide-out menu -->
-      <nav class="mobile-menu" aria-label="Mobile Navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="meals.html">Meals</a></li>
-          <li><a href="routes.html">Routes</a></li>
-        </ul>
-      </nav>
+     <nav class="mobile-menu" aria-label="Mobile Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="routes.html">Routes</a></li>
+        <li>
+          <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Utilities</button>
+          <ul class="submenu">
+            <li><a href="Routes.html">Add to Home Screen – iOS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
       <!-- Overlay -->
       <div class="menu-overlay"></div>
 
@@ -294,8 +301,15 @@
           <li><a href="accommodation.html">Accommodation</a></li>
           <li><a href="meals.html">Meals</a></li>
           <li><a href="routes.html">Routes</a></li>
+          <li class="has-submenu">
+            <a href="#">Utilities</a>
+            <ul class="submenu">
+              <li><a href="add-to-home-ios.html">Add to Home Screen – iOS</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
+
     </header>
 
     <div class="title-with-lines">
