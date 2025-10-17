@@ -300,7 +300,24 @@
       content: " ▼";
       font-size: 0.8em;
     }
-   
+   /* Ensure parent is positioned for submenu placement */
+.main-nav .has-submenu {
+  position: relative;
+}
+
+/* Hide submenu by default */
+.main-nav .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  min-width: 200px;
+  z-index: 1000;
+}
+
 
   </style>
 
