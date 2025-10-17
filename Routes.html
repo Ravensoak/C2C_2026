@@ -305,18 +305,20 @@
   position: relative;
 }
 
-/* Hide submenu by default */
+/* Submenu container */
 .main-nav .submenu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: transparent; /* No white block */
   min-width: 200px;
   z-index: 1000;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
+
 
 .main-nav .submenu a {
   text-decoration: none;
@@ -333,6 +335,39 @@
   color: #ffffff; /* Optional: slightly brighter on hover */
   background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
 }
+
+/* Show submenu on hover */
+.main-nav .has-submenu {
+  position: relative;
+}
+
+.main-nav .has-submenu:hover .submenu {
+  display: block;
+}
+
+/* Submenu links styled like main nav */
+.main-nav .submenu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #ecf0f1;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background-color: transparent;
+}
+
+/* Hover effect */
+.main-nav .submenu a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1); /* Optional subtle highlight */
+}
+
+/* Divider between submenu items */
+.main-nav .submenu li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Light divider line */
+}
+
 
 
   </style>
