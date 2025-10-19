@@ -403,6 +403,27 @@
       }  
     }
 
+    #splash-screen {
+      position: fixed;
+      inset: 0;
+      background-color: #0d47a1; /* C2C blue */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+
+    #splash-screen img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
     @media (max-width: 700px) {
       /* Switch to mobile nav */
       .main-nav {
