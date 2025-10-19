@@ -63,19 +63,19 @@
 
     <div id="splash-screen">
       <img src="/graphics/icon-192.png" alt="C2C Rides Logo">
-      <h1>Welcome to the C2C Information Hub</h1>
+      <h1>Welcome to the 2026 C2C Information Hub</h1>
     </div>
 
     <script>
-      // Hide splash after 1.5 seconds (or when app ready)
+      // Hide splash after 1 second (or when app ready)
       window.addEventListener("load", () => {
         setTimeout(() => {
           document.getElementById("splash-screen").style.opacity = "0";
           setTimeout(() => document.getElementById("splash-screen").style.display = "none", 600);
-        }, 1500);
+        }, 1000);
       });
     </script>
-    
+
     <header>
       <div class="logo-container">
         <img src="/graphics/c2cRIDESlogoblack.png" alt="C2C Ride Logo" class="logo" />
