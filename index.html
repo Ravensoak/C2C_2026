@@ -23,7 +23,7 @@
     }
 
     #refreshButton {
-      display: none; /* hidden by default */
+      display: none;
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -31,7 +31,7 @@
       height: 56px;
       border-radius: 50%;
       border: none;
-      background: #1a73e8;
+      background: #003366; /* C2C navy */
       color: white;
       font-size: 24px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -39,12 +39,20 @@
       justify-content: center;
       cursor: pointer;
       z-index: 1000;
-      transition: background 0.2s ease;
+      opacity: 0;
+      transition: opacity 0.5s ease, background 0.2s ease, transform 0.2s ease;
     }
 
-#refreshButton:hover {
-  background: #155ab6;
-}
+    #refreshButton.visible {
+      opacity: 1;
+    }
+
+    #refreshButton:hover {
+      background: #0055aa; /* lighter hover blue */
+      transform: scale(1.1);
+    }
+
+
   
   </style>
  
@@ -105,22 +113,39 @@
           .then(() => console.log('Service Worker registered'));
       }
     </script>
-    <!-- Floating Refresh Button -->
-    <button id="refreshButton" title="Refresh">
-      🔄
-    </button>
+    
+      <!-- Floating Refresh Button -->
+    <button id="refreshButton" title="Refresh">🔄</button>
 
-    <script>
-      // Only show button when running as PWA (standalone)
-      if (window.matchMedia('(display-mode: standalone)').matches) {
-        document.getElementById('refreshButton').style.display = 'flex';
-      }
+  <script>
+    const btn = document.getElementById('refreshButton');
+    let hideTimer;
+
+    // Only show when running as a standalone PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      btn.style.display = 'flex';
+      setTimeout(() => btn.classList.add('visible'), 100);
 
       // Reload when tapped
-      document.getElementById('refreshButton').addEventListener('click', () => {
-        window.location.reload();
-      });
-    </script>
+      btn.addEventListener('click', () => window.location.reload());
+
+      // Hide after 5 seconds of inactivity
+      function resetHideTimer() {
+        btn.classList.add('visible');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => btn.classList.remove('visible'), 5000);
+      }
+
+      // Detect activity (tap, scroll, move)
+      ['mousemove', 'scroll', 'touchstart'].forEach(evt =>
+        document.addEventListener(evt, resetHideTimer)
+      );
+
+      resetHideTimer(); // start hiding timer
+    }
+  </script>
+
+
 
 
   </body> 
