@@ -25,7 +25,7 @@
       <h1>Llyn Peninsula and Anglessey 2026</h1>
           <p>4th June - 8th June 2026</p>
     </header>
-    
+
     <!-- new code  
       <!-- Hamburger toggle -->
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
@@ -107,6 +107,40 @@
         container.innerHTML = fallbackHTML;
       });
   }
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay');
+
+
+    function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    }
+
+  // Open/close on hamburger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Close when overlay is clicked
+  overlay.addEventListener('click', toggleMenu);
+
+  function loadComponent(selector, url, fallbackHTML = '') {
+    const container = document.querySelector(selector);
+    if (!container) return;
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error(`Failed to load ${url}`);
+        return response.text();
+      })
+      .then(html => {
+        container.innerHTML = html;
+      })
+      .catch(error => {
+        console.warn(`Component load failed: ${url}`, error);
+        container.innerHTML = fallbackHTML;
+      });
+  }
+
   /* New code for standard footer */
   loadComponent('#footer-placeholder', 'footer.html', `
     <footer>
@@ -115,6 +149,7 @@
       </div>
     </footer>
   `);
+
 
   </script>
 
