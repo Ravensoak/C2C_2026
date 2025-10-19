@@ -21,6 +21,30 @@
       margin-top: auto;
       width: 100%; 
     }
+
+    #refreshButton {
+      display: none; /* hidden by default */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: #1a73e8;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.2s ease;
+    }
+
+#refreshButton:hover {
+  background: #155ab6;
+}
   
   </style>
  
@@ -81,6 +105,23 @@
           .then(() => console.log('Service Worker registered'));
       }
     </script>
+    <!-- Floating Refresh Button -->
+    <button id="refreshButton" title="Refresh">
+      🔄
+    </button>
+
+    <script>
+      // Only show button when running as PWA (standalone)
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        document.getElementById('refreshButton').style.display = 'flex';
+      }
+
+      // Reload when tapped
+      document.getElementById('refreshButton').addEventListener('click', () => {
+        window.location.reload();
+      });
+    </script>
+
 
   </body> 
 
