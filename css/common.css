@@ -244,3 +244,33 @@
         font-size: 0.9rem;
         }
     }
+
+    #refreshButton {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: #003366; /* C2C navy */
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.5s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    #refreshButton.visible {
+      opacity: 1;
+    }
+
+    #refreshButton:hover {
+      background: #0055aa; /* lighter hover blue */
+      transform: scale(1.1);
+    }

@@ -457,6 +457,37 @@
 
 
     <div id="footer-placeholder"></div>
+  <!-- Floating Refresh Button -->
+    <button id="refreshButton" title="Refresh">🔄</button>
+
+  <script>
+    const btn = document.getElementById('refreshButton');
+    let hideTimer;
+
+    // Only show when running as a standalone PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      btn.style.display = 'flex';
+      setTimeout(() => btn.classList.add('visible'), 100);
+
+      // Reload when tapped
+      btn.addEventListener('click', () => window.location.reload());
+
+      // Hide after 5 seconds of inactivity
+      function resetHideTimer() {
+        btn.classList.add('visible');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => btn.classList.remove('visible'), 5000);
+      }
+
+      // Detect activity (tap, scroll, move)
+      ['mousemove', 'scroll', 'touchstart'].forEach(evt =>
+        document.addEventListener(evt, resetHideTimer)
+      );
+
+      resetHideTimer(); // start hiding timer
+    }
+  </script>
+
   </body>
   <!--< old footer html>
   <footer>  
