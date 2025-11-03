@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Install C2C Rides Shortcut</title>
+  <title>Install 2026 C2C Rides</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -13,70 +13,68 @@
     }
     h1 { color: #222; }
     p { color: #555; max-width: 420px; margin: 10px auto; }
+    .qr {
+      margin: 30px auto;
+      width: 200px;
+      height: 200px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-top: 10px;
+      background: #007aff;
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    .note {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #444;
+    }
+    .steps {
+      text-align: left;
+      display: inline-block;
+      margin: 0 auto;
+      max-width: 300px;
+      padding-left: 1em;
+    }
+    .steps li {
+      margin-bottom: 0.5em;
+      }
     
-   .note {
-    font-family: sans-serif;
-    line-height: 1.5;
-    text-align: center;
-    padding: 1em;
-  }
-
-  .browser-option {
-    margin-bottom: 2em;
-  }
-
-  .browser-option h3 {
-    margin-bottom: 0.5em;
-    font-size: 1.1em;
-    font-weight: bold;
-  }
-
-  .steps {
-    text-align: left;
-    display: inline-block;
-    margin: 0 auto;
-    max-width: 300px;
-    padding-left: 1em;
-  }
-
-  .steps li {
-    margin-bottom: 0.5em;
-  }
   </style>
-
+  <script>
+    function openShortcut() {
+      // Step 1: open iCloud shortcut install link
+      window.location.href = "https://www.icloud.com/shortcuts/32c9e23abc104343b56267d8e8c09add";
+      // Step 2: after a short delay, open Shortcuts app (if available)
+      setTimeout(() => {
+        window.location.href = "shortcuts://";
+      }, 2500);
+    }
+  </script>
 </head>
 <body>
+
+  
+
   <h1>Install 2026 C2C Rides</h1>
-  <p>Follow one of the options below to install this site to your Android device.</p>
+  <p>Follow the instructions below to install this site as an App on your Android device.</p>
 
+  
   <div class="note">
-    <div class="browser-option">
-      <h3>Option 1: Using Chrome (recommended)</h3>
-      <ol class="steps">
-        <li>Open <b>Google Chrome</b> on your Android device.</li>
-        <li>Go to https://c2c2026.netlify.app.</li>
-        <li>Wait a few seconds, until you see a prompt at the bottom of the screen: <b>"Install app"</b> or <b>"Add C2C Rides to Home screen"</b>.</li>
-        <li>Tap <b>Install</b>.</li>
-        <li>Done ✅ You now have an icon on your home page for a one-tap opening of the 2026 C2C Rides site.</li>
-      </ol>
-    </div>
-
-    <div class="browser-option">
-      <h3>Option 2: Manual install (if no prompt appears)</h3>
-      <ol class="steps">
-        <li>Go to https://c2c2026.netlify.app.</li>
-        <li>Tap the <b>three dot menu (⋮)</b> in the top right corner of Chrome</li>        
-        <li>Choose <b>"Install app"</b> or <b>"Add to Home screen"</b>.</li>
-        <li>Tap <b>"Add"</b> → choose where you want the icon.</li>
-        <li>Done ✅ You now have an icon on your home page for a one-tap opening of the 2026 C2C Rides site.</li>
-      </ol>
-    </div>
+    <ol class="steps">
+      <li>Open c2c2026.netlify.app in <b>Google Chrome on your Android device</b>.</li>
+      <li>Tap the <b>three dot menu (⋮)</b> in the top right corner of Chrome</li>
+      <li>Choose <b>"Install app"</b> or <b>"Add to Home screen"</b>.</li>
+      <li>Tap <b>"Add"</b> → choose where you want the icon.</li>
+      <li>Done ✅ You now have an icon on your home page for a one-tap opening of the 2026 C2C Rides site.</li>
+    </ol>
   </div>
-
   <br>
   <a href="#" onclick="window.history.length > 1 ? history.back() : window.location.href='index.html'; return false;">← Back</a>
-
-
   <p style="margin-top:40px;color:#888;font-size:14px;">2026 C2C Rides</p>
 </body>
 </html>
