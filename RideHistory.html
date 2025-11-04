@@ -104,7 +104,18 @@
       margin-top: auto;
       width: 100%; 
     }
-    
+    /* Add padding to sides on small screens */
+@media (max-width: 768px) {
+  body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .accordion {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
   </style>
   
