@@ -171,36 +171,39 @@
 
 /* === Footer === */
     footer {
-        background-color: #1f2a36;
-        padding: 1rem 0;
-        border-top: 1px solid #3a4a5a;
-        margin-top: auto;
-        width: 100%;
+        width: 100vw;                  /* span full viewport width */
+        position: relative;
+        left: 50%;                     /* align back to viewport center */
+        right: 50%;
+        margin-left: -50vw;            /* cancel body padding or centering */
+        margin-right: -50vw;
+        background: var(--accent, #1f2a36);
+        color: #fff;
+        padding: 1.2rem 0;
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
     }
 
     .footer-content {
+        max-width: 900px;              /* constrain internal content */
+        margin: 0 auto;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
     .footer-text {
-        color: #cfd8e3;
-        font-size: 0.95rem;
-        text-align: center;
+        font-weight: 500;
     }
 
     /* === Footer WhatsApp Link === */
     .whatsapp-link {
         display: flex;
         align-items: center;
-        gap: 0.4rem;
-        color: #cfd8e3;
+        gap: 0.5rem;
+        color: #25D366;
         text-decoration: none;
-        font-size: 0.95rem;
+        transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .whatsapp-label {
@@ -210,12 +213,12 @@
     .whatsapp-icon {
         width: 22px;
         height: 22px;
-        fill: #a8f0c6;
-        transition: transform 0.2s ease;
-    }
+        fill: currentColor;
+            }
 
     .whatsapp-link:hover .whatsapp-icon {
-        transform: scale(1.1);
+        transform: scale(1.05);
+        opacity: 0.9;
     }
 
     .whatsapp-link:hover .whatsapp-label {
