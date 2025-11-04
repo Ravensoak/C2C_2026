@@ -115,12 +115,18 @@
     margin-left: 0;
     margin-right: 0;
   }
+  /* Footer should ignore body padding */
   footer {
-    width: 100vw;           /* full viewport width */
-    margin-left: 0;          /* reset any left/right margins */
-    margin-right: 0;
-    padding-left: 1.2rem;    /* optional internal padding */
-    padding-right: 1.2rem;   /* optional internal padding */
+    width: 100%;             /* full width of parent (body) */
+    margin: 0;               /* reset margins */
+    padding-left: 0;         /* remove left padding from body */
+    padding-right: 0;        /* remove right padding from body */
+    box-sizing: border-box;  /* include padding/border in width */
+  }
+
+  .footer-content {
+    padding-left: 1rem;      /* optional internal spacing for content */
+    padding-right: 1rem;
   }
 }
 
