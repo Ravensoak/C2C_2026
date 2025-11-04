@@ -171,13 +171,15 @@
 
 /* === Footer === */
     footer {
-        width: 100%;                       /* safer than 100vw — avoids scrollbar overflow */
-        background-color: #1f2a36
-        color: #fff;
-        padding: 1.2rem 0;
-        box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-        position: relative;
-    }
+  width: 100%;
+  background-color: #1f2a36;
+  color: #fff;
+  padding: 1rem 0;
+  border-top: 1px solid #3a4a5a;
+  margin-top: auto;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
 .footer-content {
   max-width: 900px;                  /* constrain internal content */
@@ -214,6 +216,7 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+/* Hover Effects */
 .whatsapp-link:hover {
   transform: scale(1.05);
   opacity: 0.9;
@@ -246,6 +249,7 @@
     font-size: 0.9rem;
   }
 }
+
 
 
     #refreshButton {
