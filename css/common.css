@@ -182,14 +182,18 @@
 }
 
 .footer-content {
-  max-width: 900px;                  /* constrain internal content */
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;     /* stack items vertically */
+  justify-content: center;
+  align-items: center;        /* center horizontally */
+  text-align: center;         /* center text inside */
+  gap: 0.5rem;
   padding: 0 2rem;
   box-sizing: border-box;
 }
+
 
 .footer-text {
   font-weight: 500;
