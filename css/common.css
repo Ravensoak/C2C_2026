@@ -185,11 +185,10 @@
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;     /* stack items vertically */
-  justify-content: center;
-  align-items: center;        /* center horizontally */
-  text-align: center;         /* center text inside */
-  gap: 0.5rem;
+  justify-content: center;      /* center the entire row */
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;                  /* space between text and link */
   padding: 0 2rem;
   box-sizing: border-box;
 }
@@ -197,6 +196,7 @@
 
 .footer-text {
   font-weight: 500;
+  text-align: center;
 }
 
 /* === Footer WhatsApp Link === */
@@ -236,7 +236,7 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 0 1rem;
-    text-align: center;
+    
   }
 
   .whatsapp-icon {
