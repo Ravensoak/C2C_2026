@@ -9,7 +9,7 @@
   <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/common.css">
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
@@ -64,6 +64,130 @@
     #refreshButton:hover {
       background: #0055aa; /* lighter hover blue */
       transform: scale(1.1);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+    
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      background: var(--accent);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      background: var(--hover);
+    }
+
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo {
+      width: clamp(100px, 10vw, 140px); /* responsive sizing */
+      height: auto;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      will-change: transform, filter;
+      display: block;
+      margin: 0 auto; /* centers logo if needed */
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); /* slightly deeper on hover */
+    }
+
+
+    /* === Responsive ===*/
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .btn {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+      }
+      
+    } 
+
+
+
+    #splash-screen {
+      position: fixed;
+      inset: 0;
+      background-color: #0d47a1; /* C2C blue */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+      padding: 0 1.5rem;
+    }
+
+    #splash-screen img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 700px) {
+      /* Switch to mobile nav */
+      .main-nav {
+        display: none; /* hide desktop nav */
+      }
+      .menu-toggle {
+        display: block; /* show hamburger */
+      }
+    }
+    @media (max-width: 320px) {
+      /* Ultra-narrow: fallback to single column */
+      .hotel-container {
+        grid-template-columns: 1fr;
+      }
     }
 
 
