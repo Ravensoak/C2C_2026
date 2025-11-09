@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1f2a36">
     <title>C2C 2026 - Routes</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="icon" href="graphics/favicon-32x32.png" type="image/png">
@@ -265,8 +266,113 @@
       max-width: 90vw;
       line-height: 1.4;
     }
+    /* Ensure submenu is hidden by default */
+    .main-nav .has-submenu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  min-width: 200px;
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+}
 
-   
+    /* Show submenu on hover */
+    .main-nav .has-submenu:hover .submenu {
+      display: block;
+    }
+
+    /* Optional: style submenu items */
+    .main-nav .submenu li a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #ffffff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .main-nav .submenu li a:hover {
+      /*background-color: #f0f0f0;*/
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .has-submenu > a::after {
+      content: " ▼";
+      font-size: 0.8em;
+    }
+   /* Ensure parent is positioned for submenu placement */
+.main-nav .has-submenu {
+  position: relative;
+}
+
+/* Submenu container */
+.main-nav .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: transparent; /* No white block */
+  min-width: 200px;
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+
+.main-nav .submenu a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+}
+
+.main-nav .submenu a:hover {
+  color: #ffffff; /* Optional: slightly brighter on hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+}
+
+/* Show submenu on hover */
+.main-nav .has-submenu {
+  position: relative;
+}
+
+.main-nav .has-submenu:hover .submenu {
+  display: block;
+}
+
+/* Submenu links styled like main nav */
+.main-nav .submenu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #ecf0f1;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background-color: transparent;
+}
+
+/* Hover effect */
+.main-nav .submenu a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1); /* Optional subtle highlight */
+}
+
+/* Divider between submenu items */
+.main-nav .submenu li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Light divider line */
+}
+
+
 
   </style>
 
@@ -276,14 +382,24 @@
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
 
       <!-- Mobile slide-out menu -->
-      <nav class="mobile-menu" aria-label="Mobile Navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="accommodation.html">Accommodation</a></li>
-          <li><a href="meals.html">Meals</a></li>
-          <li><a href="routes.html">Routes</a></li>
-        </ul>
-      </nav>
+     <nav class="mobile-menu" aria-label="Mobile Navigation">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="accommodation.html">Accommodation</a></li>
+        <li><a href="meals.html">Meals</a></li>
+        <li><a href="routes.html">Routes</a></li>
+        <!-- sub menu coide commented out for mobile
+        <li>
+          <button class="submenu-toggle" aria-haspopup="true" aria-expanded="false">Utilities</button>
+          <ul class="submenu">
+            <li><a href="AddHomeScreeniOS.html" target="_blank" rel="noopener noreferrer">Add this site to Home Screen – Apple</a></li>
+            <li><a href="AddHomeScreeniOS.html" target="_blank" rel="noopener noreferrer">Add this site to Home Screen – Android</a></li>
+          </ul>
+        </li>
+        -->
+      </ul>
+    </nav>
+
       <!-- Overlay -->
       <div class="menu-overlay"></div>
 
@@ -294,8 +410,18 @@
           <li><a href="accommodation.html">Accommodation</a></li>
           <li><a href="meals.html">Meals</a></li>
           <li><a href="routes.html">Routes</a></li>
+          <!--sub menu code commented out for desktop>
+          <li class="has-submenu">
+            <a href="#">Utilities</a>
+            <ul class="submenu">
+              <li><a href="AddHomeScreeniOS.html" target="_blank" rel="noopener noreferrer">Add this site to Home Screen – Apple</a></li>
+              <li><a href="AddHomeScreeniOS.html" target="_blank" rel="noopener noreferrer">Add this site to Home Screen – Android</a></li>
+            </ul>
+          </li>
+        -->
         </ul>
       </nav>
+
     </header>
 
     <div class="title-with-lines">
@@ -331,6 +457,39 @@
 
 
     <div id="footer-placeholder"></div>
+ 
+  
+    <!-- Floating Refresh Button -->
+    <button id="refreshButton" title="Refresh">🔄</button>
+
+  <script>
+    const btn = document.getElementById('refreshButton');
+    let hideTimer;
+
+    // Only show when running as a standalone PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      btn.style.display = 'flex';
+      setTimeout(() => btn.classList.add('visible'), 100);
+
+      // Reload when tapped
+      btn.addEventListener('click', () => window.location.reload());
+
+      // Hide after 5 seconds of inactivity
+      function resetHideTimer() {
+        btn.classList.add('visible');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => btn.classList.remove('visible'), 5000);
+      }
+
+      // Detect activity (tap, scroll, move)
+      ['mousemove', 'scroll', 'touchstart'].forEach(evt =>
+        document.addEventListener(evt, resetHideTimer)
+      );
+
+      resetHideTimer(); // start hiding timer
+    }
+  </script>
+
   </body>
   <!--< old footer html>
   <footer>  
@@ -428,7 +587,7 @@
             <p>This route is similar to the medium route but diverts to Llanberis and rides around the East, North and West sides of Snowdon.</p>
             <p>This route makes its way to Betws-y-Coed and follows quiet country lanes to Capel Curig, offering a gentle introduction into the heart of Snowdonia. From here, the path turns toward Snowdon (Yr Wyddfa), whose dramatic summit dominates the horizon — weather permitting!</p>
             <p>At the Llanberis junction, the route leaves the medium version and climbs through the eastern approach to the Llanberis Pass before descending into the village of Llanberis, where several cafés provide a welcome break. The journey then skirts the northern and western flanks of Snowdon, passing through Rhyd-Ddu and continuing on to Beddgelert, another charming village with ample café options. If time allows, a visit to Gelert’s grave offers a poignant insight into one of Wales’s most enduring fables. From Beddgelert, the route follows the Welsh Highland Railway and the scenic river valley to Nantmor, before leaving the main road and heading toward Garreg.</p>
-            <p>After passing through Penrhyndeudraeth, the route joins the cycle path across the Cob embankment into Porthmadog. A short climb through the back streets leads to the picturesque cove of Borth-y-Gest. A stepped descent brings you to the shoreline, where the path loops around the cove and ascends to a panoramic viewpoint. The route then turns west toward Morfa Bychan and Black Rock Sands, following quiet country lanes with sweeping coastal vistas before rejoining the main road.</p>
+            <p>After passing through Penrhyndeudraeth, the route joins the cycle path across the Cob embankment into Porthmadog. A short climb through the back streets leads to the picturesque cove of Borth-y-Gest. A stepped descent brings you to the shoreline, where the path loops around the cove to a panoramic viewpoint. The route then turns west toward Morfa Bychan and Black Rock Sands, following quiet country lanes with sweeping coastal vistas before rejoining the main road.</p>
             <p>The final stretch leads to Criccieth, where riders are rewarded with a stunning view of the town and its iconic castle overlooking the sea.</p>
             <span>Possible cafe stops are:</span>
               <ul>
@@ -547,7 +706,7 @@
            description: `
             <p>Choose this route if you want a more relaxed cycling pace with less distance and climbing.</p>
             <p>The route begins with a steady climb out of Nefyn to the village of Llithfaen, where expansive views across the Llŷn Peninsula reward the effort. From there, it descends into Llanaelhaearn before continuing along quiet country lanes and a scenic stretch of disused railway line en route to Pen-y-groes.</p>
-            <p>A brief detour from the main cycle route leads to a local café — an ideal spot for a refreshment break before rejoining the route and heading toward Caernarfon. Here, the path loops around the historic castle and follows the shoreline and marina via dedicated cycle paths, offering a relaxed and picturesque ride.</p>
+            <p>A brief detour from the main cycle route leads to Pant Du Vineyard and Cafe — an ideal spot for a refreshment break before rejoining the route and heading toward Caernarfon. Here, the path loops around the historic castle and follows the shoreline and marina via dedicated cycle paths, offering a relaxed and picturesque ride.</p>
             <p>Upon reaching Bangor, the route crosses the iconic Menai Bridge and continues along the coastal road, concluding at the accommodation in Beaumaris — a charming seaside town steeped in history and character.</p>
             <span>Possible cafe stops are:</span>
               <ul>
@@ -573,7 +732,7 @@
            description: `
             <p>This route is similar to the short route but has an extra few miles after Beaumaris where it carries on to Trwyn Penmon Point before returning to the accommodation in Beaumaris.</p>
             <p>The route begins with a steady climb out of Nefyn to the village of Llithfaen, where expansive views across the Llŷn Peninsula reward the ascent. From there, it descends into Llanaelhaearn before continuing along quiet country lanes and a scenic stretch of disused railway line en route to Pen-y-groes.</p>
-            <p>A short detour from the main cycle route leads to a local café — an ideal stop for refreshments before rejoining the route and continuing toward Caernarfon. Here, the path loops around the town’s iconic castle and follows dedicated cycle paths along the shoreline and marina, offering a relaxed and picturesque ride toward Bangor.</p>
+            <p>A short detour from the main cycle route leads to Pant Du Vineyard and Cafe — an ideal stop for refreshments before rejoining the route and continuing toward Caernarfon. Here, the path loops around the town’s iconic castle and follows dedicated cycle paths along the shoreline and marina, offering a relaxed and picturesque ride toward Bangor.</p>
             <p>In Bangor, the route crosses the historic Menai Bridge and continues along the coastal road through Beaumaris, eventually reaching Trwyn Penmon Point. This dramatic headland offers striking views across the water to Puffin Island and the Trwyn Du lighthouse. From the point, the route retraces its steps along the same scenic path, returning to the accommodation in Beaumaris to complete the day’s journey.</p>
             <span>Possible cafe stops are:</span>
               <ul>
@@ -599,7 +758,7 @@
            description: `
             <p>This route is similar to the medium route but leaves the cycle path shortly after Pen-y-groes to ride the coastal route into Caernarfon. It also does a slightly longer route to Trwyn Penmon Point after Beaumaris.</p>
             <p>The route begins with a steady climb out of Nefyn to the village of Llithfaen, where expansive views across the Llŷn Peninsula offer a striking start to the day. From there, it descends into Llanaelhaearn before continuing along quiet country lanes and a scenic stretch of disused railway line en route to Pen-y-groes.</p>
-            <p>A short detour from the main cycle route leads to a local café — an ideal spot for a refreshment break before rejoining the path and diverging from the medium route to follow the coastal approach into Caernarfon. The route circles the town’s iconic castle and continues along dedicated cycle paths that trace the shoreline and marina, offering relaxed riding and picturesque views.</p>
+            <p>A short detour from the main cycle route leads to Pant Du Vineyard and Cafe — an ideal spot for a refreshment break before rejoining the path and diverging from the medium route to follow the coastal approach into Caernarfon. The route circles the town’s iconic castle and continues along dedicated cycle paths that trace the shoreline and marina, offering relaxed riding and picturesque views.</p>
             <p>Upon reaching Bangor, the route crosses the historic Menai Bridge and follows the coastal road through Beaumaris, eventually arriving at Trwyn Penmon Point. This dramatic headland provides sweeping views of Puffin Island and the Trwyn Du lighthouse. From the point, the route retraces its steps along the same scenic path, returning to the accommodation in Beaumaris to complete the day’s ride.</p>
             <span>Possible cafe stops are:</span>
               <ul>
